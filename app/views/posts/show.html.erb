@@ -1,0 +1,34 @@
+<div id="show_post_cnt">
+<p id="notice"><%= notice %></p>
+
+<h2 id="show_title"><%= @post.title %></h2>
+
+<div class="author_show">
+  <div class="posted_at_author">
+    <%= @post.author.upcase %> 
+  </div>
+  <div id="show_author"> on
+    <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %-d at %I:%M%P") %>
+  </div>
+</div>
+
+<% if !@post.image_url.nil? %>
+  <%= image_tag @post.image_url, {:class => "title_img"} %>
+<% else %>
+  <hr class="show_hr">
+<% end %>
+
+<div class="redactor_textt">
+<p class="redactor_content">
+  <%= raw @post.content %>
+</p>
+</div>
+
+</div>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+| <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
