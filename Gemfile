@@ -51,3 +51,7 @@ gem 'mini_magick'
 gem 'rmagick'
 gem 'jquery-turbolinks'
 gem 'heroku'
+
+group :production do
+    gem 'rails_12factor'
+end
