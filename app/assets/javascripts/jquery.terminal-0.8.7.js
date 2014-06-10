@@ -1,34 +1,3 @@
-/**@license
- *       __ _____                     ________                              __
- *      / // _  /__ __ _____ ___ __ _/__  ___/__ ___ ______ __ __  __ ___  / /
- *  __ / // // // // // _  // _// // / / // _  // _//     // //  \/ // _ \/ /
- * /  / // // // // // ___// / / // / / // ___// / / / / // // /\  // // / /__
- * \___//____ \\___//____//_/ _\_  / /_//____//_/ /_/ /_//_//_/ /_/ \__\_\___/
- *           \/              /____/                              version 0.8.7
- * http://terminal.jcubic.pl
- *
- * Licensed under GNU LGPL Version 3 license
- * Copyright (c) 2011-2013 Jakub Jankiewicz <http://jcubic.pl>
- *
- * Includes:
- *
- * Storage plugin Distributed under the MIT License
- * Copyright (c) 2010 Dave Schindler
- *
- * jQuery Timers licenced with the WTFPL
- * <http://jquery.offput.ca/every/>
- *
- * Cross-Browser Split 1.1.1
- * Copyright 2007-2012 Steven Levithan <stevenlevithan.com>
- * Available under the MIT License
- *
- * sprintf.js
- * Copyright (c) 2007-2013 Alexandru Marasteanu <hello at alexei dot ro>
- * licensed under 3 clause BSD license
- *
- * Date: Mon, 02 Jun 2014 10:45:18 +0000
- *
- */
 
 (function(ctx) {
     var sprintf = function() {
