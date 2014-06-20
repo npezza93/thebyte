@@ -2,10 +2,11 @@ body {
   background-color: #F0F0F0;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 18px;
   ::selection {background:#31E722;}
   ::-moz-selection {background:#31E722;}
+  margin: 0;
 }
 
 p, ol, ul, td {

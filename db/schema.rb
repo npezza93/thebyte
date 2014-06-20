@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603235653) do
+ActiveRecord::Schema.define(version: 20140615171429) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140603235653) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "altattr"
   end
 
   create_table "redactor_assets", force: true do |t|
@@ -36,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140603235653) do
     t.datetime "updated_at"
   end
 
-  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
-  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type"
 
 end

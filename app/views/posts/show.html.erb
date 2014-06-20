@@ -1,34 +1,44 @@
+<% content_for :title, @post.title %>
 <div id="show_post_cnt">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h2 id="show_title"><%= @post.title %></h2>
+  <h2 id="show_title"><%= @post.title %></h2>
 
-<div class="author_show">
-  <div class="posted_at_author">
-    <%= @post.author.upcase %> 
+  <div class="author_show">
+    <div id="show_author"> 
+    By <%= @post.author %> on <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %-d at %I:%M%P") %>
+    </div>
   </div>
-  <div id="show_author"> on
-    <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %-d at %I:%M%P") %>
+<div id="tweet-button">
+
+<a href="https://twitter.com/intent/tweet?text=<%= @post.title + " " + request.original_url %>;via=theByte0" data-lang="en" data-url="<%= request.original_url %>" data-counturl="<%= request.original_url %>">Tweet</a>
+</div>
+
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script type="text/javascript">
+  twttr.events.bind('tweet', function (event) {
+  // Do something there
+  alert('Tweeted');
+});
+
+</script>
+
+
+
+  <% if !@post.image_url.nil? %>
+  <div class="show_top">
+    <%= image_tag @post.image_url, {:class => "title_img", :alt => @post.altattr} %>
+  <% else %>
+    <hr class="show_hr">
+  <% end %>
+
+  <div class="redactor_textt">
+    <p class="redactor_content">
+      <%= raw @post.content %>
+    </p>
   </div>
 </div>
 
-<% if !@post.image_url.nil? %>
-  <%= image_tag @post.image_url, {:class => "title_img"} %>
-<% else %>
-  <hr class="show_hr">
-<% end %>
 
-<div class="redactor_textt">
-<p class="redactor_content">
-  <%= raw @post.content %>
-</p>
-</div>
-
-</div>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
-| <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-
+<%= link_to 'Edit', edit_post_path(@post), :class => "create_post_button", :id => "create_post_button" %>
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "create_post_button", :id => "create_post_button"  %>

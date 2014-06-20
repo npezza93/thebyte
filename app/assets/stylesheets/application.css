@@ -13,8 +13,3 @@
  *= require redactor-rails
  *= require redactor-rails/plugins
  */
-
- @viewport {
-  width: device-width;
-  zoom: 1;
-}

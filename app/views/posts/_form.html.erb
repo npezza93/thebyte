@@ -26,6 +26,9 @@
     </div>
   </div>
   <div class="field">
+    <%= f.text_field :altattr, :class => "new_post_form_text", :placeholder => "Alt..." %>
+  </div>
+  <div class="field">
     <div class="redactor_field">
     <%= f.text_area :content, :class => "redactor", :rows => 40, :cols => 120 %>
     </div>

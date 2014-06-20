@@ -21,6 +21,8 @@ $(document).ready(
       "imageFloatMargin": '15px',
       "linksize": 25,
       "minHeight": 300,
-      "plugins": ['fontcolor', 'q', 'fontsize', 'fontfamily']
+      "plugins": ['fontcolor', 'q', 'fontsize', 'fontfamily'],
+      "paragraphy": false,
+      "pastePlainText": true
     });
 });

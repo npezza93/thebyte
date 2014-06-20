@@ -26,6 +26,10 @@ jQuery(function($, undefined) {
         },
         facebook: function() {
              window.open('http://www.facebook.com', '_blank');
+        },
+        home: function() {
+            var root = location.protocol + '//' + location.host;
+            window.location.href =root;
         }
 
     }, {

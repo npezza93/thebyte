@@ -20,15 +20,15 @@ RedactorPlugins.q = {
 	{	
 		if (value == 'Left Quote') {
 			var text = this.getSelectionText();
-			this.insertHtml("<q class=\"left\">"+text+"</q>");
+			this.insertHtml("<q class=\"left\">"+"> "+text+"<span class=\"cursorq\">&nbsp;</span>"+"</q>");
 		};
 		if (value == 'Right Quote') {
 			var text = this.getSelectionText();
-			this.insertHtml("<q class=\"right\">"+text+"</q>");
+			this.insertHtml("<q class=\"right\">"+"> "+text+"<span class=\"cursorq\">&nbsp;</span>"+"</q>");
 		};
 		if (value == 'Center Quote') {
 			var text = this.getSelectionText();
-			this.insertHtml("<q class=\"center\">"+text+"</q>");
+			this.insertHtml("<q class=\"center\">"+"> "+text+"<span class=\"cursorq\">&nbsp;</span>"+"</q>");
 		};
 	},
 	resetq: function()
