@@ -1,20 +1,45 @@
-<div id="home">
-    <% @posts.each do |post| %>
-        <div class="homepage">
-        <h2><%= link_to post.title, post, { :class => "post_title" }  %></h2>
-     <i><h4 class="index_author_date"><%= post.author %> | <%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e at %l:%M%P") %></h4></i><hr size="5" width=95% noshade color=#E7E6E7>
-    <p><%= truncate(strip_tags(post.content), length: 150) %></p>
-        <%= image_tag post.image_url(:thumb) %>
-      
+<core-toolbar><div class="middle indent">Header</div></core-toolbar>
 
-      <% if false %>
-         <td><%= post.subtitle %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<core-selector class="main-container" style="overflow-x:hidden;">
+      <% @posts.each do |post| %>
+        <%= link_to(post) do %>
+          <div class="<%= nm =cycle('hero','mini_hero','mini_hero','long_hero','hero_2','mini_hero_3','mini_hero_4','mini_hero_5','mini_hero_6','mini_hero_7','mini_hero_8','long_hero_2','mini_hero_9','mini_hero_10','hero_3','mini_hero_11','mini_hero_12','mini_hero_13','mini_hero_14','hero_4','mini_hero_15','mini_hero_16') %>" vertical layout>
+            <div class="dummy"></div>
+            <% if ((nm == 'long_hero') || (nm == 'long_hero_2')) %>
+              <div class="innerds" style="background-image: url('<%= post.image_url(:long_headline) %>');" vertical layout flex><paper-shadow z="2" animated>
+            <% else %>
+              <div class="innerds" style="background-image: url('<%= post.image_url(:headline) %>');" vertical layout flex><paper-shadow z="2" animated>
+            <% end %>
+              <div class="tint_layer" style="background-color: rgba(63,81,181, .5);">
+                <h2 class=""><%= post.title %></h2>
+                <div class="">BY <%= post.author.upcase %></div>
+              </div>
+            </paper-shadow></div>
+          </div>
+        <% end %>
       <% end %>
+
+      <paper-fab icon="add" onclick="document.location='<%= new_post_path %>'"></paper-fab>
+</core-selector>
+
+<!-- <br>
+<hr class="show_hr">  -->
+
+<!-- 
+
+  <% @posts.each do |post| %>
+    <div class="homepage" >
+    <div class="layer">
+    <h2><%= link_to post.title, post, { :class => "post_title" }  %></h2>
+   
+    <i><h4 class="index_author_date"><%= post.author %> | <%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e at %l:%M%P") %></h4></i><hr size="5" width=95% noshade color=#E7E6E7>
+        
+    <p><%= truncate(strip_tags(post.content), length: 150) %></p>      
+         </div>
+    <% if false %> 
+      <td><%= post.subtitle %></td>
+      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
       </div>
     <% end %>
-</div>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+</div> -->

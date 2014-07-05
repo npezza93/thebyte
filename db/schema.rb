@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615171429) do
+ActiveRecord::Schema.define(version: 20140621213528) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
-    t.string   "subtitle"
     t.string   "author"
     t.string   "image"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "altattr"
+    t.boolean  "status"
   end
 
   create_table "redactor_assets", force: true do |t|

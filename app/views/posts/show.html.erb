@@ -1,44 +1,124 @@
 <% content_for :title, @post.title %>
-<div id="show_post_cnt">
-  <p id="notice"><%= notice %></p>
 
-  <h2 id="show_title"><%= @post.title %></h2>
+<style shim-shadowdom>    
+  <% if request.env['HTTP_USER_AGENT'].downcase.match(/iphone|ipad|android/) %>
+    core-toolbar {
+      height: 225px;
+    }
+    <% if request.env['HTTP_USER_AGENT'].downcase.match(/iphone/) %>
+      .content {
+        margin-top: 250px;
+      }
+    <% end %>
+    <% if request.env['HTTP_USER_AGENT'].downcase.match(/ipad/) %>
+        core-toolbar {
+      height: 400px;
+      }
+      .content {
+        margin-top: 300px;
+      }
+    <% end %>
+  <% end %>
+  core-scroll-header-panel::shadow #headerBg {
+    background-image: url('<%= @post.image_url %>');
+    box-shadow: inset 0px -75px 100px rgba(0,0,0,.9);
+  }
+</style>
 
-  <div class="author_show">
-    <div id="show_author"> 
-    By <%= @post.author %> on <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %-d at %I:%M%P") %>
+
+  <core-scroll-header-panel condenses condensedHeaderHeight="90">
+
+    <core-toolbar>
+      <core-icon-button icon="arrow-back" center-justified center size="35" onclick="goBack()"></core-icon-button>
+      <div flex></div>
+      <core-icon-button icon="create" center-justified center size="35" onclick="editPost()"></core-icon-button>
+      <core-icon-button icon="clear" center-justified center size="35" onclick="deletePost()"><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></core-icon-button>
+      <% if request.env['HTTP_USER_AGENT'].downcase.match(/iphone|android/) %>
+        <div flex class="bottom title" id="the_title" start-justified><%= @post.title %></div>
+      <% else %>
+        <div flex class="bottom indent title" id="the_title" start-justified><%= @post.title %></div>
+      <% end %>
+      
+    </core-toolbar>
+
+    <div id="show_post_cnt" class="content" style="margin-top:400px;">
+    <!-- <paper-button raisedButton onclick="document.querySelector('#toast1').show()">Discard Draft</paper-button> -->
+      <div class="redactor_textt">
+        <div style="display:none;">
+        <%= image_tag @post.image_url, :id => "image" %>
+        </div>
+        <% if notice %>
+          <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
+        <% end %>
+        <%= raw @post.content %>
+      </div>
     </div>
-  </div>
-<div id="tweet-button">
+    
+  </core-scroll-header-panel>
 
-<a href="https://twitter.com/intent/tweet?text=<%= @post.title + " " + request.original_url %>;via=theByte0" data-lang="en" data-url="<%= request.original_url %>" data-counturl="<%= request.original_url %>">Tweet</a>
-</div>
 
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<script type="text/javascript">
-  twttr.events.bind('tweet', function (event) {
-  // Do something there
-  alert('Tweeted');
-});
+
+    <script>
+  
+    // custom transformation: scale header's title
+    var titleStyle = document.querySelector('.title').style;
+    addEventListener('core-header-transform', function(e) {
+      var d = e.detail;
+      // console.log(d);
+      var m = d.height - d.condensedHeight;
+      // console.log(m);
+      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
+      titleStyle.webkitTransform = titleStyle.transform = 
+          'scale(' + scale + ') translateZ(0)';
+      var shadow = (1 - d.y/d.height).toFixed(2);
+      var shadowstring = "rgba(0,0,0,"+shadow+") 5px 5px 10px";
+      // console.log(shadowstring);
+      $('.title').css('text-shadow', shadowstring);
+      // titleStyle.style.textShadow = "none";
+    });  
+
+    function goBack() {
+        window.open("<%= posts_path %>", "_self");
+    }
+
+    function editPost() {
+      window.open("<%= edit_post_path(@post) %>", "_self");
+    }
+
+    function deletePost() {
+      if(confirm('Are you sure?')) {
+        window.open("<%= posts_path %>", "_self");
+      }
+    }
+
+    $('.content').animate({'margin-top': '0px'}, 500);
+</script>
+<script>
+
+  var image = new Image();
+  image.src = "<%= @post.image_url %>";
+  var colorThief = new ColorThief();
+  var color =colorThief.getColor(image);
+  var red = color[0];
+  var green = color[1];
+  var blue = color[2];
+  var domrgb = "rgb(" +red + "," + green + "," + blue + ")";
+
+  var css= 'core-scroll-header-panel::shadow #condensedHeaderBg { background-color: '+ domrgb +'; }', head= document.head || document.getElementByTagName('head')[0], style = document.createElement('style');
+  style.type = 'text/css';
+  if (style.styleSheet){
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  head.appendChild(style);
+
+  var pal =  colorThief.getPalette(image, 7);
+  // console.log(pal);
+  var sixthpal = pal[5];
+  console.log(sixthpal)
+  var sixthpalcolor = "rgb(" + (255-sixthpal[0]) + ","+(255-sixthpal[1]) +"," +(255-sixthpal[2]) +")";
+  var title = document.getElementById("the_title");
+  title.style.color = sixthpalcolor;
 
 </script>
-
-
-
-  <% if !@post.image_url.nil? %>
-  <div class="show_top">
-    <%= image_tag @post.image_url, {:class => "title_img", :alt => @post.altattr} %>
-  <% else %>
-    <hr class="show_hr">
-  <% end %>
-
-  <div class="redactor_textt">
-    <p class="redactor_content">
-      <%= raw @post.content %>
-    </p>
-  </div>
-</div>
-
-
-<%= link_to 'Edit', edit_post_path(@post), :class => "create_post_button", :id => "create_post_button" %>
-<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "create_post_button", :id => "create_post_button"  %>

@@ -11,12 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :title, :class => "new_post_form_text", :placeholder => "Title..." %>
-  </div>
-  <div class="field">
-    <%= f.text_field :subtitle, :class => "new_post_form_text", :placeholder => "Subtitle..." %>
-  </div>
+    <input class="new_post_form_text" id="post_title" name="post[title]" placeholder="Title..." type="text">
+    <!-- <paper-input label="title" floatingLabel id="post_title" name="post[title]" type="text"></paper-input> -->
+    
   <div class="field">
     <%= f.text_field :author, :class => "new_post_form_text", :placeholder => "Author..." %>
   </div>
@@ -27,6 +24,10 @@
   </div>
   <div class="field">
     <%= f.text_field :altattr, :class => "new_post_form_text", :placeholder => "Alt..." %>
+  </div>
+  <div class="field">
+    <%= f.label :status, 'Active: ' %>
+    <%= f.check_box :status, :class => "new_post_form_text" %>
   </div>
   <div class="field">
     <div class="redactor_field">
