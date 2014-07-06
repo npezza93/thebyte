@@ -34,11 +34,16 @@
       <core-icon-button icon="create" center-justified center size="35" onclick="editPost()"></core-icon-button>
       <core-icon-button icon="clear" center-justified center size="35" onclick="deletePost()"><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></core-icon-button>
       <% if request.env['HTTP_USER_AGENT'].downcase.match(/iphone|android/) %>
-        <div flex class="bottom title" id="the_title" start-justified><%= @post.title %></div>
+        <div flex class="bottom" id="the_title" self-end>
+          <div class="title"><%= @post.title %></div>
+          <div class="subtitle"><%= @post.author %></div>
+        </div>
       <% else %>
-        <div flex class="bottom indent title" id="the_title" start-justified><%= @post.title %></div>
+        <div flex class="bottom indent" id="the_title" self-end>
+          <div class="title"><%= @post.title %></div>
+          <div class="bottom indent"><%= @post.author %></div>
+        </div>
       <% end %>
-      
     </core-toolbar>
 
     <div id="show_post_cnt" class="content" style="margin-top:400px;">
@@ -72,9 +77,8 @@
           'scale(' + scale + ') translateZ(0)';
       var shadow = (1 - d.y/d.height).toFixed(2);
       var shadowstring = "rgba(0,0,0,"+shadow+") 5px 5px 10px";
-      // console.log(shadowstring);
+
       $('.title').css('text-shadow', shadowstring);
-      // titleStyle.style.textShadow = "none";
     });  
 
     function goBack() {

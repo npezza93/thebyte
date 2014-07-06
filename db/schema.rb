@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20140621213528) do
     t.string   "title"
     t.string   "author"
     t.string   "image"
+    t.string   "altattr"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "altattr"
     t.boolean  "status"
   end
 

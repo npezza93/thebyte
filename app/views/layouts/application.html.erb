@@ -2,6 +2,7 @@
 <html>
 <head>
   <title><%= yield(:title) %></title>
+  <script src="../bower_components/platform/platform.js"></script>
   <%= content_for?(:head) ? yield(:head) : '' %>
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag "application" %>
@@ -15,7 +16,6 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>   -->
   <link href='http://fonts.googleapis.com/css?family=Roboto:100,300italic,300,400,500,900' rel='stylesheet' type='text/css'>
   <!-- <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'> -->
-    <script src="../bower_components/platform/platform.js"></script>
 	<link rel="import" href="../bower_components/core-elements/core-elements.html">
 	<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 	<link rel="import" href="../bower_components/core-icon/core-icon.html">
