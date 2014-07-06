@@ -225,7 +225,7 @@ core-toolbar {
   line-height: 1;
   text-shadow: rgba(0, 0, 0, 1) 5px 5px 8px;
 }
-@media (max-width: 599px) {
+@media (max-width: 750px) {
   .new_post_form_text {
     font: 20px Arial;
     display: block;
@@ -570,7 +570,7 @@ core-toolbar {
     font-size: 50px;
     width: 85%;
     margin: auto;
-    line-height: 1.5em;
+    line-height: 1.2;
     margin-top: 10%;
     text-align: center;
     color: rgb(240,241,225);
@@ -585,7 +585,7 @@ core-toolbar {
     font-size: 35px;
     width: 95%;
     margin: auto;
-    line-height: 1.5em;
+    line-height: 1.2em;
     margin-top: 10px;
     text-align: center;
     color: rgb(240,241,225);
@@ -984,7 +984,7 @@ core-toolbar {
   }
 }*/
 
-@media (min-width: 599px) and (max-width: 1300px) {
+@media (min-width: 751px) and (max-width: 1300px) {
   .new_post_form_text {
     font: 17px Arial;
     display: block;
