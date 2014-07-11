@@ -1,13 +1,16 @@
 <% content_for :title, @post.title %>
 
-<style>    
+<style shim-shadowdom>    
   core-scroll-header-panel::shadow #headerBg {
     background-image: url('<%= @post.image_url %>');
   }
+    core-scroll-header-panel::shadow #condensedHeaderBg {
+      background-color: black;
+    }
 </style>
 
 
-  <core-scroll-header-panel condenses condensedHeaderHeight="90">
+  <core-scroll-header-panel condenses condensedHeaderHeight="70">
 
     <core-toolbar>
       <core-icon-button icon="arrow-back" center-justified center size="35" onclick="goBack()"></core-icon-button>
@@ -19,11 +22,11 @@
           <div class="title"><%= @post.title %></div>
         </div>
       <% else %>
-        <div flex class="bottom indent" id="the_title" self-end>
+        <div flex class="bottom indent" id="the_title" self-end style="color: rgb(240,241,225);">
+          <div class="sub">By <%= @post.author %> | <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e at %l:%M%P") %></div>
           <div class="title"><%= @post.title %></div>
         </div>
       <% end %>
-      <paper-ripple fit></paper-ripple>
     </core-toolbar>
 
     <div id="show_post_cnt" class="content">
@@ -53,8 +56,8 @@
           'scale(' + scale + ') translateZ(0)';
       var shadow = (1 - d.y/d.height).toFixed(2);
       var shadowstring = "rgba(0,0,0,"+shadow+") 5px 5px 10px";
-
       $('.title').css('text-shadow', shadowstring);
+      $('.sub').css('opacity', shadow);
     });  
 
     function goBack() {

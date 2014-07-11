@@ -212,16 +212,27 @@ core-scroll-header-panel {
   left: 0;
 }
 
+.sub {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  padding-bottom: 20px;
+  color: rgb(240,241,225);
+}
 .title {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   line-height: 1;
+  colro: rgb(240,241,225);
   text-shadow: rgba(0, 0, 0, 1) 5px 5px 8px;
 }
-
+core-toolbar {
+  fill:white;
+}
 paper-ripple {
   color: #757575;
 }
