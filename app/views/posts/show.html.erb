@@ -1,27 +1,8 @@
 <% content_for :title, @post.title %>
 
-<style shim-shadowdom>    
-  <% if request.env['HTTP_USER_AGENT'].downcase.match(/iphone|ipad|android/) %>
-    core-toolbar {
-      height: 225px;
-    }
-    <% if request.env['HTTP_USER_AGENT'].downcase.match(/iphone/) %>
-      .content {
-        margin-top: 250px;
-      }
-    <% end %>
-    <% if request.env['HTTP_USER_AGENT'].downcase.match(/ipad/) %>
-        core-toolbar {
-      height: 400px;
-      }
-      .content {
-        margin-top: 300px;
-      }
-    <% end %>
-  <% end %>
+<style>    
   core-scroll-header-panel::shadow #headerBg {
     background-image: url('<%= @post.image_url %>');
-    box-shadow: inset 0px -75px 100px rgba(0,0,0,.9);
   }
 </style>
 
@@ -36,22 +17,17 @@
       <% if request.env['HTTP_USER_AGENT'].downcase.match(/iphone|android/) %>
         <div flex class="bottom" id="the_title" self-end>
           <div class="title"><%= @post.title %></div>
-          <div class="subtitle"><%= @post.author %></div>
         </div>
       <% else %>
         <div flex class="bottom indent" id="the_title" self-end>
           <div class="title"><%= @post.title %></div>
-          <div class="bottom indent"><%= @post.author %></div>
         </div>
       <% end %>
+      <paper-ripple fit></paper-ripple>
     </core-toolbar>
 
-    <div id="show_post_cnt" class="content" style="margin-top:400px;">
-    <!-- <paper-button raisedButton onclick="document.querySelector('#toast1').show()">Discard Draft</paper-button> -->
+    <div id="show_post_cnt" class="content">
       <div class="redactor_textt">
-        <div style="display:none;">
-        <%= image_tag @post.image_url, :id => "image" %>
-        </div>
         <% if notice %>
           <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
         <% end %>
@@ -94,35 +70,33 @@
         window.open("<%= posts_path %>", "_self");
       }
     }
-
-    $('.content').animate({'margin-top': '0px'}, 500);
 </script>
 <script>
 
-  var image = new Image();
-  image.src = "<%= @post.image_url %>";
-  var colorThief = new ColorThief();
-  var color =colorThief.getColor(image);
-  var red = color[0];
-  var green = color[1];
-  var blue = color[2];
-  var domrgb = "rgb(" +red + "," + green + "," + blue + ")";
+  // var image = new Image();
+  // image.src = "<%= @post.image_url %>";
+  // var colorThief = new ColorThief();
+  // var color =colorThief.getColor(image);
+  // var red = color[0];
+  // var green = color[1];
+  // var blue = color[2];
+  // var domrgb = "rgb(" +red + "," + green + "," + blue + ")";
 
-  var css= 'core-scroll-header-panel::shadow #condensedHeaderBg { background-color: '+ domrgb +'; }', head= document.head || document.getElementByTagName('head')[0], style = document.createElement('style');
-  style.type = 'text/css';
-  if (style.styleSheet){
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-  head.appendChild(style);
+  // var css= 'core-scroll-header-panel::shadow #condensedHeaderBg { background-color: '+ domrgb +'; }', head= document.head || document.getElementByTagName('head')[0], style = document.createElement('style');
+  // style.type = 'text/css';
+  // if (style.styleSheet){
+  //   style.styleSheet.cssText = css;
+  // } else {
+  //   style.appendChild(document.createTextNode(css));
+  // }
+  // head.appendChild(style);
 
-  var pal =  colorThief.getPalette(image, 7);
-  // console.log(pal);
-  var sixthpal = pal[5];
-  console.log(sixthpal)
-  var sixthpalcolor = "rgb(" + (255-sixthpal[0]) + ","+(255-sixthpal[1]) +"," +(255-sixthpal[2]) +")";
-  var title = document.getElementById("the_title");
-  title.style.color = sixthpalcolor;
+  // var pal =  colorThief.getPalette(image, 7);
+  // // console.log(pal);
+  // var sixthpal = pal[5];
+  // console.log(sixthpal)
+  // var sixthpalcolor = "rgb(" + (255-sixthpal[0]) + ","+(255-sixthpal[1]) +"," +(255-sixthpal[2]) +")";
+  // var title = document.getElementById("the_title");
+  // title.style.color = sixthpalcolor;
 
 </script>

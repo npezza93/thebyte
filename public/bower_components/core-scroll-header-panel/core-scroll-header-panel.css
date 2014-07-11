@@ -54,3 +54,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 #condensedHeaderBg {
   opacity: 0;
 }
+
+@media (min-width: 901px) and (max-width: 1300px) and (min-height: 501px) {
+    #mainContainer {
+    padding-top: 400px;
+    transition: 0.7s;
+  }
+}
+@media (min-width: 901px) and (max-width: 1300px) and (max-height: 500px) {
+  #mainContainer {
+    padding-top: 250px;
+    transition: 0.7s;
+  }
+}
+@media (min-width: 1301px) {
+  #mainContainer {
+    padding-top: 600px;
+    transition: 0.7s;
+  }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  #mainContainer {
+    padding-top: 300px;
+    transition: 0.7s;
+  }
+}
+@media (max-width: 600px) {
+  #mainContainer {
+    padding-top: 200px;
+    transition: 0.7s;
+  }
+}
