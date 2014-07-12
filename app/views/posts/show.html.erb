@@ -4,29 +4,19 @@
   core-scroll-header-panel::shadow #headerBg {
     background-image: url('<%= @post.image_url %>');
   }
-    core-scroll-header-panel::shadow #condensedHeaderBg {
-      background-color: black;
-    }
 </style>
 
 
-  <core-scroll-header-panel condenses condensedHeaderHeight="70">
+  <core-scroll-header-panel condenses noReveal>
 
     <core-toolbar>
-      <core-icon-button icon="arrow-back" center-justified center size="35" onclick="goBack()"></core-icon-button>
+      <paper-icon-button icon="arrow-back" center-justified center size="27" onclick="goBack()"></paper-icon-button>
       <div flex></div>
-      <core-icon-button icon="create" center-justified center size="35" onclick="editPost()"></core-icon-button>
-      <core-icon-button icon="clear" center-justified center size="35" onclick="deletePost()"><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></core-icon-button>
-      <% if request.env['HTTP_USER_AGENT'].downcase.match(/iphone|android/) %>
-        <div flex class="bottom" id="the_title" self-end>
-          <div class="title"><%= @post.title %></div>
-        </div>
-      <% else %>
-        <div flex class="bottom indent" id="the_title" self-end style="color: rgb(240,241,225);">
+      <paper-icon-button icon="create" center-justified center size="27" onclick="editPost()"></paper-icon-button>
+        <div flex class="bottom" start-justified layout vertical id="the_title" self-end>
           <div class="sub">By <%= @post.author %> | <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e at %l:%M%P") %></div>
-          <div class="title"><%= @post.title %></div>
+          <div class="title" layout vertical flex start-justified><%= @post.title %></div>
         </div>
-      <% end %>
     </core-toolbar>
 
     <div id="show_post_cnt" class="content">
@@ -40,24 +30,23 @@
     
   </core-scroll-header-panel>
 
-
-
     <script>
   
     // custom transformation: scale header's title
-    var titleStyle = document.querySelector('.title').style;
+    var titleStyle = document.querySelector('#the_title').style;
+
     addEventListener('core-header-transform', function(e) {
       var d = e.detail;
-      // console.log(d);
       var m = d.height - d.condensedHeight;
-      // console.log(m);
+
       var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
-      titleStyle.webkitTransform = titleStyle.transform = 
-          'scale(' + scale + ') translateZ(0)';
+      titleStyle.webkitTransform = titleStyle.transformOrigin = 
+          'scale(' + scale + ')';
       var shadow = (1 - d.y/d.height).toFixed(2);
+      $('#the_title').css('opacity', shadow);
       var shadowstring = "rgba(0,0,0,"+shadow+") 5px 5px 10px";
       $('.title').css('text-shadow', shadowstring);
-      $('.sub').css('opacity', shadow);
+
     });  
 
     function goBack() {
