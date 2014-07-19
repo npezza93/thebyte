@@ -6,15 +6,14 @@
     "web-animations-js": "web-animations/web-animations-js#master"
   },
   "homepage": "https://github.com/Polymer/core-animation",
-  "version": "0.3.3",
-  "_release": "0.3.3",
+  "version": "0.3.4",
+  "_release": "0.3.4",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.3",
-    "commit": "80c6a72320d3bd91735ad53b412366abebe5767f"
+    "tag": "0.3.4",
+    "commit": "7f26dac05ca945df2766d3456dace722e24f606e"
   },
   "_source": "git://github.com/Polymer/core-animation.git",
-  "_target": "~0.3.3",
-  "_originalSource": "Polymer/core-animation",
-  "_direct": true
+  "_target": ">=0.3.0 <1.0.0",
+  "_originalSource": "Polymer/core-animation"
 }

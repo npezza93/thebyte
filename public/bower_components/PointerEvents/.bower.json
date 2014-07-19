@@ -18,15 +18,14 @@
     "test",
     "tests"
   ],
-  "version": "0.3.3",
-  "_release": "0.3.3",
+  "version": "0.2.4",
+  "_release": "0.2.4",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.3",
-    "commit": "f8d9cf10a76a7a2d768af7e8c94074a27aac2073"
+    "tag": "0.2.4",
+    "commit": "fdf8da9919d8d2768c4b584ba5505cb7553a871d"
   },
-  "_source": "git://github.com/Polymer/polymer-gestures.git",
-  "_target": "~0.3.3",
-  "_originalSource": "Polymer/polymer-gestures",
-  "_direct": true
+  "_source": "git://github.com/Polymer/PointerEvents.git",
+  "_target": "0.2.4",
+  "_originalSource": "Polymer/PointerEvents"
 }

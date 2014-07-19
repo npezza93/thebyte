@@ -1,22 +1,17 @@
 /*
- *
- * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ * Copyright 2013 The Polymer Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file.
  */
-
 (function() {
   function shadowSelector(v) {
-    return 'body /deep/ ' + selector(v);
+    return 'body /shadow-deep/ ' + selector(v);
   }
   function selector(v) {
     return '[touch-action="' + v + '"]';
   }
   function rule(v) {
-    return '{ -ms-touch-action: ' + v + '; touch-action: ' + v + ';}';
+    return '{ -ms-touch-action: ' + v + '; touch-action: ' + v + '; touch-action-delay: none; }';
   }
   var attrib2css = [
     'none',
@@ -29,17 +24,16 @@
         'pan-x pan-y',
         'pan-y pan-x'
       ]
-    },
-    'manipulation'
+    }
   ];
   var styles = '';
   // only install stylesheet if the browser has touch action support
   var head = document.head;
-  var hasTouchAction = typeof document.head.style.touchAction === 'string';
+  var hasNativePE = window.PointerEvent || window.MSPointerEvent;
   // only add shadow selectors if shadowdom is supported
   var hasShadowRoot = !window.ShadowDOMPolyfill && document.head.createShadowRoot;
 
-  if (hasTouchAction) {
+  if (hasNativePE) {
     attrib2css.forEach(function(r) {
       if (String(r) === r) {
         styles += selector(r) + rule(r) + '\n';

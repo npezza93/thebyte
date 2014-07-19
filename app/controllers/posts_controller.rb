@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_check, :only => [:new, :edit, :destroy, :create, :update]
 
   # GET /posts
   # GET /posts.json
@@ -76,5 +77,13 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :author, :image, :content, :altattr, :status)
+    end
+
+    def admin_check
+      if User.find_by_id(session[:user_id]) == nil
+          redirect_to posts_url, notice: "You are not authorized to access this page."
+      elsif User.find_by_id(session[:user_id]).administrator == false
+          redirect_to posts_url, notice: "You are not authorized to access this page."
+      end
     end
 end

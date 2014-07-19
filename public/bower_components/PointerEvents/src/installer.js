@@ -1,10 +1,7 @@
 /*
- * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ * Copyright 2013 The Polymer Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file.
  */
 
 /**
@@ -116,9 +113,9 @@
 
   if (!MO) {
     Installer.prototype.watchSubtree = function(){
-      console.warn('PolymerGestures: MutationObservers not found, touch-action will not be dynamically detected');
+      console.warn('PointerEventsPolyfill: MutationObservers not found, touch-action will not be dynamically detected');
     };
   }
 
   scope.Installer = Installer;
-})(window.PolymerGestures);
+})(window.PointerEventsPolyfill);

@@ -27,14 +27,14 @@ To change the ink color:
       color: #ff4081;
     }
 
-@group Quantum Paper Elements
+@group Paper Elements
 @element paper-tab
 @homepage github.io
 -->
 
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
-<polymer-element name="paper-tab" attributes="noink">
+<polymer-element name="paper-tab" attributes="noink" role="tab">
 <template>
 
   <link rel="stylesheet" href="paper-tab.css">
@@ -42,7 +42,7 @@ To change the ink color:
   <div id="tabContainer" center-justified center horizontal layout>
   
     <div class="tab-content"><content></content></div>
-    <paper-ripple id="ink" initialOpacity="0.95" opacityDecayVelocity="0.98"></paper-ripple>
+    <paper-ripple id="ink" initialOpacity="0.95" opacityDecayVelocity="0.98" style="color:#b2ff59;"></paper-ripple>
     
   </div>
   

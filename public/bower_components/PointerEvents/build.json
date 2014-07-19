@@ -1,17 +1,13 @@
 [
-  "src/scope.js",
-  "src/targetfind.js",
+  "src/boot.js",
   "src/touch-action.js",
-  "src/eventFactory.js",
+  "src/PointerEvent.js",
   "src/pointermap.js",
   "src/dispatcher.js",
   "src/installer.js",
   "src/mouse.js",
   "src/touch.js",
   "src/ms.js",
-  "src/pointer.js",
   "src/platform-events.js",
-  "src/track.js",
-  "src/hold.js",
-  "src/tap.js"
+  "src/capture.js"
 ]

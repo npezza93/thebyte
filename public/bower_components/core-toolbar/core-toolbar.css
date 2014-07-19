@@ -17,6 +17,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   height: 64px;
   /* typography */
   font-size: 1.3em;
+  /* background */
+  background-color: transparent;
 }
 
 :host(.animate) {
@@ -29,7 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }
 
 :host(.tall) {
-  height: 200px;
+  height: 192px;
 }
 
 .toolbar-tools {

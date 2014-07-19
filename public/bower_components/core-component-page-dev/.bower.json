@@ -5,15 +5,14 @@
     "core-doc-viewer": "Polymer/core-doc-viewer#>=0.3.0 <1.0.0"
   },
   "homepage": "https://github.com/Polymer/core-home-page-dev",
-  "version": "0.3.3",
-  "_release": "0.3.3",
+  "version": "0.3.4",
+  "_release": "0.3.4",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.3",
-    "commit": "3bf69c49e514aaf6573e1550e18ad1dce5c8e72d"
+    "tag": "0.3.4",
+    "commit": "5f16a208a32ce0b96ef3cbd9fef82572705c4a7b"
   },
   "_source": "git://github.com/Polymer/core-home-page-dev.git",
   "_target": "~0.3.3",
-  "_originalSource": "Polymer/core-home-page-dev",
-  "_direct": true
+  "_originalSource": "Polymer/core-home-page-dev"
 }

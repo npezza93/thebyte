@@ -1,0 +1,31 @@
+<% if notice %>
+	<paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
+<% end %>
+	<div id="container" flex layout horizontal center-justified>
+		<div id="profile_image">
+			<div id="text" layout horizontal flex center-justified center>
+			Upload profile picture
+			</div>
+		</div>
+	</div>
+
+	<div id="user_name">
+		<%=  User.find_by_id(session[:user_id]).username %>
+	</div>
+
+	<div id="join_date">
+  		Joined on: <%=  User.find_by_id(session[:user_id]).created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e, %Y") %>
+  	</div>
+
+<%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])) %>
+
+<script>
+$("#profile_image").hover(function() {
+  var elem = document.getElementById("text");
+  if (elem.style.visibility == "visible") {
+  	elem.style.visibility = "hidden";
+  } else {
+  	elem.style.visibility = "visible";
+  }
+});
+</script>

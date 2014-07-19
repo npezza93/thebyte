@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621213528) do
+ActiveRecord::Schema.define(version: 20140713001546) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "author"
     t.string   "image"
-    t.string   "altattr"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "altattr"
     t.boolean  "status"
   end
 
@@ -39,5 +39,13 @@ ActiveRecord::Schema.define(version: 20140621213528) do
 
   add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable"
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type"
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.boolean  "administrator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

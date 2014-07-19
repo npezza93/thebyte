@@ -1,15 +1,14 @@
 {
   "name": "core-home-page",
   "homepage": "https://github.com/Polymer/core-home-page",
-  "version": "0.3.3",
-  "_release": "0.3.3",
+  "version": "0.3.4",
+  "_release": "0.3.4",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.3",
-    "commit": "95f9b62bbd4ab39129adf426efb8b62e6d858412"
+    "tag": "0.3.4",
+    "commit": "f45b7d50fb52ad4b36db9e20d6a24ee431e947d0"
   },
   "_source": "git://github.com/Polymer/core-home-page.git",
   "_target": "~0.3.3",
-  "_originalSource": "Polymer/core-home-page",
-  "_direct": true
+  "_originalSource": "Polymer/core-home-page"
 }

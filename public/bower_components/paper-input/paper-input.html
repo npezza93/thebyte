@@ -24,13 +24,13 @@ Example:
 <link href="../polymer/polymer.html" rel="import">
 <link href="../core-input/core-input.html" rel="import">
 
-<polymer-element name="paper-input" extends="core-input" attributes="label floatingLabel maxRows error id name type" on-down="{{downAction}}" on-up="{{upAction}}">
+<polymer-element name="paper-input" extends="core-input" attributes="label floatingLabel maxRows error name" on-down="{{downAction}}" on-up="{{upAction}}">
 
   <template>
 
     <link href="paper-input.css" rel="stylesheet">
 
-    <div id="floatedLabel" class="hidden"><span id="floatedLabelSpan">{{label}}</span></div>
+    <div id="floatedLabel" class="hidden" hidden?="{{!floatingLabel}}"><span id="floatedLabelSpan">{{label}}</span></div>
 
     <div id="container" on-transitionend="{{transitionEndAction}}" on-webkitTransitionEnd="{{transitionEndAction}}">
 
@@ -39,7 +39,7 @@ Example:
       <div id="inputContainer">
 
         <div id="inputClone">
-          <input id="inputCloneSpan" aria-hidden="true" type="{{type}}" id="{{id}}">
+          <span id="inputCloneSpan" name="{{name}}" aria-hidden="true">&nbsp;</span>
         </div>
 
         <template if="{{multiline}}">
@@ -214,6 +214,7 @@ Example:
           this.$.label.classList.add('animating');
           this.async(function() {
             this.$.label.style.webkitTransform = 'none';
+            this.$.label.style.transform = 'none';
           });
         }
         this.focused = false;
@@ -232,6 +233,7 @@ Example:
         var rect = this.$.underline.getBoundingClientRect();
         var right = e.x - rect.left;
         this.$.underlineHighlight.style.webkitTransformOriginX = right + 'px';
+        this.$.underlineHighlight.style.transformOriginX = right + 'px';
         this.$.underlineHighlight.classList.remove('focused');
         this.underlineAsync = this.async(function() {
           this.$.underlineHighlight.classList.add('pressed');
@@ -290,6 +292,7 @@ Example:
           this.$.label.classList.add('focusedColor');
           this.$.label.classList.add('animating');
           this.$.label.style.webkitTransform = this.$.label.cachedTransform;
+          this.$.label.style.transform = this.$.label.cachedTransform;
         }
       },
 

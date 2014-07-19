@@ -1,27 +1,28 @@
 /*
- * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ * Copyright 2013 The Polymer Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file.
  */
 
 (function(scope) {
   var dispatcher = scope.dispatcher;
+  var captureInfo = dispatcher.captureInfo;
+  var findTarget = scope.findTarget;
   var allShadows = scope.targetFinding.allShadows.bind(scope.targetFinding);
   var pointermap = dispatcher.pointermap;
   var touchMap = Array.prototype.map.call.bind(Array.prototype.map);
   // This should be long enough to ignore compat mouse events made by touch
   var DEDUP_TIMEOUT = 2500;
   var CLICK_COUNT_TIMEOUT = 200;
-  var HYSTERESIS = 20;
   var ATTRIB = 'touch-action';
   var INSTALLER;
-  // maybe one day...
-  // var CAN_USE_GLOBAL = ATTRIB in document.head.style;
-  var CAN_USE_GLOBAL = false;
-
+  // The presence of touch event handlers blocks scrolling, and so we must be careful to
+  // avoid adding handlers unnecessarily.  Chrome plans to add a touch-action-delay property
+  // (crbug.com/329559) to address this, and once we have that we can opt-in to a simpler
+  // handler registration mechanism.  Rather than try to predict how exactly to opt-in to
+  // that we'll just leave this disabled until there is a build of Chrome to test.
+  var HAS_TOUCH_ACTION_DELAY = false;
+  
   // handler block for native touch events
   var touchEvents = {
     events: [
@@ -31,14 +32,14 @@
       'touchcancel'
     ],
     register: function(target) {
-      if (CAN_USE_GLOBAL) {
+      if (HAS_TOUCH_ACTION_DELAY) {
         dispatcher.listen(target, this.events);
       } else {
         INSTALLER.enableOnSubtree(target);
       }
     },
     unregister: function(target) {
-      if (CAN_USE_GLOBAL) {
+      if (HAS_TOUCH_ACTION_DELAY) {
         dispatcher.unlisten(target, this.events);
       } else {
         // TODO(dfreedman): is it worth it to disconnect the MO?
@@ -86,7 +87,7 @@
       EMITTER: 'none',
       XSCROLLER: 'pan-x',
       YSCROLLER: 'pan-y',
-      SCROLLER: /^(?:pan-x pan-y)|(?:pan-y pan-x)|auto|manipulation$/
+      SCROLLER: /^(?:pan-x pan-y)|(?:pan-y pan-x)|auto$/
     },
     touchActionToScrollType: function(touchAction) {
       var t = touchAction;
@@ -143,23 +144,6 @@
       }
       return ret;
     },
-    findTarget: function(touch, id) {
-      if (this.currentTouchEvent.type === 'touchstart') {
-        if (this.isPrimaryTouch(touch)) {
-          var fastPath = {
-            clientX: touch.clientX,
-            clientY: touch.clientY,
-            path: this.currentTouchEvent.path,
-            target: scope.wrap(this.currentTouchEvent.target)
-          };
-          return scope.findTarget(fastPath);
-        } else {
-          return scope.findTarget(touch);
-        }
-      }
-      // reuse target we found in touchstart
-      return pointermap.get(id);
-    },
     touchToPointer: function(inTouch) {
       var cte = this.currentTouchEvent;
       var e = dispatcher.cloneEvent(inTouch);
@@ -167,17 +151,17 @@
       // Touch identifiers can start at 0.
       // Add 2 to the touch identifier for compatibility.
       var id = e.pointerId = inTouch.identifier + 2;
-      e.target = scope.wrap(this.findTarget(inTouch, id));
+      e.target = captureInfo[id] || findTarget(e);
       e.bubbles = true;
       e.cancelable = true;
       e.detail = this.clickCount;
+      e.button = 0;
       e.buttons = this.typeToButtons(cte.type);
       e.width = inTouch.webkitRadiusX || inTouch.radiusX || 0;
       e.height = inTouch.webkitRadiusY || inTouch.radiusY || 0;
       e.pressure = inTouch.webkitForce || inTouch.force || 0.5;
       e.isPrimary = this.isPrimaryTouch(inTouch);
       e.pointerType = this.POINTER_TYPE;
-      e._source = 'touch';
       // forward touch preventDefaults
       var self = this;
       e.preventDefault = function() {
@@ -190,18 +174,9 @@
     processTouches: function(inEvent, inFunction) {
       var tl = inEvent.changedTouches;
       this.currentTouchEvent = inEvent;
-      for (var i = 0, t, p; i < tl.length; i++) {
+      for (var i = 0, t; i < tl.length; i++) {
         t = tl[i];
-        p = this.touchToPointer(t);
-        if (inEvent.type === 'touchstart') {
-          pointermap.set(p.pointerId, p.target);
-        }
-        if (pointermap.has(p.pointerId)) {
-          inFunction.call(this, p);
-        }
-        if (inEvent.type === 'touchend') {
-          this.cleanUpPointer(p);
-        }
+        inFunction.call(this, this.touchToPointer(t));
       }
     },
     // For single axis scrollers, determines whether the element should emit
@@ -209,7 +184,7 @@
     shouldScroll: function(inEvent) {
       if (this.firstXY) {
         var ret;
-        var scrollAxis = scope.wrap(inEvent.currentTarget)._scrollType;
+        var scrollAxis = inEvent.currentTarget._scrollType;
         if (scrollAxis === 'none') {
           // this element is a touch-action: none, should never scroll
           ret = false;
@@ -227,6 +202,7 @@
           // making events
           ret = da >= doa;
         }
+        this.firstXY = null;
         return ret;
       }
     },
@@ -254,11 +230,11 @@
           // Touch identifiers are 2 smaller than their pointerId, which is the
           // index in pointermap.
           if (key !== 1 && !this.findTouch(tl, key - 2)) {
-            var p = value;
+            var p = value.out;
             d.push(p);
           }
         }, this);
-        d.forEach(this.cancel, this);
+        d.forEach(this.cancelOut, this);
       }
     },
     touchstart: function(inEvent) {
@@ -267,51 +243,78 @@
       this.dedupSynthMouse(inEvent);
       if (!this.scrolling) {
         this.clickCount++;
-        this.processTouches(inEvent, this.down);
+        this.processTouches(inEvent, this.overDown);
       }
     },
-    down: function(inPointer) {
+    overDown: function(inPointer) {
+      var p = pointermap.set(inPointer.pointerId, {
+        target: inPointer.target,
+        out: inPointer,
+        outTarget: inPointer.target
+      });
+      dispatcher.over(inPointer);
+      dispatcher.enter(inPointer);
       dispatcher.down(inPointer);
     },
     touchmove: function(inEvent) {
-      if (CAN_USE_GLOBAL) {
-        this.processTouches(inEvent, this.move);
-      } else {
-        if (!this.scrolling) {
-          if (this.shouldScroll(inEvent)) {
-            this.scrolling = true;
-          } else {
-            inEvent.preventDefault();
-            this.processTouches(inEvent, this.move);
-          }
-        } else if (this.firstXY) {
-          var t = inEvent.changedTouches[0];
-          var dx = t.clientX - this.firstXY.X;
-          var dy = t.clientY - this.firstXY.Y;
-          var dd = Math.sqrt(dx * dx + dy * dy);
-          if (dd >= HYSTERESIS) {
-            this.touchcancel(inEvent);
-            this.firstXY = null;
-          }
+      if (!this.scrolling) {
+        if (this.shouldScroll(inEvent)) {
+          this.scrolling = true;
+          this.touchcancel(inEvent);
+        } else {
+          inEvent.preventDefault();
+          this.processTouches(inEvent, this.moveOverOut);
         }
       }
     },
-    move: function(inPointer) {
-      dispatcher.move(inPointer);
+    moveOverOut: function(inPointer) {
+      var event = inPointer;
+      var pointer = pointermap.get(event.pointerId);
+      // a finger drifted off the screen, ignore it
+      if (!pointer) {
+        return;
+      }
+      var outEvent = pointer.out;
+      var outTarget = pointer.outTarget;
+      dispatcher.move(event);
+      if (outEvent && outTarget !== event.target) {
+        outEvent.relatedTarget = event.target;
+        event.relatedTarget = outTarget;
+        // recover from retargeting by shadow
+        outEvent.target = outTarget;
+        if (event.target) {
+          dispatcher.leaveOut(outEvent);
+          dispatcher.enterOver(event);
+        } else {
+          // clean up case when finger leaves the screen
+          event.target = outTarget;
+          event.relatedTarget = null;
+          this.cancelOut(event);
+        }
+      }
+      pointer.out = event;
+      pointer.outTarget = event.target;
     },
     touchend: function(inEvent) {
       this.dedupSynthMouse(inEvent);
-      this.processTouches(inEvent, this.up);
+      this.processTouches(inEvent, this.upOut);
     },
-    up: function(inPointer) {
-      inPointer.relatedTarget = scope.wrap(scope.findTarget(inPointer));
-      dispatcher.up(inPointer);
-    },
-    cancel: function(inPointer) {
-      dispatcher.cancel(inPointer);
+    upOut: function(inPointer) {
+      if (!this.scrolling) {
+        dispatcher.up(inPointer);
+        dispatcher.out(inPointer);
+        dispatcher.leave(inPointer);
+      }
+      this.cleanUpPointer(inPointer);
     },
     touchcancel: function(inEvent) {
-      this.processTouches(inEvent, this.cancel);
+      this.processTouches(inEvent, this.cancelOut);
+    },
+    cancelOut: function(inPointer) {
+      dispatcher.cancel(inPointer);
+      dispatcher.out(inPointer);
+      dispatcher.leave(inPointer);
+      this.cleanUpPointer(inPointer);
     },
     cleanUpPointer: function(inPointer) {
       pointermap['delete'](inPointer.pointerId);
@@ -337,9 +340,9 @@
     }
   };
 
-  if (!CAN_USE_GLOBAL) {
+  if (!HAS_TOUCH_ACTION_DELAY) {
     INSTALLER = new scope.Installer(touchEvents.elementAdded, touchEvents.elementRemoved, touchEvents.elementChanged, touchEvents);
   }
 
   scope.touchEvents = touchEvents;
-})(window.PolymerGestures);
+})(window.PointerEventsPolyfill);

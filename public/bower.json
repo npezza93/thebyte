@@ -24,6 +24,7 @@
     "paper-elements": "Polymer/paper-elements#~0.3.3",
     "core-bind": "Polymer/core-bind#~0.3.0",
     "core-docs": "Polymer/core-docs#~0.3.3",
-    "core-tests": "Polymer/core-tests#~0.3.3"
+    "core-tests": "Polymer/core-tests#~0.3.3",
+    "core-scroll-header-panel": "Polymer/core-scroll-header-panel#~0.3.4"
   }
 }

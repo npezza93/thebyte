@@ -1,0 +1,41 @@
+<style>
+#login {
+	margin-top: 45px;
+}
+#username, #password {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+#submit_logon {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+</style>
+
+
+<div id="login" slide-from-right center-justified layout horizontal>
+<%= form_tag(login_path, remote: true) do %>
+	<%= text_field_tag :username, params[:username], placeholder: "Username", id: "username" %><br />
+	<%= password_field_tag :password, params[:password], placeholder: "Password", id: "password" %><br />
+	<div center-justified layout horizontal style="margin-top: 14px;">
+   <input id="submit_logon" name="commit" type="submit" value="LOGON"></div>
+
+	<% end %>
+
+</div>

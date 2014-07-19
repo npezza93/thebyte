@@ -1,4 +1,15 @@
 TheByte::Application.routes.draw do
+  controller :sessions do
+    get 'login'     => :new
+    post 'login'    => :create 
+    delete 'logout' => :destroy
+  end
+
+  controller :users do
+    get 'signup'     => :new
+  end
+  resources :users
+
   mount RedactorRails::Engine => '/redactor_rails'
   resources :posts
 

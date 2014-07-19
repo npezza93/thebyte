@@ -1,14 +1,114 @@
 <!-- <core-toolbar><div class="middle indent">Header</div></core-toolbar>
  -->
+        <% if notice %>
+          <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
+        <% end %>
+
 <div class="main-container" style="overflow-x:hidden;">
       <%= render @posts %>
      
 </div>
- <paper-fab icon="add" onclick="document.location='<%= new_post_path %>'" style="color:#eeff41; fill:#757575;"></paper-fab>
-<!-- <p><%= @page_number %></p> -->
+<div id="new_post_button_container">
+  <% if User.find_by_id(session[:user_id]) != nil %>
+    <% if User.find_by_id(session[:user_id]).administrator %>
+       <paper-fab icon="add" onclick="document.location='<%= new_post_path %>'" style="color:#eeff41; fill:#757575;"></paper-fab>
+    <% end %>
+  <% end %>
+</div>
 
 <div id="infinite-scrolling">
   <%= will_paginate @posts, page_links: false  %>
 </div>
+
+<div id="whose_logged_in" layout horizontal flex end-justified center>
+	<% if (@user = User.find_by_id(session[:user_id])) != nil %>
+        <%= User.find_by_id(session[:user_id]).username %>
+        <div id="logout_button">
+        	<paper-button id="logout_button" onclick="clicklogout()" style="margin-right:5px;">Logout</paper-button>
+     	</div>
+     	<paper-button id="prof_button" onclick="openprof()" style="margin-left:5px;">Profile</paper-button>
+   	<%end%>
+</div>
 <!-- <br>
 <hr class="show_hr">  -->
+<div class="log_out_in" layout horizontal flex end-justified center>
+	<% if User.find_by_id(session[:user_id]) == nil %>
+        <paper-button id="login_button" onclick="openlog(1)" style="margin-right:5px;">Login</paper-button>
+        <paper-button id="signup_button" onclick="openlog(2)" style="margin-left:5px;">signup</paper-button>
+  	<% end %>
+  	
+</div>
+
+<core-overlay id="overlay" backdrop transition="core-transition-center" style="background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;overflow: hidden;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<div id="contentsd">
+<div end-justified layout horizontal><paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button></div>
+    <section id="section" layout vertical>
+      <paper-tabs selected="0" id="paper_tabs" onclick="papertabchange(selected)">
+        <paper-tab id="paper_tab">LOGIN</paper-tab>
+        <paper-tab id="paper_tab1">SIGN UP</paper-tab>
+      </paper-tabs>
+      <section id="section1" flex relative>
+        <core-animated-pages selected="1" id="baluga" transitions="slide-from-right">
+          <section id="section2">
+            <%= render "sessions/login", :@user => User.new %>
+          </section>
+          <section id="section3">
+            <%= render "users/form" %>
+          </section>
+          <section id="section4">
+      </section>
+        </core-animated-pages>
+      </section>
+    </section>
+</div>
+</core-overlay>
+<%= button_to 'Logout', logout_path, { :id => "logout_button_invis", method: :delete, remote: true, style: "display:none;" } %>
+
+<core-overlay id="overlay2" backdrop transition="core-transition-center" style="background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;overflow: hidden;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<div id="contentsd">
+<div end-justified layout horizontal><paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button></div>
+	<div id="user_overlay">
+		<% if (@user = User.find_by_id(session[:user_id])) != nil %>
+	   		<%= render "users/show", :@user =>  User.find_by_id(session[:user_id])%>
+	   	<% end %>
+   	</div>
+</div>
+</core-overlay>
+
+
+<style>
+  paper-tab {
+    font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+  }
+  #contentsd {
+    width: 325px;
+    height: 375px;
+  }
+</style>
+
+<script>
+function clicklogout() {
+	document.getElementById('logout_button_invis').click();
+}
+function openprof() {
+	document.getElementById('overlay2').toggle();
+}
+function openlog(which) {
+	document.getElementById("overlay").toggle();
+	if (which ==1) {
+	document.getElementById("baluga").selected = 0;
+	document.getElementById("paper_tabs").selected =0;
+} else {
+	document.getElementById("baluga").selected = 1;
+	document.getElementById("paper_tabs").selected =1;
+}
+}
+function papertabchange(selected){
+	var sect = document.getElementById("baluga");
+	var selectedTab = document.getElementById("paper_tabs").selected;
+	sect.selected = selectedTab;
+}
+</script>
