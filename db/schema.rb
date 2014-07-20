@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20140713001546) do
     t.string   "title"
     t.string   "author"
     t.string   "image"
+    t.string   "altattr"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "altattr"
     t.boolean  "status"
   end
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140713001546) do
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password_digest"
-    t.boolean  "administrator"
+    t.boolean  "administrator",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

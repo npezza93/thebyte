@@ -17,7 +17,7 @@
   		Joined on: <%=  User.find_by_id(session[:user_id]).created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e, %Y") %>
   	</div>
 
-<%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])) %>
+<paper-button layout flex horizontal center-justified end id="edit_user_button" onclick="clickedituser()">Edit</paper-button>
 
 <script>
 $("#profile_image").hover(function() {
@@ -28,4 +28,14 @@ $("#profile_image").hover(function() {
   	elem.style.visibility = "visible";
   }
 });
+
+function clickedituser() {
+	window.open('<%= edit_user_path(edit_user_path(User.find_by_id(session[:user_id]))) %>', '_self');
+}
 </script>
+
+<style>
+#edit_user_button {
+	margin-top: 20px;
+}
+</style>
