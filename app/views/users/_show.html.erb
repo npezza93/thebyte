@@ -1,23 +1,27 @@
 <% if notice %>
 	<paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
 <% end %>
-	<div id="container" flex layout horizontal center-justified>
-		<div id="profile_image">
-			<div id="text" layout horizontal flex center-justified center>
-			Upload profile picture
-			</div>
-		</div>
+	
+<div id="container" flex layout horizontal center-justified>
+	<div id="profile_image">
+		<div id="text" layout horizontal flex center-justified center>Upload profile picture</div>
 	</div>
+</div>
 
-	<div id="user_name">
-		<%=  User.find_by_id(session[:user_id]).username %>
-	</div>
+<div id="user_name">
+	<%=  User.find_by_id(session[:user_id]).username %>
+</div>
 
-	<div id="join_date">
-  		Joined on: <%=  User.find_by_id(session[:user_id]).created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e, %Y") %>
-  	</div>
+<div id="join_date">Joined on: <%=  User.find_by_id(session[:user_id]).created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e, %Y") %></div>
 
-<paper-button layout flex horizontal center-justified end id="edit_user_button" onclick="clickedituser()">Edit</paper-button>
+<% if User.find_by_id(session[:user_id]).administrator %>
+	<div id="manage_users_link" onclick="document.location='<%= users_path%>'" layout flex>Manage Users</div>
+	<paper-button layout flex horizontal center-justified end id="edit_user_button" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'">Edit</paper-button>
+<% else %>
+	<paper-button layout flex horizontal center-justified end id="edit_user_button" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'" label="change Password"></paper-button>
+<% end %>
+
+
 
 <script>
 $("#profile_image").hover(function() {
@@ -28,14 +32,4 @@ $("#profile_image").hover(function() {
   	elem.style.visibility = "visible";
   }
 });
-
-function clickedituser() {
-	window.open('<%= edit_user_path(edit_user_path(User.find_by_id(session[:user_id]))) %>', '_self');
-}
 </script>
-
-<style>
-#edit_user_button {
-	margin-top: 20px;
-}
-</style>

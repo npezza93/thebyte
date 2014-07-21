@@ -17,6 +17,6 @@
     "commit": "120a135b05dbf2fda9df3d5d32f1df82360419f6"
   },
   "_source": "git://github.com/Polymer/core-scroll-header-panel.git",
-  "_target": ">=0.3.0 <1.0.0",
+  "_target": "~0.3.4",
   "_originalSource": "Polymer/core-scroll-header-panel"
 }

@@ -1,0 +1,44 @@
+#login {
+	margin-top: 45px;
+}
+#username, #password {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+#submit_logon {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#forgot_password {
+  text-decoration: none;
+  color: #607d8b;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  cursor: pointer;
+  margin-top: 80px;
+}
+#forgot_overlay {
+  background: white;
+  height: 100px;
+  width: 300px;
+  margin-top: -200px;
+}

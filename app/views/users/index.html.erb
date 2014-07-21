@@ -1,41 +1,43 @@
-<h1>Listing users</h1>
+<h1 layout horizontal flex center-justified id="user_title">Accounts</h1>
 
-<table>
+<table layout horizontal flex center-justified>
+<tr id="user_headers"><th>Username</th><th>Administrator</th><th>Edit</th><th>Delete</th></tr>
 
-  <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><% if user.administrator %>
-            <core-icon icon="done"></core-icon>
-        <% else %>
-            <core-icon icon="clear"></core-icon>
-        <% end %></td>
-        <td><%= link_to  user.username, user %></td>
-        <td><paper-icon-button icon="create" center-justified center size="27" onclick="document.location='<%= edit_user_path(user) %>"></paper-icon-button></td>
-        <td><%= link_to 'Destroy', user, method: :delete, id: 'delete_user', data: { confirm: 'Are you sure?' } %>
+        <td id="username_col"><%= link_to  user.username, user, class: "usernames-table" %></td>
 
-        <paper-icon-button icon="delete" center-justified center size="27" onclick="document.location='<%= delete_user_path(user) %>"\></paper-icon-button>
+        <td layout horizontal flex center-justified>
+            <% if user.administrator %>
+              <core-icon icon="done" style="margin:8px"></core-icon>
+            <% else %>
+              <core-icon icon="clear" style="margin:8px"></core-icon>
+            <% end %>
+        </td>
+
+        <td><paper-icon-button icon="create" center-justified center size="27" onclick="document.location='<%= edit_user_path(user) %>'"></paper-icon-button></td>
+        <td>
+          <%= link_to 'Destroy', user, method: :delete, class: "delete_user_buttons", id: "delete_user_"+ user.id.to_s, data: { confirm: 'Are you sure?' } %>
+          <paper-icon-button icon="delete" center-justified center size="27" onclick="clickDelete(<%= user.id %>)"\></paper-icon-button>
       </td>
       </tr>
     <% end %>
-  </tbody>
 </table>
 
 <br>
 
 <div id="new_user_button_container">
-  <paper-fab icon="add" onclick="document.location='<%= new_user_path %>'" style="color:#eeff41; fill:#757575;"></paper-fab>
+  <paper-fab icon="add" onclick="document.location='<%= new_user_path %>'" id="new_user_button"></paper-fab>
 </div>
 
-<style>
+<div id="user_pagination">
+  <%= will_paginate @users, page_links: false  %>
+</div>
 
-#delete_user{
-  display: block;
-}
-</style>
 
 <script>
-function clickDelete() {
-  $('#delete_user').click();
+function clickDelete(user_id) {
+  var user_tag_id = "#delete_user_" + user_id
+  $(user_tag_id).click();
 }
 </script>

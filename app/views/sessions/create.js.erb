@@ -1,12 +1,10 @@
 <% if @flag %>
 	$('#whose_logged_in').html("<paper-toast id=\"toast1\" class=\"capsule\" text=\"<%= @status %>\" style=\"padding-right: 60px;\" duration=\"10000\" opened responsiveWidth=\"300px\" style=\"color: #eeff41;\"></paper-toast>");
 	document.getElementById("overlay").toggle();
-	$('.log_out_in').html("<%= User.find_by_id(session[:user_id]).username %> ");
-	$('.log_out_in').append("<paper-button id=\"logout_button\" onclick=\"clicklogout()\" style=\"margin-right:5px;\">Logout</paper-button>");
-	$('.log_out_in').append("<paper-button id=\"prof_button\" onclick=\"openprof()\" style=\"margin-left:5px;\">Profile</paper-button>");
+	$('.log_out_in').html("<div class=\"usernames\" onclick=\"document.getElementById('overlay2').toggle()\"><%= User.find_by_id(session[:user_id]).username %></div><div id=\"logout_button\"><paper-button id=\"logout_button\" onclick=\"clicklogout()\">Logout</paper-button></div></div>");
 	$('#user_overlay').html('<%= escape_javascript(render partial: '/users/show' ) %>');
 	<% if User.find_by_id(session[:user_id]).administrator %>
-		$('#new_post_button_container').html("<paper-fab icon=\"add\" onclick=\"document.location='<%= new_post_path %>'\" style=\"color:#eeff41; fill:#757575;\"></paper-fab>");
+		$('#new_post_button_container').html("<paper-fab icon=\"add\" onclick=\"document.location='<%= new_post_path %>'\" id=\"new_post_button\"></paper-fab>");
 	<% end %>
 <% else %>
 	$('#whose_logged_in').html("<paper-toast id=\"toast1\" class=\"capsule\" text=\"<%= @status %>\" style=\"padding-right: 60px;\" duration=\"10000\" opened responsiveWidth=\"300px\" style=\"color: #eeff41;\"></paper-toast>");

@@ -219,6 +219,44 @@ a {
   text-decoration: none;
 }
 
+.usernames {
+  position: absolute;
+  text-decoration: none;
+  color: #607d8b;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  cursor: pointer;
+  margin:15px;
+  right: 0;
+}
+
+paper-tab {
+  font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+}
+#contentsdf {
+  width: 275px;
+  height: 375px;
+}
+#contentsd {
+  width: 275px;
+  height: 450px;
+}
+#new_post_button {
+  background-color:#c6ff00; 
+}
+#logout_button {
+  position: absolute;
+  right:0;
+  top: 20px;
+  margin-right: 6px;
+}
+
 @media (max-width: 600px) {
   core-toolbar {
     height: 200px;
@@ -504,7 +542,7 @@ a {
     left: 0px;
     padding: 4px 0;
     right: 0px;
-    top: 50px;
+    top: 100px;
     background-color: #e0e0e0;
   }
   .hero_title, .mini_title {
@@ -599,7 +637,7 @@ a {
     left: 0px;
     padding: 4px 0;
     right: 0px;
-    top: 50px;
+    top: 100px;
     background-color: #e0e0e0;
   }
   .hero_title, .mini_title {
@@ -658,6 +696,15 @@ a {
     text-align: center;
     color: rgb(240,241,225);
   }
+  #posts_pagination {
+      top: calc(100%);
+      left: calc(100%/2);
+      position: absolute;
+      display: block;
+      vertical-align: top;
+      transition:0.4s;
+      margin-top: 40px;
+  }
 }
 
 @media (max-width: 600px) and (orientation: landscape) {
@@ -687,7 +734,7 @@ a {
     left: 0px;
     padding: 4px 0;
     right: 0px;
-    top: 50px;
+    top: 100px;
     background-color: #e0e0e0;
   }
   .hero_title, .mini_title {
@@ -752,6 +799,15 @@ a {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+  }
+  #posts_pagination {
+      top: calc(100% *31);
+      left: calc(38%);
+      position: absolute;
+      display: block;
+      vertical-align: top;
+      transition:0.4s;
+      margin-top: 40px;
   }
 }
 
@@ -938,7 +994,7 @@ a {
     margin: 0 -4px;
     padding: 4px 0;
     right: 0px;
-    top: 50px;
+    top: 100px;
     background-color: #e0e0e0;
   }
   .hero_title, .long_title, .mini_title {
@@ -968,6 +1024,15 @@ a {
     bottom: 16px;
     text-align: center;
     color: rgb(240,241,225);
+  }
+  #posts_pagination {
+      top: calc(100%*4.5);
+      left: calc(39%);
+      position: absolute;
+      display: block;
+      vertical-align: top;
+      transition:0.4s;
+      margin-top: 40px;
   }
 }
 
@@ -1478,7 +1543,7 @@ a {
     margin: 0 -4px;
     padding: 4px 0;
     right: 0px;
-    top: 50px;
+    top: 100px;
     background-color: #e0e0e0;
   }
   .hero_title {
@@ -1564,6 +1629,15 @@ a {
     text-align: center;
     color: rgb(240,241,225);
     transition: 0.7s;
+  }
+  #posts_pagination {
+      top: calc(100%*3);
+      left: calc(45%);
+      position: absolute;
+      display: block;
+      vertical-align: top;
+      transition:0.4s;
+      margin-top: 40px;
   }
 }
 
@@ -1774,7 +1848,7 @@ a {
     margin: 0 -4px;
     padding: 4px 0;
     right: 0px;
-    top: 50px;
+    top: 100px;
     background-color: #e0e0e0;
   }
   .hero_title {
@@ -1861,6 +1935,15 @@ a {
     text-align: center;
     color: rgb(240,241,225);
     transition: 0.7s;
+  }
+  #posts_pagination {
+      top: calc(100%*4.5);
+      left: calc(45%);
+      position: absolute;
+      display: block;
+      vertical-align: top;
+      transition:0.4s;
+      margin-top: 40px;
   }
 }
 
@@ -2344,7 +2427,7 @@ a {
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 55px;
+    font-size: 45px;
     width: 85%;
     margin: auto;
     line-height: 1.3em;
@@ -2360,7 +2443,7 @@ a {
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 26px;
     width: 95%;
     margin: auto;
     line-height: 1.2em;
@@ -2423,5 +2506,14 @@ a {
     text-align: center;
     color: rgb(240,241,225);
     transition: 0.7s;
+  }
+  #posts_pagination {
+      top: calc(100%*2);
+      left: calc(45%);
+      position: absolute;
+      display: block;
+      vertical-align: top;
+      transition:0.4s;
+      margin-top: 40px;
   }
 }

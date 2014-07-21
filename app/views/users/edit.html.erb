@@ -1,6 +1,68 @@
-<h1>Editing user</h1>
+<% content_for :head do %>
+  <script src="../../bower_components/platform/platform.js"></script>
+	<link rel="import" href="../../bower_components/core-elements/core-elements.html">
+	<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+	<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+	<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+  <link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
+<% end %>
 
-<%= render 'form' %>
+  <paper-icon-button icon="arrow-back" center-justified center size="27" onclick="document.location='<%= posts_path %>'"></paper-icon-button>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+  <% if User.find_by_id(session[:user_id]).administrator %>
+    <h1 layout horizontal flex center-justified id="edit_user_title">Editing <%= @user.username %></h1>
+  <% else %>
+    <h1 layout horizontal flex center-justified id="edit_user_title">Change Password</h1>
+  <% end %>
+
+<%= form_for(@user) do |f| %>
+  <% if User.find_by_id(session[:user_id]).administrator %>
+    <div class="field" layout flex horizontal center-justified>
+      <%= f.text_field :username, :id => "username_field", :placeholder => "Username" %>
+    </div>
+  <% end %>
+
+  <% if User.find_by_id(session[:user_id]).administrator %>
+    <div class="field" layout flex horizontal center-justified>
+      <%= f.text_field :email, :id => "email_field", :placeholder => "Email" %>
+    </div>
+  <% end %>
+  
+  <div class="field" layout flex horizontal center-justified>
+    <%= f.password_field :password, :id => "password_field", :placeholder => "Password" %>
+  </div>
+
+  <div class="field" layout flex horizontal center-justified>
+    <%= f.password_field :password_confirmation, :id => "confirm_field", :placeholder => "Confirm Password" %>
+  </div>
+
+  <% if User.find_by_id(session[:user_id]).administrator %>
+    <div class="field" layout flex horizontal center-justified>
+      <%= f.check_box :administrator, style: "display:none", id: "invisible_admin_toggle" %>
+      <paper-toggle-button onchange="document.getElementById('invisible_admin_toggle').checked=!(document.getElementById('invisible_admin_toggle').checked)" id="paper_admin_toggle"></paper-toggle-button>
+    </div>
+  <% end %>
+
+  <div center-justified layout horizontal style="margin-top: 14px;">
+    <input id="submit_signup" name="commit" type="submit" value="SUBMIT">
+  </div>
+
+  <% if @user.errors.any? %>
+    <div id="signup_errors" class="animated fadeInDown" layout horizontal center-justified>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div id="ajax_errors"></div>
+<% end %>
+
+<script>
+var isadmin = document.getElementById('invisible_admin_toggle').checked;
+if (isadmin) {
+  document.getElementById('paper_admin_toggle').checked = true;
+}
+</script>

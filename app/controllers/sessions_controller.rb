@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 	      	session[:user_name] = user.username
 	      	@flag = true
 
-       		format.js { @status = "You successfully logged in."}
+       		format.js { @status = "Welcome back, " + user.username + "!" }
 	  	else
 	  		@flag = false
        		format.js { @status = "Invalid username/password combiniation" }

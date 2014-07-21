@@ -3,6 +3,7 @@
 <% if notice %>
 	<paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
 <% end %>
+<paper-icon-button icon="arrow-back" center-justified center size="27" onclick="document.location='<%= users_path %>'"></paper-icon-button>
 	<div id="container" flex layout horizontal center-justified>
 		<div id="profile_image">
 			<div id="text" layout horizontal flex center-justified center>
@@ -35,9 +36,3 @@ function clickedituser() {
 	window.open('<%= edit_user_path(@user) %>', '_self');
 }
 </script>
-
-<style>
-#edit_user_button {
-	margin-top: 20px;
-}
-</style>

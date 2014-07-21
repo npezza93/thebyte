@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :admin_check, :only => [:index]
-  before_filter :user_check, :only => [:show, :edit, :update, :destroy]
+  before_filter :admin_check, :only => [:index, :destroy]
+  before_filter :user_check, :only => [:show, :edit, :update]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.order('lower(username) ASC').paginate(page: params[:page], per_page: 10)
   end
 
   # GET /users/1
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         @flag = true
         format.html { redirect_to posts_path, notice: 'Your account has been created.' }
         format.json { render action: 'show', status: :created, location: @user }
-        format.js { @status = "Your account has been created."}
+        format.js { @status = "Welcome to The Byte, " + @user.username + "!"}
       else
         @flag =false
         format.js {}
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to posts_path, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -78,7 +78,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :administrator)
+      params.require(:user).permit(:username, :password, :password_confirmation, :administrator, :email)
     end
 
     def admin_check
