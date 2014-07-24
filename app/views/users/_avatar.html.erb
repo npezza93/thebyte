@@ -1,0 +1,21 @@
+ <%= form_for(User.find_by_id(session[:user_id])) do |f| %>
+
+    <%= f.file_field :image, id: "avatar_upload_field" %>
+
+    <div id="avatar_upload_link">Upload your profile image</div>
+
+    <input id="profile_pic_submit" name="commit" type="submit" value="SUBMIT">
+<% end %>
+
+<script>
+//profile picture upload handlers
+var uploadLink = document.getElementById('avatar_upload_link');
+uploadLink.addEventListener('click', function() {
+	$('#avatar_upload_field').click();
+});
+
+var submitUploadLink = document.getElementById('avatar_upload_field');
+submitUploadLink.addEventListener('change', function() {
+	$('#profile_pic_submit').click();
+});
+</script>

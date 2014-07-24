@@ -1,11 +1,33 @@
 <!-- <core-toolbar><div class="middle indent">Header</div></core-toolbar>  -->
+<% content_for :title, "The Byte" %>
 
 <% if notice %>
   <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
 <% end %>
-
+<style type="text/css">
+  #post_avatar {
+    position: absolute;
+    top:10px;
+    right:130px;
+  box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 60px;
+  height:60px;
+  transition: all 100ms ease;
+  }
+</style>
 <div id="whose_logged_in">
   <% if (@user = User.find_by_id(session[:user_id])) != nil %>
+    <div id="post_avatar" style="<% if (User.find_by_id(session[:user_id]).image_url) == nil%>
+      background-image: url('../system/default_pic.png');
+    <% else %>
+      background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');
+    <% end %>">
+    </div>
     <div class="usernames" onclick="document.getElementById('overlay2').toggle()"><%= User.find_by_id(session[:user_id]).username %></div>
       <div id="logout_button">
         <paper-button id="logout_button" onclick="clicklogout()">Logout</paper-button>

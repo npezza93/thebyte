@@ -1,7 +1,12 @@
 <% if @flag %>
 	$('#whose_logged_in').html("<paper-toast id=\"toast1\" class=\"capsule\" text=\"<%= @status %>\" style=\"padding-right: 60px;\" duration=\"10000\" opened responsiveWidth=\"300px\" style=\"color: #eeff41;\"></paper-toast>");
 	document.getElementById("overlay").toggle();
-	$('.log_out_in').html("<div class=\"usernames\" onclick=\"document.getElementById('overlay2').toggle()\"><%= User.find_by_id(session[:user_id]).username %></div><div id=\"logout_button\"><paper-button id=\"logout_button\" onclick=\"clicklogout()\">Logout</paper-button></div></div>");
+	$('.log_out_in').html("<div id=\"post_avatar\" style=\"<% if (User.find_by_id(session[:user_id]).image_url) == nil%>
+      background-image: url('../system/default_pic.png');
+    <% else %>
+      background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');
+    <% end %>\">");
+	$('.log_out_in').append("<div class=\"usernames\" onclick=\"document.getElementById('overlay2').toggle()\"><%= User.find_by_id(session[:user_id]).username %></div><div id=\"logout_button\"><paper-button id=\"logout_button\" onclick=\"clicklogout()\">Logout</paper-button></div></div>");
 	$('#user_overlay').html('<%= escape_javascript(render partial: '/users/show' ) %>');
 	<% if User.find_by_id(session[:user_id]).administrator %>
 		$('#new_post_button_container').html("<paper-fab icon=\"add\" onclick=\"document.location='<%= new_post_path %>'\" id=\"new_post_button\"></paper-fab>");

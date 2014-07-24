@@ -3,8 +3,14 @@
 <% end %>
 	
 <div id="container" flex layout horizontal center-justified>
-	<div id="profile_image">
-		<div id="text" layout horizontal flex center-justified center>Upload profile picture</div>
+	<div id="profile_image" style="<% if (User.find_by_id(session[:user_id]).image_url) == nil%>
+  		background-image: url('../system/default_pic.png');
+  	<% else %>
+  		background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');
+  	<% end %>">
+		<div id="text" layout horizontal flex center-justified center>
+		<%= render "users/avatar"%>
+		</div>
 	</div>
 </div>
 
@@ -21,15 +27,20 @@
 	<paper-button layout flex horizontal center-justified end id="edit_user_button" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'" label="change Password"></paper-button>
 <% end %>
 
+	<script>
+	$("#profile_image").hover(function() {
+	  var elem = document.getElementById("text");
+	  if (elem.style.visibility == "visible") {
+	  	elem.style.visibility = "hidden";
+	  } else {
+	  	elem.style.visibility = "visible";
+	  }
+	});
+	</script>
 
+	<style>
+	#text {
+background: rgba(49,231,34, .75);	
+visibility: hidden;}
 
-<script>
-$("#profile_image").hover(function() {
-  var elem = document.getElementById("text");
-  if (elem.style.visibility == "visible") {
-  	elem.style.visibility = "hidden";
-  } else {
-  	elem.style.visibility = "visible";
-  }
-});
-</script>
+	</style>

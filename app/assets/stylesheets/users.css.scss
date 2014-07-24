@@ -247,3 +247,16 @@ paper-toggle-button::shadow #toggleBar[checked] {
 #edit_user_button {
     margin-top: 20px;
 }
+
+#avatar_upload_field {
+  display: none;
+}
+#avatar_upload_link {
+  cursor: pointer;
+  font: 'Roboto', sans-serif;
+  text-align: center;
+  color: black;
+}
+#profile_pic_submit {
+  display: none;
+}
