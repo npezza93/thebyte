@@ -133,13 +133,11 @@
 </div>
 
 
-<div class="main-container" style="overflow-x:hidden;">
   <%= render @posts %>
 
   <div id="posts_pagination" >
     <%= will_paginate @posts, page_links: false  %>
   </div>
-</div>
 
 
 <script>

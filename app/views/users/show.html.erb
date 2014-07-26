@@ -5,11 +5,15 @@
 <% end %>
 <paper-icon-button icon="arrow-back" center-justified center size="27" onclick="document.location='<%= users_path %>'"></paper-icon-button>
 	<div id="container" flex layout horizontal center-justified>
-		<div id="profile_image">
-			<div id="text" layout horizontal flex center-justified center>
-			Upload profile picture
-			</div>
+	<div id="profile_image" style="<% if (@user.image_url) == nil%>
+  		background-image: url('../../system/default_pic.png');
+  	<% else %>
+  		background-image: url('<%= @user.image_url(:avatar) %>');
+  	<% end %>">
+		<div id="text" layout horizontal flex center-justified center>
+		<%= render "users/avatar"%>
 		</div>
+	</div>
 	</div>
 
 	<div id="user_name">
@@ -23,16 +27,23 @@
 <paper-button layout flex horizontal center-justified id="edit_user_button" onclick="clickedituser()">Edit</paper-button>
 
 <script>
-$("#profile_image").hover(function() {
-  var elem = document.getElementById("text");
-  if (elem.style.visibility == "visible") {
-  	elem.style.visibility = "hidden";
-  } else {
-  	elem.style.visibility = "visible";
-  }
-});
+	$("#profile_image").hover(function() {
+	  var elem = document.getElementById("text");
+	  if (elem.style.visibility == "visible") {
+	  	elem.style.visibility = "hidden";
+	  } else {
+	  	elem.style.visibility = "visible";
+	  }
+	});
 
 function clickedituser() {
 	window.open('<%= edit_user_path(@user) %>', '_self');
 }
 </script>
+
+	<style>
+	#text {
+background: rgba(49,231,34, .75);	
+visibility: hidden;}
+
+	</style>

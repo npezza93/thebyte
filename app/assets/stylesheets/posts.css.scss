@@ -1,5 +1,5 @@
 body {
-  background-color: #ffffff;
+  background-color: #e0e0e0;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -516,34 +516,227 @@ paper-tab {
   .share-buttons {
     width: 102%;
   }
-  .hero, .hero_2, .hero_3, .hero_4, .mini_hero, .mini_hero_3, .mini_hero_4, .mini_hero_6, .mini_hero_8, .mini_hero_9, .mini_hero_11, .mini_hero_13, .mini_hero_15, .mini_hero_5, .mini_hero_7, .mini_hero_10, .mini_hero_12, .mini_hero_14, .mini_hero_16 {
+  .hero {
     width: 100%;
     height: calc(100% / 3 * 2);
     float: left;
-    position: relative;
+    position: absolute;
+    top: 0;
     display: block;
     vertical-align: top;
     transition:0.4s;
   }
-  .long_hero, .long_hero_2 {
+  .mini_hero {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 2);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_2 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 4);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .hero_2 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 7);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_3 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 9);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_4 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 11);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_5 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 13);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_6 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 15);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_7 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 17);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_8 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 19);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_9 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 22);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_10 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 24);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .hero_3 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 26);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_11 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 28);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_12 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 30);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_13 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 32);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_14 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 34);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .hero_4 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 36);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_15 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 38);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_16 {
+    width: 100%;
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 40);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .long_hero{
     width: 100%;
     height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    position: absolute;
+    top: calc(100% / 3 * 6);
     display: block;
     transition:0.4s;
   }
-  .main-container {
+  .long_hero_2 {
+    width: 100%;
+    height: calc(100% / 3);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
     position: absolute;
-    bottom: 0px;
+    top: calc(100% / 3 * 21);
     display: block;
-    left: 0px;
-    padding: 4px 0;
-    right: 0px;
-    top: 100px;
-    background-color: #e0e0e0;
+    transition:0.4s;
   }
   .hero_title, .mini_title {
     text-decoration: none;
@@ -610,8 +803,8 @@ paper-tab {
 }
 
 
-@media (max-width: 600px) and (max-height: 500px) {
-  .hero, .hero_2, .hero_3, .hero_4, .mini_hero, .mini_hero_3, .mini_hero_4, .mini_hero_6, .mini_hero_8, .mini_hero_9, .mini_hero_11, .mini_hero_13, .mini_hero_15, .mini_hero_5, .mini_hero_7, .mini_hero_10, .mini_hero_12, .mini_hero_14, .mini_hero_16 {
+/*@media (max-width: 600px) and (max-height: 500px) {
+  .hero, .mini_hero_2, .hero_2, .hero_3, .hero_4, .mini_hero, .mini_hero_3, .mini_hero_4, .mini_hero_6, .mini_hero_8, .mini_hero_9, .mini_hero_11, .mini_hero_13, .mini_hero_15, .mini_hero_5, .mini_hero_7, .mini_hero_10, .mini_hero_12, .mini_hero_14, .mini_hero_16 {
     width: 100%;
     height: calc(100% / 3 * 2.5);
     float: left;
@@ -705,37 +898,230 @@ paper-tab {
       transition:0.4s;
       margin-top: 40px;
   }
-}
+}*/
 
 @media (max-width: 600px) and (orientation: landscape) {
-  .hero, .hero_2, .hero_3, .hero_4, .mini_hero, .mini_hero_3, .mini_hero_4, .mini_hero_6, .mini_hero_8, .mini_hero_9, .mini_hero_11, .mini_hero_13, .mini_hero_15, .mini_hero_5, .mini_hero_7, .mini_hero_10, .mini_hero_12, .mini_hero_14, .mini_hero_16 {
+  .hero {
     width: 100%;
-    height: calc(100% / 3 * 4.5);
+    height: calc(100%);
     float: left;
-    position: relative;
+    position: absolute;
+    top: 0;
     display: block;
     vertical-align: top;
     transition:0.4s;
   }
-  .long_hero, .long_hero_2 {
+  .mini_hero {
     width: 100%;
-    height: calc(100% * .75);
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100%);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_2 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% * 2);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .hero_2 {
+    width: 100%;
+    height: calc(100%); 
+    float: left;
+    position: absolute;
+    top: calc(100% * 3.5);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_3 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *4.5);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_4 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *5.5);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_5 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *6.5);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_6 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *7.5);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_7 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *8.5);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_8 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *9.5);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_9 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *11);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_10 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100%*12);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .hero_3 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *13);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_11 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *14);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_12 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100%*15);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_13 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100%*16);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_14 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *17);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .hero_4 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% * 18);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_15 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% *19);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_16 {
+    width: 100%;
+    height: calc(100%);
+    float: left;
+    position: absolute;
+    top: calc(100% * 20);
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .long_hero{
+    width: 100%;
+    height: calc(100%/2);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    position: absolute;
+    top: calc(100% *3);
     display: block;
     transition:0.4s;
   }
-  .main-container {
+  .long_hero_2 {
+    width: 100%;
+    height: calc(100% /2);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
     position: absolute;
-    bottom: 0px;
+    top: calc(100% *10.5);
     display: block;
-    left: 0px;
-    padding: 4px 0;
-    right: 0px;
-    top: 100px;
-    background-color: #e0e0e0;
+    transition:0.4s;
   }
   .hero_title, .mini_title {
     text-decoration: none;
@@ -801,7 +1187,7 @@ paper-tab {
     position: relative;
   }
   #posts_pagination {
-      top: calc(100% *31);
+      top: calc(100% *21);
       left: calc(38%);
       position: absolute;
       display: block;
@@ -977,14 +1363,247 @@ paper-tab {
     width: 100%;
     transition: 0.7s;
   }
-  .hero, .long_hero, .long_hero_2, .mini_hero, .hero_2, .hero_3, .hero_4, .mini_hero_3, .mini_hero_4, .mini_hero_5, .mini_hero_6, .mini_hero_7, .mini_hero_8, .mini_hero_9, .mini_hero_10, .mini_hero_11, .mini_hero_12, .mini_hero_13, .mini_hero_14, .mini_hero_15, .mini_hero_16 {
+  .hero {
     width: calc(100% / 2);
-    height: calc(100% / 3 * 1.25);
+    height: calc(100% / 3);
     float: left;
-    position: relative;
+    position: absolute;
+    top: 2px;
+    left: 0;
     display: block;
     vertical-align: top;
     transition:0.4s;
+  }
+  .mini_hero {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: 2px;
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .mini_hero_2 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .long_hero {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s;
+  }
+  .hero_2 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 2);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s;    
+  }
+  .mini_hero_3 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 2);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_4 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 3);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_5 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 3);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_6 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 4);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_7 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 4);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_8 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 5);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .long_hero_2 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 5);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_9 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 6);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_10 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 6);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .hero_3 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 7);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_11 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 7);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_12 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 8);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_13 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 8);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_14 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 9);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .hero_4 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 9);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_15 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 10);
+    left: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
+  }
+  .mini_hero_16 {
+    width: calc(100% / 2);
+    height: calc(100% / 3);
+    float: left;
+    position: absolute;
+    top: calc(100% / 3 * 10);
+    right: 0;
+    display: block;
+    vertical-align: top;
+    transition:0.4s; 
   }
   .main-container {
     position: absolute;
@@ -1026,7 +1645,7 @@ paper-tab {
     color: rgb(240,241,225);
   }
   #posts_pagination {
-      top: calc(100%*4.5);
+      top: calc(100%*3.75);
       left: calc(39%);
       position: absolute;
       display: block;
@@ -1294,15 +1913,17 @@ paper-tab {
   .hero {
     width: calc(100% / 2);
     height: calc(100% / 3 * 2);
+    top: 0;
+    left: 0;
     float: left;
-    position: relative;
+    position: absolute;
     display: block;
     vertical-align: top;
-    transition:0.4s;
+    transition: 0.4s;
   }
   .hero_2 {
     width: calc(100% / 2);
-    height: calc(100% / 3 * 2 - 4px);
+    height: calc(100% / 3 * 2);
     top: calc(100% / 3 * 2);
     right: 0;
     float: left;
@@ -1313,8 +1934,8 @@ paper-tab {
   }
   .hero_3 {
     width: calc(100% / 2);
-    height: calc(100% / 3 * 2 - 4px);
-    top: calc(100% / 3 * 4.98);
+    height: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 5);
     left: 0;
     float: left;
     position: absolute;
@@ -1324,8 +1945,8 @@ paper-tab {
   }
   .hero_4 {
     width: calc(100% / 2);
-    height: calc(100% / 3 * 2 - 4px);
-    top: calc(100% / 3 * 6.98);
+    height: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 7);
     right: 0;
     float: left;
     position: absolute;
@@ -1334,15 +1955,27 @@ paper-tab {
     transition:0.4s;
   }
   .mini_hero {
+    position: absolute;
+    top: 0;
+    right: calc(100% / 4);
     width: calc(100% / 4);
     height: calc(100% / 3);
     float: left;
-    position: relative;
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
     display: block;
-    margin-left: 0;
-    margin-top: 0;
+    transition:0.4s;
+  }
+  .mini_hero_2 {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: calc(100% / 4);
+    height: calc(100% / 3);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
     transition:0.4s;
   }
   .mini_hero_3 {
@@ -1350,7 +1983,7 @@ paper-tab {
     top: calc(100% / 3 * 2);
     left: 0;
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1362,7 +1995,7 @@ paper-tab {
     top: calc(100% / 3 * 2);
     left: calc(100% / 4);
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1374,7 +2007,7 @@ paper-tab {
     top: calc(100% / 2 * 2);
     left: 0;
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1387,8 +2020,10 @@ paper-tab {
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    position: absolute;
     display: block;
+    top: calc(100% / 3);
+    right: 0;
     transition:0.4s;
   }
   .long_hero_2 {
@@ -1399,7 +2034,7 @@ paper-tab {
     background-repeat: no-repeat;
     position: absolute;
     display: block;
-    top: calc(100% / 3 * 3.98);
+    top: calc(100% / 3 * 4);
     left: 0;
     transition:0.4s;
   }
@@ -1408,7 +2043,7 @@ paper-tab {
     top: calc(100% / 2 * 2);
     left: calc(100% / 4);
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1417,10 +2052,10 @@ paper-tab {
   }
   .mini_hero_7 {
     position: absolute;
-    top: calc(100% / 3 * 3.98);
+    top: calc(100% / 3 * 4);
     left: calc(100% / 2);
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1429,10 +2064,10 @@ paper-tab {
   }
   .mini_hero_8 {
     position: absolute;
-    top: calc(100% / 3 * 3.98);
+    top: calc(100% / 3 * 4);
     right:0;
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3 );
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1441,10 +2076,10 @@ paper-tab {
   }
   .mini_hero_9 {
     position: absolute;
-    top: calc(100% / 3 * 4.98);
+    top: calc(100% / 3 * 5);
     left: calc(100% / 2);
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1453,10 +2088,10 @@ paper-tab {
   }
   .mini_hero_10 {
     position: absolute;
-    top: calc(100% / 3 * 4.98);
+    top: calc(100% / 3 * 5);
     right: 0;
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3 );
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1465,10 +2100,10 @@ paper-tab {
   }
   .mini_hero_11 {
     position: absolute;
-    top: calc(100% / 3 * 5.98);
+    top: calc(100% / 3 * 6);
     left: calc(100% / 2);
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3 );
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1477,10 +2112,10 @@ paper-tab {
   }
   .mini_hero_12 {
     position: absolute;
-    top: calc(100% / 3 * 5.98);
+    top: calc(100% / 3 * 6);
     right: 0;
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1489,10 +2124,10 @@ paper-tab {
   }
   .mini_hero_13 {
     position: absolute;
-    top: calc(100% / 3 * 6.98);
+    top: calc(100% / 3 * 7);
     left: 0;
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3 );
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1501,10 +2136,10 @@ paper-tab {
   }
   .mini_hero_14 {
     position: absolute;
-    top: calc(100% / 3 * 6.98);
+    top: calc(100% / 3 * 7);
     left: calc(100% / 4  );
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3 );
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1513,10 +2148,10 @@ paper-tab {
   }
   .mini_hero_15 {
     position: absolute;
-    top: calc(100% / 3 * 7.98);
+    top: calc(100% / 3 *8);
     left: 0;
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1525,26 +2160,15 @@ paper-tab {
   }
   .mini_hero_16 {
     position: absolute;
-    top: calc(100% / 3 * 7.98);
+    top: calc(100% / 3 * 8);
     left: calc(100% / 4  );
     width: calc(100% / 4);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
     display: block;
     transition:0.4s;
-  }
-  .main-container {
-    position: absolute;
-    bottom: 0px;
-    display: block;
-    left: 0px;
-    margin: 0 -4px;
-    padding: 4px 0;
-    right: 0px;
-    top: 100px;
-    background-color: #e0e0e0;
   }
   .hero_title {
     text-decoration: none;
@@ -1650,7 +2274,9 @@ paper-tab {
     width: calc(100% / 2);
     height: calc(100% / 3 * 3);
     float: left;
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1661,7 +2287,7 @@ paper-tab {
     float: left;
     position: absolute;
     left: 0;
-    top: calc(100%/ 2 * 4.937);
+    top: calc(100%/ 2 * 5);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1669,8 +2295,10 @@ paper-tab {
   .hero_2 {
     width: calc(100% / 2);
     height: calc(100% / 3 * 3);
-    float: right;
-    position: relative;
+    float: left;
+    position: absolute;
+    right: 0;
+    top: calc(100%/ 2 * 2);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1681,26 +2309,86 @@ paper-tab {
     float: left;
     position: absolute;
     right: 0;
-    top: calc(100%/ 2 * 6.937);
+    top: calc(100%/ 2 * 7);
     display: block;
     vertical-align: top;
     transition:0.4s;
   }
-  .mini_hero, .mini_hero_3, .mini_hero_4, .mini_hero_5, .mini_hero_6 {
+  .mini_hero {
+    position: absolute;
+    top: 0;
+    left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
     float: left;
-    position: relative;
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
     display: block;
-    margin-left: 0;
-    margin-top: 0;
+    transition:0.4s;
+  }
+  .mini_hero_2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% / 4);
+    height: calc(100% / 2);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
+  }
+  .mini_hero_3 {
+    position: absolute;
+    top: calc(100% / 2 * 2);
+    left: 0;
+    width: calc(100% / 4);
+    height: calc(100% / 2);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
+  }
+  .mini_hero_4 {
+    position: absolute;
+    top: calc(100% / 2 * 2);
+    left: calc(100% / 4);
+    width: calc(100% / 4);
+    height: calc(100% / 2);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
+  }
+  .mini_hero_5 {
+    position: absolute;
+    top: calc(100% / 2 * 3);
+    left: 0;
+    width: calc(100% / 4);
+    height: calc(100% / 2);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
+  }
+  .mini_hero_6 {
+    position: absolute;
+    top: calc(100% / 2 * 3);
+    left: calc(100% / 4);
+    width: calc(100% / 4);
+    height: calc(100% / 2);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
     transition:0.4s;
   }
   .mini_hero_7 {
     position: absolute;
-    top: calc(100% / 2 * 3.937);
+    top: calc(100% / 2 * 4);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1712,7 +2400,7 @@ paper-tab {
   }
   .mini_hero_8 {
     position: absolute;
-    top: calc(100% / 2 * 3.937);
+    top: calc(100% / 2 * 4);
     right:0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1724,7 +2412,7 @@ paper-tab {
   }
   .mini_hero_9 {
     position: absolute;
-    top: calc(100% / 2 * 4.937);
+    top: calc(100% / 2 * 5);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1736,7 +2424,7 @@ paper-tab {
   }
   .mini_hero_10 {
     position: absolute;
-    top: calc(100% / 2 * 4.937);
+    top: calc(100% / 2 * 5);
     right:0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1748,7 +2436,7 @@ paper-tab {
   }
   .mini_hero_11 {
     position: absolute;
-    top: calc(100% / 2 * 5.937);
+    top: calc(100% / 2 * 6);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1760,7 +2448,7 @@ paper-tab {
   }
   .mini_hero_12 {
     position: absolute;
-    top: calc(100% / 2 * 5.937);
+    top: calc(100% / 2 * 6);
     right:0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1772,7 +2460,7 @@ paper-tab {
   }
   .mini_hero_13 {
     position: absolute;
-    top: calc(100% / 2 * 6.937);
+    top: calc(100% / 2 * 7);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1784,7 +2472,7 @@ paper-tab {
   }
   .mini_hero_14 {
     position: absolute;
-    top: calc(100% / 2 * 6.937);
+    top: calc(100% / 2 * 7);
     right: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1796,7 +2484,7 @@ paper-tab {
   }
   .mini_hero_15 {
     position: absolute;
-    top: calc(100% / 2 * 7.937);
+    top: calc(100% / 2 * 8);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1808,7 +2496,7 @@ paper-tab {
   }
   .mini_hero_16 {
     position: absolute;
-    top: calc(100% / 2 * 7.937);
+    top: calc(100% / 2 * 8);
     right: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -1824,8 +2512,10 @@ paper-tab {
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    position: absolute;
     display: block;
+    top: calc(100% / 2);
+    right: 0;
     transition:0.4s;
   }
   .long_hero_2 {
@@ -1836,20 +2526,9 @@ paper-tab {
     background-repeat: no-repeat;
     position: absolute;
     display: block;
-    top: calc(100% / 2 * 3.94);
+    top: calc(100% / 2 * 4);
     left: 0;
     transition:0.4s;
-  }
-  .main-container {
-    position: absolute;
-    bottom: 0px;
-    display: block;
-    left: 0px;
-    margin: 0 -4px;
-    padding: 4px 0;
-    right: 0px;
-    top: 100px;
-    background-color: #e0e0e0;
   }
   .hero_title {
     z-index: 100;
@@ -2221,56 +2900,131 @@ paper-tab {
     display: block;
     margin: auto;
   }
-  .hero, .hero_2 {
+  .hero {
     width: calc(100% / 3);
     height: calc(100% / 3 * 2);
-    float: left;
-    position: relative;
-    display: block;
-    vertical-align: top;
-    transition: 0.4s;
-  }
-  .hero_3 {
-    width: calc(100% / 3);
-    height: calc(100% / 3 * 2 - 6px);
     float: left;
     position: absolute;
     display: block;
     vertical-align: top;
-    top: calc(100% / 3 * 2.98);
+    top: 0;
+    left: 0;
+    transition:0.4s;
+  }
+  .hero_2 {
+    width: calc(100% / 3);
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    display: block;
+    vertical-align: top;
+    top: calc(100% / 3 * 1);
+    left: calc(100% / 3);
+    transition:0.4s;
+  }
+  .hero_3 {
+    width: calc(100% / 3);
+    height: calc(100% / 3 * 2);
+    float: left;
+    position: absolute;
+    display: block;
+    vertical-align: top;
+    top: calc(100% / 3 * 3);
     right: 0;
     transition:0.4s;
   }
   .hero_4 {
     width: calc(100% / 3);
-    height: calc(100% / 3 * 2 - 6px);
+    height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
     display: block;
     vertical-align: top;
-    top: calc(100% / 3 * 3.98);
+    top: calc(100% / 3 * 4);
     left: calc(100% / 3);
     transition:0.4s;
   }
-  .mini_hero, .mini_hero_3, .mini_hero_4, .mini_hero_5, .mini_hero_8 {
+  .mini_hero {
+    position: absolute;
+    top: 0;
+    left: calc(100% / 6 * 2);
     width: calc(100% / 6);
     height: calc(100% / 3);
     float: left;
-    position: relative;
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
     display: block;
-    margin-left: 0;
-    margin-top: 0;
-    transition: .4s;
+    transition:0.4s;
+  }
+  .mini_hero_2 {
+    position: absolute;
+    top: 0;
+    left: calc(100% / 6 * 3);
+    width: calc(100% / 6);
+    height: calc(100% / 3);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
+  }
+  .mini_hero_3 {
+    position: absolute;
+    top: calc(100% / 3 * 1);
+    right: calc(100% / 6 );
+    width: calc(100% / 6);
+    height: calc(100% / 3);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
+  }
+  .mini_hero_4 {
+    position: absolute;
+    top: calc(100% / 3 * 1);
+    right: 0;
+    width: calc(100% / 6);
+    height: calc(100% / 3);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
+  }
+  .mini_hero_5 {
+    position: absolute;
+    top: calc(100% / 3 * 2);
+    right: calc(100% / 6 );
+    width: calc(100% / 6);
+    height: calc(100% / 3);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
+  }
+  .mini_hero_8 {
+    position: absolute;
+    top: calc(100% / 3 * 2);
+    left: 0;
+    width: calc(100% / 6);
+    height: calc(100% / 3);
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    transition:0.4s;
   }
   .long_hero {
     width: calc(100% / 3);
     height: calc(100% / 3);
+    top: 0;
+    left: calc(100% / 6 * 4);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    position: absolute;
     display: block;
     transition:0.4s;
   }
@@ -2282,16 +3036,16 @@ paper-tab {
     background-repeat: no-repeat;
     position: absolute;
     left: 0;
-    top: calc(100% / 3 * 2.98);
+    top: calc(100% / 3 * 3);
     display: block;
     transition:0.4s;
   }
   .mini_hero_6 {
     position: absolute;
     top: calc(100% / 3 * 2);
-    left: 0;
+    right: 0;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2302,22 +3056,21 @@ paper-tab {
     position: absolute;
     top: calc(100% / 3 * 2);
     left: calc(100% / 6);
-    background-repeat: no-repeat;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
-    display: block;
     background-size: cover;
-    vertical-align: top;
+    background-repeat: no-repeat;
+    display: block;
     transition:0.4s;
   }
   .mini_hero_9 {
     position: absolute;
-    top: calc(100% / 3 * 2.98);
+    top: calc(100% / 3 * 3);
     left: calc(100% / 6 * 2);
     background-repeat: no-repeat;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     display: block;
     background-size: cover;
@@ -2326,11 +3079,11 @@ paper-tab {
   }
   .mini_hero_10 {
     position: absolute;
-    top: calc(100% / 3 * 2.98);
+    top: calc(100% / 3 * 3);
     left: calc(100% / 6 * 3);
     background-repeat: no-repeat;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     display: block;
     background-size: cover;
@@ -2339,10 +3092,10 @@ paper-tab {
   }
   .mini_hero_11 {
     position: absolute;
-    top: calc(100% / 3 * 3.98);
+    top: calc(100% / 3 * 4);
     left: 0;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2351,11 +3104,11 @@ paper-tab {
   }
   .mini_hero_12 {
     position: absolute;
-    top: calc(100% / 3 * 3.98);
+    top: calc(100% / 3 * 4);
     left: calc(100% / 6);
     background-repeat: no-repeat;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     display: block;
     background-size: cover;
@@ -2364,10 +3117,10 @@ paper-tab {
   }
   .mini_hero_13 {
     position: absolute;
-    top: calc(100% / 3 * 4.98);
+    top: calc(100% / 3 * 5);
     left: 0;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2376,11 +3129,11 @@ paper-tab {
   }
   .mini_hero_14 {
     position: absolute;
-    top: calc(100% / 3 * 4.98);
+    top: calc(100% / 3 * 5);
     left: calc(100% / 6);
     background-repeat: no-repeat;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     display: block;
     background-size: cover;
@@ -2389,10 +3142,10 @@ paper-tab {
   }
   .mini_hero_15 {
     position: absolute;
-    top: calc(100% / 3 * 4.98);
+    top: calc(100% / 3 * 5);
     left: calc(100% / 6 * 4);
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2401,27 +3154,16 @@ paper-tab {
   }
   .mini_hero_16 {
     position: absolute;
-    top: calc(100% / 3 * 4.98);
+    top: calc(100% / 3 * 5);
     right:0;
     background-repeat: no-repeat;
     width: calc(100% / 6);
-    height: calc(100% / 3 - 4px);
+    height: calc(100% / 3);
     float: left;
     display: block;
     background-size: cover;
     vertical-align: top;
     transition:0.4s;
-  }
-  .main-container {
-    position: absolute;
-    bottom: 0px;
-    display: block;
-    left: 0px;
-    margin: 0 -4px;
-    padding: 4px 0;
-    right: 0px;
-    top: 100px;
-    background-color: #e0e0e0;
   }
   .hero_title {
     text-decoration: none;

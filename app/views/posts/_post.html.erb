@@ -1,5 +1,5 @@
   <%= link_to(post) do %>
-    <div class="<%= nm =cycle('hero','mini_hero','mini_hero','long_hero','hero_2','mini_hero_3','mini_hero_4','mini_hero_5','mini_hero_6','mini_hero_7','mini_hero_8','long_hero_2','mini_hero_9','mini_hero_10','hero_3','mini_hero_11','mini_hero_12','mini_hero_13','mini_hero_14','hero_4','mini_hero_15','mini_hero_16', name: 'box') %>" vertical layout>
+    <div class="<%= nm =cycle('hero','mini_hero','mini_hero_2','long_hero','hero_2','mini_hero_3','mini_hero_4','mini_hero_5','mini_hero_6','mini_hero_7','mini_hero_8','long_hero_2','mini_hero_9','mini_hero_10','hero_3','mini_hero_11','mini_hero_12','mini_hero_13','mini_hero_14','hero_4','mini_hero_15','mini_hero_16', name: 'box') %>" vertical layout>
       <% if ((nm == 'long_hero') || (nm == 'long_hero_2')) %>
         <div class="innerds" style="background-image: url('<%= post.image_url(:long_headline) %>');" vertical layout flex><paper-shadow z="2" animated>
       <% else %>
