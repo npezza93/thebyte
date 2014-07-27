@@ -143,10 +143,11 @@ paper-fab{
 .show_hr {
   border: 0;
   height: 1px;
-  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
-  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
-  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
-  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  background: #333;
+  background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+  background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
+  background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
+  background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
 }
 
 iframe.twitter-tweet {
@@ -262,6 +263,7 @@ paper-tab {
 }
 #whose_logged_in {
   margin: 10px;
+  font-size: 13px;
 }
 #create_post_button_invis, #delete_post_invis  {
   display: none;
@@ -276,12 +278,12 @@ paper-tab {
 
 @media (max-width: 600px) {
   core-toolbar {
-    height: 100vh;
+    height: 200px;
     transition: 0.7s;
   }
   #main_toolbar {
     background-color: #00bcd4;
-    height: 33vh;
+    height: 100px;
   }
   #post_title_input {
     font-size: 20px;
@@ -788,7 +790,7 @@ paper-tab {
 @media (max-width: 600px) and (orientation: landscape) {
   #main_toolbar {
     background-color: #00bcd4;
-    height: 50vh;
+    height: 100px;
   }
   .hero {
     width: 100%;
@@ -1088,12 +1090,12 @@ paper-tab {
 
 @media (min-width: 601px) and (max-width: 900px) {
   core-toolbar {
-    height: 100vh;
+    height: 300px;
     transition: 0.7s;
   }
   #main_toolbar {
     background-color: #00bcd4;
-    height: 33vh;
+    height: 100px;
   }
   #post_title_input {
     font-size: 20px;
@@ -1628,7 +1630,7 @@ paper-tab {
   }
   #main_toolbar {
     background-color: black;
-    height: 33vh;
+    height: 100px;
   }
   .redactor_field {
     max-width: 80%;
@@ -2087,7 +2089,7 @@ paper-tab {
   }
   #main_toolbar {
     background-color: #00bcd4;
-    height: 50vh;
+    height: 100px;
   }
   #post_title_input {
     font-size: 20px;
@@ -2466,7 +2468,7 @@ paper-tab {
   }
   #main_toolbar {
     background-color: #00bcd4;
-    height: 33vh;
+    height: 100px;
   }
   #post_title_input_invis, #post_author_input_invis {
     display: none;
@@ -2565,9 +2567,6 @@ paper-tab {
     width: 100%;
     font-family: 'VT323';
     transition: 0.7s;
-  }
-  core-scroll-header-panel {
-    background-color: #f5f5f5;
   }
   .redactor_textt {
     margin: auto;

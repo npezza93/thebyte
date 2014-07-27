@@ -1,13 +1,9 @@
-<!-- <core-toolbar><div class="middle indent">Header</div></core-toolbar>  -->
 <% content_for :title, "The Byte" %>
 
 <% if notice %>
   <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
 <% end %>
 
-
-<!-- <br>
-<hr class="show_hr">  -->
 
 <core-overlay id="overlay" backdrop transition="core-transition-center" style="background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
 <div id="contentsd">
@@ -112,9 +108,8 @@ eeeee e   e eeee    eeeee  e    e eeeee eeee
   8e  8eee8 8eee    8eee8e 8eeee8   8e  8eee 
   88  88  8 88      88   8   88     88  88   
   88  88  8 88ee    88eee8   88     88  88ee</pre> -->
-    
+    <span id="whose_logged_in" layout horizontal flex end-justified>
       <% if (@user = User.find_by_id(session[:user_id])) != nil %>
-        <span id="whose_logged_in" layout horizontal flex end-justified>
           <div id="post_avatar" style="<% if (User.find_by_id(session[:user_id]).image_url) == nil%>
             background-image: url('../system/default_pic.png');
           <% else %>
@@ -123,15 +118,13 @@ eeeee e   e eeee    eeeee  e    e eeeee eeee
           </div>
           <div id="usernames" layout vertical center-justified><%= User.find_by_id(session[:user_id]).username %></div>
           <paper-button id="logout_button">Logout</paper-button>
-        </span>
       <%else%>
-        <span class="log_out_in" layout horizontal flex end-justified>
           <% if User.find_by_id(session[:user_id]) == nil %>
-                <paper-button id="login_button" onclick="openlog(1)" style="margin-right:5px;">Login</paper-button><span layout vertical center-justified>/</span> 
-                <paper-button id="signup_button" onclick="openlog(2)" style="margin-left:5px;">signup</paper-button>
-            <% end %>
-        </span>
+              <paper-button id="login_button" onclick="openlog(1)" style="margin-right:5px;">Login</paper-button><span layout vertical center-justified>/</span> 
+              <paper-button id="signup_button" onclick="openlog(2)" style="margin-left:5px;">signup</paper-button>
+          <% end %>
       <% end %>
+    </span>
   </core-toolbar>
 <style>
  #logout_button {

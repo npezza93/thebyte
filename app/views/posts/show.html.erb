@@ -32,8 +32,26 @@
         <% end %>
         <%= raw @post.content %>
       </div>
+              <!-- Comment Section -->
+          <h2 id="number_of_comments">There are <%= @post.comments.count %> comments</h2>
+          
+          <div id="comments">
+            <div id="inner_comments">
+              <%= render @post.comments %>
+            </div>
+          
+          <div id="comment_form_container">
+          <%= form_for [@post, Comment.new], remote: true do |f| %>
+            <%= f.label :body, "POST A NEW COMMENT", id: "new_comment_label" %><br/>
+            <div id="redactor_comment_container">
+              <%= f.text_area :body, class: "redactor_comments" %>
+            </div>
+            <p layout horizontal flex center-justified><paper-button raisedButton label="Comment" id="submit_comment"></paper-button><%= f.submit "Post", id: "submit_comment_invis" %></p>
+          <% end %>
+          </div>
+          </div>
     </div>
-    
+
   </core-scroll-header-panel>
 
     <script>
@@ -70,6 +88,9 @@ $('#show_post_back').on('click', function() {
 });
 $('#show_post_delete').on('click', function() {
   $('#delete_post_invis').click();
+});
+$('#submit_comment').on('click', function() {
+  $('#submit_comment_invis').click();
 });
 </script>
 <script>

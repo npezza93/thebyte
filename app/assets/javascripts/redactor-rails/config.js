@@ -25,4 +25,21 @@ $(document).ready(
       "paragraphy": false,
       "pastePlainText": true
     });
+  $('.redactor_comments').redactor(
+    { "imageUpload":"/redactor_rails/pictures?" + params,
+      "imageGetJson":"/redactor_rails/pictures",
+      "fileUpload":"/redactor_rails/documents?" + params,
+      "fileGetJson":"/redactor_rails/documents",
+      "path":"/assets/redactor-rails",
+      "css":"style.css",
+      "convertImageLinks": true,
+      "convertVideoLinks": true,
+      "imageFloatMargin": '15px',
+      "linksize": 25,
+      "minHeight": 150,
+      "plugins": ['fontcolor', 'fontsize', 'fontfamilynew'],
+      "paragraphy": false,
+      "pastePlainText": true,
+      "buttons": ['formatting', '|', 'bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', '|', 'outdent', 'indent', , 'alignment', '|', 'image', 'video', 'fontsize', 'fontfamilynew']
+    });
 });

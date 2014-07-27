@@ -1,4 +1,8 @@
 TheByte::Application.routes.draw do
+  resources :posts do
+    resources :comments, :only => [:create]
+  end
+
   resources :password_resets
   resources :inactive_posts
 

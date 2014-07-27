@@ -1,0 +1,145 @@
+#number_of_comments {
+	font-family: 'Roboto', sans-serif;
+	font-size: 25px;
+	font-weight: 500;
+}
+#comment_author_avatar {
+	height: 36px;
+	width: 36px;
+	border-radius: 50%;
+float: left;
+vertical-align: middle;
+margin-right: 10px;
+}
+#comment_author {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	padding: .3em 0 .05em;
+}
+#comment_author_section {
+line-height: 2em;
+margin-bottom: .75em;
+display: block;
+}
+#comment_body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+}
+#comment_posted_at {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+	font-size: 12px;
+	color: #757575;
+}
+.comment {
+	margin-left: 20px;
+	margin-right: 14px;
+}
+#new_comment_label {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 22px;
+	padding: 14px;
+}
+#new_comment {
+	padding-top: 14px;
+	padding-bottom: 2px;
+	margin-bottom: 10px;
+}
+#submit_comment {
+	background: #ffffff;
+}
+#submit_comment_invis {
+	display: none;
+}
+
+@media (min-width: 1301px) {
+	#comments {
+		width: 60%;
+		margin: auto;
+		transition: 0.4s;
+	}
+	#number_of_comments {
+		margin-left: 150px;
+		transition: 0.4s;		
+	}
+	#redactor_comment_container {
+		width: 80%;
+		transition: 0.6s;
+		margin: auto;
+		margin-top: 14px;
+	}
+	#comment_form_container {
+		background-color: #bdbdbd;
+		width: 95.5% ;
+		margin:auto;
+	}
+}
+@media (min-width: 901px) and (max-width: 1300px)  {
+	#comments {
+		width: 80%;
+		margin: auto;
+		transition: 0.4s;
+	}
+	#number_of_comments {
+		margin-left: 50px;
+		transition: 0.4s;
+	}
+	#redactor_comment_container {
+		width: 80%;
+		transition: 0.6s;
+		margin: auto;
+		margin-top: 14px;
+	}
+	#comment_form_container {
+		background-color: #bdbdbd;
+		width: 95.5% ;
+		margin:auto;
+	}
+}
+@media (min-width: 601px) and (max-width: 900px) {
+	#comments {
+		width: 95%;
+		margin: auto;
+		transition: 0.4s;
+	}
+	#number_of_comments {
+		margin-left: 10px;
+		transition: 0.4s;
+	}
+	#redactor_comment_container {
+		width: 95%;
+		transition: 0.6s;
+		margin: auto;
+		margin-top: 14px;
+	}
+	#comment_form_container {
+		background-color: #bdbdbd;
+		width: 95.5% ;
+		margin:auto;
+	}
+}
+@media (max-width: 600px) {
+	#comments {
+		width: 97%;
+		margin: auto;
+		transition: 0.4s;
+	}
+	#number_of_comments {
+		margin-left: 10px;
+		transition: 0.4s;
+	}
+	#redactor_comment_container {
+		width: 97%;
+		transition: 0.6s;
+		margin: auto;
+		margin-top: 14px;
+	}
+	#comment_form_container {
+		background-color: #bdbdbd;
+		width: 95.5% ;
+		margin:auto;
+	}
+}
