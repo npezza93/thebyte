@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.author = User.find_by_id(session[:user_id]).username
 
     respond_to do |format|
       if @post.save
@@ -51,6 +52,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
+        format.js 
       else
         format.html { render action: 'edit' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -76,7 +78,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :author, :image, :content, :altattr, :status)
+      params.require(:post).permit(:title, :author, :image, :content, :status)
     end
 
     def admin_check

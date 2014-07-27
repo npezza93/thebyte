@@ -173,10 +173,7 @@
   animation-name: fadeInDown;
 }
 
-#edit_user_button {
-    margin-top: 10px;
-}
-#manage_users_link {
+.manage_users_posts_link {
     text-decoration: none;
     color: #607d8b;
     font-family: 'Roboto', sans-serif;
@@ -186,9 +183,16 @@
     text-rendering: optimizeLegibility;
     cursor: pointer;
     margin-top: 14px;
-    text-align:center;
 }
+#manage_button_1 {
+  text-align:right;
+  margin-right: 5px;
+}
+#manage_button_2 {
+  text-align:left;
+  margin-left:5px;
 
+}
 #edit_user_title {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -244,7 +248,7 @@ paper-toggle-button::shadow #toggleBar[checked] {
 #new_user_button {
   background-color:#c6ff00; 
 }
-#edit_user_button {
+#edit_user_button2 {
     margin-top: 20px;
 }
 

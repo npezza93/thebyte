@@ -219,8 +219,7 @@ a {
   text-decoration: none;
 }
 
-.usernames {
-  position: absolute;
+#usernames {
   text-decoration: none;
   color: #607d8b;
   font-family: 'Roboto', sans-serif;
@@ -229,8 +228,8 @@ a {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   cursor: pointer;
-  margin:15px;
-  right: 0;
+  margin-left: 12px;
+  margin-right: 8px;
 }
 
 paper-tab {
@@ -250,80 +249,63 @@ paper-tab {
 #new_post_button {
   background-color:#c6ff00; 
 }
-#logout_button {
-  position: absolute;
-  right:0;
-  top: 20px;
-  margin-right: 6px;
+#post_avatar {
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 32px;
+  height:32px;
+  transition: all 100ms ease;
+}
+#whose_logged_in {
+  margin: 10px;
+}
+#create_post_button_invis, #delete_post_invis  {
+  display: none;
+}
+#create_post_button {
+  background: #80deea;
+}
+#post_hero_input {
+  margin: 14px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 600px) {
   core-toolbar {
-    height: 200px;
+    height: 100vh;
     transition: 0.7s;
   }
-  .new_post_form_text {
-    font: 20px Arial;
-    display: block;
-    border: 1px solid #d9d9d9;
-    text-decoration: none; 
-    border-spacing: 2px;
-    padding: 7px;
+  #main_toolbar {
+    background-color: #00bcd4;
+    height: 33vh;
+  }
+  #post_title_input {
+    font-size: 20px;
     width: 90%;
+    transition: 0.7s;
+  }
+  #post_title_input_invis {
+    display: none;
+  }
+  .redactor_field {
+    max-width: 100%;
     margin: auto;
     transition:0.7s;
-  }
-  .new_post_form_text:hover {
-    display: block;
-    border-color: gray;
-    text-decoration: none; 
-  }
-  .new_post_form_text:focus, .new_post_form_text:active {
-    display: block;
-    border-color: #4d90fe;
-    text-decoration: none; 
   }
   #new_edit_post_title {
     text-align: center;
     margin: 25px;
     margin-bottom: 50px;
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
   }
   #new_edit_post {
     position: relative;
-  }
-  .new_post_form_file {
-    padding: 8px 12px;
-  }
-  .image_field {
-    text-align: center;
-  }
-  .create_post_button {
-    background-color: #f6f6f6;
-    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
-    border: 1px solid #dcdcdc;
-    border-color: rgba(0,0,0,.1);
-    color: #444 !important;
-    font-size: 16px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    cursor: default !important;
-    display: block;
-    font-weight: bold;
-    height: 40px;
-    line-height: 40px;
-    min-width: 70px;
-    padding: 0 8px;
-    text-align: center;
-    text-decoration: none !important;
-  }
-  .create_post_button:active {
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-  }
-  #create_post_button {
-    width: 79px;
-    margin-left: auto;
-    margin-right: auto;
   }
   #the_title {
     margin-left:10px;
@@ -521,7 +503,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: 0;
+    top: calc(100% / 3);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -531,7 +513,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 *3);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -541,7 +523,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -551,7 +533,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 7);
+    top: calc(100% / 3 * 8);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -561,7 +543,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 9);
+    top: calc(100% / 3 * 10);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -571,7 +553,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 11);
+    top: calc(100% / 3 * 12);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -581,7 +563,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 13);
+    top: calc(100% / 3 * 14);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -591,7 +573,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 15);
+    top: calc(100% / 3 * 16);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -601,7 +583,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 17);
+    top: calc(100% / 3 * 18);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -611,7 +593,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 19);
+    top: calc(100% / 3 * 20);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -621,7 +603,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 22);
+    top: calc(100% / 3 * 23);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -631,7 +613,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 24);
+    top: calc(100% / 3 * 25);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -641,7 +623,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 26);
+    top: calc(100% / 3 * 27);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -651,7 +633,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 28);
+    top: calc(100% / 3 * 29);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -661,7 +643,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 30);
+    top: calc(100% / 3 * 31);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -671,7 +653,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 32);
+    top: calc(100% / 3 * 33);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -681,7 +663,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 34);
+    top: calc(100% / 3 * 35);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -691,7 +673,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 36);
+    top: calc(100% / 3 * 37);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -701,7 +683,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 38);
+    top: calc(100% / 3 * 39);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -711,7 +693,7 @@ paper-tab {
     height: calc(100% / 3 * 2);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 40);
+    top: calc(100% / 3 * 41);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -723,7 +705,7 @@ paper-tab {
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    top: calc(100% / 3 * 6);
+    top: calc(100% / 3 * 7);
     display: block;
     transition:0.4s;
   }
@@ -734,7 +716,7 @@ paper-tab {
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    top: calc(100% / 3 * 21);
+    top: calc(100% / 3 * 22);
     display: block;
     transition:0.4s;
   }
@@ -803,110 +785,17 @@ paper-tab {
 }
 
 
-/*@media (max-width: 600px) and (max-height: 500px) {
-  .hero, .mini_hero_2, .hero_2, .hero_3, .hero_4, .mini_hero, .mini_hero_3, .mini_hero_4, .mini_hero_6, .mini_hero_8, .mini_hero_9, .mini_hero_11, .mini_hero_13, .mini_hero_15, .mini_hero_5, .mini_hero_7, .mini_hero_10, .mini_hero_12, .mini_hero_14, .mini_hero_16 {
-    width: 100%;
-    height: calc(100% / 3 * 2.5);
-    float: left;
-    position: relative;
-    display: block;
-    vertical-align: top;
-    transition:0.4s;
-  }
-  .long_hero, .long_hero_2 {
-    width: 100%;
-    height: calc(100% / 2);
-    float: left;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    display: block;
-    transition:0.4s;
-  }
-  .main-container {
-    position: absolute;
-    bottom: 0px;
-    display: block;
-    left: 0px;
-    padding: 4px 0;
-    right: 0px;
-    top: 100px;
-    background-color: #e0e0e0;
-  }
-  .hero_title, .mini_title {
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 30px;
-    width: 85%;
-    margin: auto;
-    line-height: 1.2;
-    transition: 0.7s;
-    margin-top: 10%;
-    text-align: center;
-    color: rgb(240,241,225);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    text-shadow: rgba(0, 0, 0, 0.5) 10px 10px 10px;
-  }
-  .long_title {
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 24px;
-    width: 95%;
-    margin: auto;
-    line-height: 1.2em;
-    transition: 0.7s;
-    margin-top: 10px;
-    text-align: center;
-    color: rgb(240,241,225);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    text-shadow: rgba(0, 0, 0, 0.5) 10px 10px 10px;
-  }
-  .long_author {
-    color: #212121;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    position: absolute;
-    width: 100%;
-    bottom: 8px;
-    text-align: center;
-    transition: 0.7s;
-    color: rgb(240,241,225);
-  }
-  .hero_author, .mini_author {
-    color: #212121;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    position: absolute;
-    width: 100%;
-    bottom: 18px;
-    transition: 0.7s;
-    text-align: center;
-    color: rgb(240,241,225);
-  }
-  #posts_pagination {
-      top: calc(100%);
-      left: calc(100%/2);
-      position: absolute;
-      display: block;
-      vertical-align: top;
-      transition:0.4s;
-      margin-top: 40px;
-  }
-}*/
-
 @media (max-width: 600px) and (orientation: landscape) {
+  #main_toolbar {
+    background-color: #00bcd4;
+    height: 50vh;
+  }
   .hero {
     width: 100%;
     height: calc(100%);
     float: left;
     position: absolute;
-    top: 0;
+    top: calc(100%/2);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -916,7 +805,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100%);
+    top: calc(100%/2*3);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -926,7 +815,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% * 2);
+    top: calc(100%/2*5);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -936,7 +825,7 @@ paper-tab {
     height: calc(100%); 
     float: left;
     position: absolute;
-    top: calc(100% * 3.5);
+    top: calc(100%/2*8);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -946,7 +835,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *4.5);
+    top: calc(100% /2*10);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -956,7 +845,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *5.5);
+    top: calc(100% /2*12);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -966,7 +855,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *6.5);
+    top: calc(100% /2*14);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -976,7 +865,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *7.5);
+    top: calc(100% /2*16);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -986,7 +875,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *8.5);
+    top: calc(100% /2*18);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -996,7 +885,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *9.5);
+    top: calc(100% /2*20);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1006,7 +895,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *11);
+    top: calc(100% /2*23);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1016,7 +905,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100%*12);
+    top: calc(100%/2*25);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1026,7 +915,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *13);
+    top: calc(100% /2*27);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1036,7 +925,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *14);
+    top: calc(100% /2*29);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1046,7 +935,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100%*15);
+    top: calc(100%/2*31);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1056,7 +945,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100%*16);
+    top: calc(100%/2*33);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1066,7 +955,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *17);
+    top: calc(100%/2*35);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1076,7 +965,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% * 18);
+    top: calc(100%/2*37);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1086,7 +975,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% *19);
+    top: calc(100%/2*39);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1096,7 +985,7 @@ paper-tab {
     height: calc(100%);
     float: left;
     position: absolute;
-    top: calc(100% * 20);
+    top: calc(100%/2*41);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -1108,7 +997,7 @@ paper-tab {
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    top: calc(100% *3);
+    top: calc(100%/2*7);
     display: block;
     transition:0.4s;
   }
@@ -1119,7 +1008,7 @@ paper-tab {
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    top: calc(100% *10.5);
+    top: calc(100% /2*22);
     display: block;
     transition:0.4s;
   }
@@ -1199,71 +1088,37 @@ paper-tab {
 
 @media (min-width: 601px) and (max-width: 900px) {
   core-toolbar {
-    height: 300px;
+    height: 100vh;
     transition: 0.7s;
   }
-  .new_post_form_text {
-    font: 20px Arial;
-    display: block;
-    border: 1px solid #d9d9d9;
-    text-decoration: none; 
-    border-spacing: 2px;
-    padding: 7px;
+  #main_toolbar {
+    background-color: #00bcd4;
+    height: 33vh;
+  }
+  #post_title_input {
+    font-size: 20px;
     width: 90%;
+    transition: 0.7s;
+  }
+  #post_title_input_invis {
+    display: none;
+  }
+  .redactor_field {
+    max-width: 90%;
     margin: auto;
     transition:0.7s;
-  }
-  .new_post_form_text:hover {
-    display: block;
-    border-color: gray;
-    text-decoration: none; 
-  }
-  .new_post_form_text:focus, .new_post_form_text:active {
-    display: block;
-    border-color: #4d90fe;
-    text-decoration: none; 
   }
   #new_edit_post_title {
     text-align: center;
     margin: 25px;
     margin-bottom: 50px;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.7s;
   }
   #new_edit_post {
     position: relative;
-  }
-  .new_post_form_file {
-    padding: 8px 12px;
-  }
-  .image_field {
-    text-align: center;
-  }
-  .create_post_button {
-    background-color: #f6f6f6;
-    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
-    border: 1px solid #dcdcdc;
-    border-color: rgba(0,0,0,.1);
-    color: #444 !important;
-    font-size: 16px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    cursor: default !important;
-    display: block;
-    font-weight: bold;
-    height: 40px;
-    line-height: 40px;
-    min-width: 70px;
-    padding: 0 8px;
-    text-align: center;
-    text-decoration: none !important;
-  }
-  .create_post_button:active {
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-  }
-  #create_post_button {
-    width: 79px;
-    margin-left: auto;
-    margin-right: auto;
   }
   #the_title {
     margin-left:45px;
@@ -1368,7 +1223,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: 2px;
+    top: calc(100% / 3);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1379,7 +1234,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: 2px;
+    top: calc(100% / 3);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1390,7 +1245,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3);
+    top: calc(100% / 3*2);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1401,7 +1256,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3);
+    top: calc(100% / 3*2);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1412,7 +1267,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1423,7 +1278,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1434,7 +1289,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 3);
+    top: calc(100% / 3 * 4);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1445,7 +1300,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 3);
+    top: calc(100% / 3 * 4);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1456,7 +1311,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1467,7 +1322,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1478,7 +1333,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1489,7 +1344,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1500,7 +1355,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 6);
+    top: calc(100% / 3 * 7);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1511,7 +1366,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 6);
+    top: calc(100% / 3 * 7);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1522,7 +1377,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 7);
+    top: calc(100% / 3 * 8);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1533,7 +1388,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 7);
+    top: calc(100% / 3 * 8);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1544,7 +1399,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 8);
+    top: calc(100% / 3 * 9);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1555,7 +1410,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 8);
+    top: calc(100% / 3 * 9);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1566,7 +1421,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 9);
+    top: calc(100% / 3 * 10);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1577,7 +1432,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 9);
+    top: calc(100% / 3 * 10);
     right: 0;
     display: block;
     vertical-align: top;
@@ -1588,7 +1443,7 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 10);
+    top: calc(100% / 3 * 11);
     left: 0;
     display: block;
     vertical-align: top;
@@ -1599,22 +1454,11 @@ paper-tab {
     height: calc(100% / 3);
     float: left;
     position: absolute;
-    top: calc(100% / 3 * 10);
+    top: calc(100% / 3 * 11);
     right: 0;
     display: block;
     vertical-align: top;
     transition:0.4s; 
-  }
-  .main-container {
-    position: absolute;
-    bottom: 0px;
-    display: block;
-    left: 0px;
-    margin: 0 -4px;
-    padding: 4px 0;
-    right: 0px;
-    top: 100px;
-    background-color: #e0e0e0;
   }
   .hero_title, .long_title, .mini_title {
     text-decoration: none;
@@ -1656,68 +1500,22 @@ paper-tab {
 }
 
 @media (min-width: 901px) and (max-width: 1300px) {
-  .new_post_form_text {
-    font: 17px Arial;
-    display: block;
-    border: 1px solid #d9d9d9;
-    text-decoration: none; 
-    border-spacing: 2px;
-    padding: 7px;
-    width: 67%;
-    margin: auto;
-    transition:0.7s;
-  }
-  .new_post_form_text:hover {
-    display: block;
-    border-color: gray;
-    text-decoration: none; 
-  }
-  .new_post_form_text:focus, .new_post_form_text:active {
-    display: block;
-    border-color: #4d90fe;
-    text-decoration: none; 
-  }
   #new_edit_post_title {
     text-align: center;
     margin: 25px;
     margin-bottom: 50px;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.7s;
+  }
+  .redactor_field {
+    max-width: 80%;
+    margin: auto;
+    transition:0.7s;
   }
   #new_edit_post {
     position: relative;
-  }
-  .new_post_form_file {
-    padding: 8px 12px;
-  }
-  .image_field {
-    text-align: center;
-  }
-  .create_post_button {
-    background-color: #f6f6f6;
-    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
-    border: 1px solid #dcdcdc;
-    border-color: rgba(0,0,0,.1);
-    color: #444 !important;
-    font-size: 13.5px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    cursor: default !important;
-    display: block;
-    font-weight: bold;
-    height: 35px;
-    line-height: 35px;
-    min-width: 62px;
-    padding: 0 8px;
-    text-align: center;
-    text-decoration: none !important;
-  }
-  .create_post_button:active {
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-  }
-  #create_post_button {
-    width: 79px;
-    margin-left: auto;
-    margin-right: auto;
   }
   #the_title {
     margin-left:60px;
@@ -1820,6 +1618,23 @@ paper-tab {
     height: 400px;
     transition: 0.7s;
   }
+  #post_title_input {
+    font-size: 20px;
+    width: 67%;
+    transition: 0.7s;
+  }
+  #post_title_input_invis {
+    display: none;
+  }
+  #main_toolbar {
+    background-color: black;
+    height: 33vh;
+  }
+  .redactor_field {
+    max-width: 80%;
+    margin: auto;
+    transition:0.7s;
+  }
   .tweet-button {
     height:35px;
     background-color: rgb(85,172,238);
@@ -1913,7 +1728,7 @@ paper-tab {
   .hero {
     width: calc(100% / 2);
     height: calc(100% / 3 * 2);
-    top: 0;
+    top: calc(100% / 3);
     left: 0;
     float: left;
     position: absolute;
@@ -1924,7 +1739,7 @@ paper-tab {
   .hero_2 {
     width: calc(100% / 2);
     height: calc(100% / 3 * 2);
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     right: 0;
     float: left;
     position: absolute;
@@ -1935,7 +1750,7 @@ paper-tab {
   .hero_3 {
     width: calc(100% / 2);
     height: calc(100% / 3 * 2);
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     left: 0;
     float: left;
     position: absolute;
@@ -1946,7 +1761,7 @@ paper-tab {
   .hero_4 {
     width: calc(100% / 2);
     height: calc(100% / 3 * 2);
-    top: calc(100% / 3 * 7);
+    top: calc(100% / 3 * 8);
     right: 0;
     float: left;
     position: absolute;
@@ -1956,7 +1771,7 @@ paper-tab {
   }
   .mini_hero {
     position: absolute;
-    top: 0;
+    top: calc(100% / 3);
     right: calc(100% / 4);
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -1968,7 +1783,7 @@ paper-tab {
   }
   .mini_hero_2 {
     position: absolute;
-    top: 100px;
+    top: calc(100% / 3);
     right: 0;
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -1980,7 +1795,7 @@ paper-tab {
   }
   .mini_hero_3 {
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -1992,7 +1807,7 @@ paper-tab {
   }
   .mini_hero_4 {
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     left: calc(100% / 4);
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -2004,7 +1819,7 @@ paper-tab {
   }
   .mini_hero_5 {
     position: absolute;
-    top: calc(100% / 2 * 2);
+    top: calc(100% / 3 * 4);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -2022,7 +1837,7 @@ paper-tab {
     background-repeat: no-repeat;
     position: absolute;
     display: block;
-    top: calc(100% / 3);
+    top: calc(100% / 3 *2);
     right: 0;
     transition:0.4s;
   }
@@ -2034,13 +1849,13 @@ paper-tab {
     background-repeat: no-repeat;
     position: absolute;
     display: block;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     left: 0;
     transition:0.4s;
   }
   .mini_hero_6 {
     position: absolute;
-    top: calc(100% / 2 * 2);
+    top: calc(100% / 3 * 4);
     left: calc(100% / 4);
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -2052,7 +1867,7 @@ paper-tab {
   }
   .mini_hero_7 {
     position: absolute;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -2064,7 +1879,7 @@ paper-tab {
   }
   .mini_hero_8 {
     position: absolute;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     right:0;
     width: calc(100% / 4);
     height: calc(100% / 3 );
@@ -2076,7 +1891,7 @@ paper-tab {
   }
   .mini_hero_9 {
     position: absolute;
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -2088,7 +1903,7 @@ paper-tab {
   }
   .mini_hero_10 {
     position: absolute;
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     right: 0;
     width: calc(100% / 4);
     height: calc(100% / 3 );
@@ -2100,7 +1915,7 @@ paper-tab {
   }
   .mini_hero_11 {
     position: absolute;
-    top: calc(100% / 3 * 6);
+    top: calc(100% / 3 * 7);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 3 );
@@ -2112,7 +1927,7 @@ paper-tab {
   }
   .mini_hero_12 {
     position: absolute;
-    top: calc(100% / 3 * 6);
+    top: calc(100% / 3 * 7);
     right: 0;
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -2124,7 +1939,7 @@ paper-tab {
   }
   .mini_hero_13 {
     position: absolute;
-    top: calc(100% / 3 * 7);
+    top: calc(100% / 3 * 8);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 3 );
@@ -2136,7 +1951,7 @@ paper-tab {
   }
   .mini_hero_14 {
     position: absolute;
-    top: calc(100% / 3 * 7);
+    top: calc(100% / 3 * 8);
     left: calc(100% / 4  );
     width: calc(100% / 4);
     height: calc(100% / 3 );
@@ -2148,7 +1963,7 @@ paper-tab {
   }
   .mini_hero_15 {
     position: absolute;
-    top: calc(100% / 3 *8);
+    top: calc(100% / 3 *9);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -2160,7 +1975,7 @@ paper-tab {
   }
   .mini_hero_16 {
     position: absolute;
-    top: calc(100% / 3 * 8);
+    top: calc(100% / 3 * 9);
     left: calc(100% / 4  );
     width: calc(100% / 4);
     height: calc(100% / 3);
@@ -2270,13 +2085,30 @@ paper-tab {
     height: 250px;
     transition: 0.7s;
   }
+  #main_toolbar {
+    background-color: #00bcd4;
+    height: 50vh;
+  }
+  #post_title_input {
+    font-size: 20px;
+    width: 67%;
+    transition: 0.7s;
+  }
+  #post_title_input_invis {
+    display: none;
+  }
+  .redactor_field {
+    max-width: 80%;
+    margin: auto;
+    transition:0.7s;
+  }
   .hero {
     width: calc(100% / 2);
-    height: calc(100% / 3 * 3);
+    height: calc(100%);
     float: left;
     position: absolute;
     left: 0;
-    top: 0;
+    top: calc(100%/2);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -2287,7 +2119,7 @@ paper-tab {
     float: left;
     position: absolute;
     left: 0;
-    top: calc(100%/ 2 * 5);
+    top: calc(100%/ 2 * 6);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -2298,7 +2130,7 @@ paper-tab {
     float: left;
     position: absolute;
     right: 0;
-    top: calc(100%/ 2 * 2);
+    top: calc(100%/ 2 * 3);
     display: block;
     vertical-align: top;
     transition:0.4s;
@@ -2309,14 +2141,14 @@ paper-tab {
     float: left;
     position: absolute;
     right: 0;
-    top: calc(100%/ 2 * 7);
+    top: calc(100%/ 2 * 8);
     display: block;
     vertical-align: top;
     transition:0.4s;
   }
   .mini_hero {
     position: absolute;
-    top: 0;
+    top: calc(100%/2);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2328,7 +2160,7 @@ paper-tab {
   }
   .mini_hero_2 {
     position: absolute;
-    top: 0;
+    top: calc(100%/2);
     right: 0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2340,7 +2172,7 @@ paper-tab {
   }
   .mini_hero_3 {
     position: absolute;
-    top: calc(100% / 2 * 2);
+    top: calc(100% / 2 * 3);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2352,7 +2184,7 @@ paper-tab {
   }
   .mini_hero_4 {
     position: absolute;
-    top: calc(100% / 2 * 2);
+    top: calc(100% / 2 * 3);
     left: calc(100% / 4);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2364,7 +2196,7 @@ paper-tab {
   }
   .mini_hero_5 {
     position: absolute;
-    top: calc(100% / 2 * 3);
+    top: calc(100% / 2 * 4);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2376,7 +2208,7 @@ paper-tab {
   }
   .mini_hero_6 {
     position: absolute;
-    top: calc(100% / 2 * 3);
+    top: calc(100% / 2 * 4);
     left: calc(100% / 4);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2388,7 +2220,7 @@ paper-tab {
   }
   .mini_hero_7 {
     position: absolute;
-    top: calc(100% / 2 * 4);
+    top: calc(100% / 2 * 5);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2400,7 +2232,7 @@ paper-tab {
   }
   .mini_hero_8 {
     position: absolute;
-    top: calc(100% / 2 * 4);
+    top: calc(100% / 2 * 5);
     right:0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2412,7 +2244,7 @@ paper-tab {
   }
   .mini_hero_9 {
     position: absolute;
-    top: calc(100% / 2 * 5);
+    top: calc(100% / 2 * 6);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2424,7 +2256,7 @@ paper-tab {
   }
   .mini_hero_10 {
     position: absolute;
-    top: calc(100% / 2 * 5);
+    top: calc(100% / 2 * 6);
     right:0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2436,7 +2268,7 @@ paper-tab {
   }
   .mini_hero_11 {
     position: absolute;
-    top: calc(100% / 2 * 6);
+    top: calc(100% / 2 * 7);
     left: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2448,7 +2280,7 @@ paper-tab {
   }
   .mini_hero_12 {
     position: absolute;
-    top: calc(100% / 2 * 6);
+    top: calc(100% / 2 * 7);
     right:0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2460,7 +2292,7 @@ paper-tab {
   }
   .mini_hero_13 {
     position: absolute;
-    top: calc(100% / 2 * 7);
+    top: calc(100% / 2 * 8);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2472,7 +2304,7 @@ paper-tab {
   }
   .mini_hero_14 {
     position: absolute;
-    top: calc(100% / 2 * 7);
+    top: calc(100% / 2 * 8);
     right: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2484,7 +2316,7 @@ paper-tab {
   }
   .mini_hero_15 {
     position: absolute;
-    top: calc(100% / 2 * 8);
+    top: calc(100% / 2 * 9);
     left: 0;
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2496,7 +2328,7 @@ paper-tab {
   }
   .mini_hero_16 {
     position: absolute;
-    top: calc(100% / 2 * 8);
+    top: calc(100% / 2 * 9);
     right: calc(100% / 2);
     width: calc(100% / 4);
     height: calc(100% / 2);
@@ -2514,7 +2346,7 @@ paper-tab {
     background-repeat: no-repeat;
     position: absolute;
     display: block;
-    top: calc(100% / 2);
+    top: calc(100% / 2 *2);
     right: 0;
     transition:0.4s;
   }
@@ -2526,7 +2358,7 @@ paper-tab {
     background-repeat: no-repeat;
     position: absolute;
     display: block;
-    top: calc(100% / 2 * 4);
+    top: calc(100% / 2 * 5);
     left: 0;
     transition:0.4s;
   }
@@ -2632,78 +2464,32 @@ paper-tab {
     height: 600px;
     transition: 0.7s;
   }
-  .new_post_form_text {
-    font: 15px Arial;
-    display: block;
-    border: 1px solid #d9d9d9;
-    text-decoration: none; 
-    border-spacing: 2px;
-    padding: 7px;
-    width: 35em;
-    margin: auto;
-    transition:0.7s;
+  #main_toolbar {
+    background-color: #00bcd4;
+    height: 33vh;
   }
-  .new_post_form_text:hover {
-    display: block;
-    border-color: gray;
-    text-decoration: none; 
+  #post_title_input_invis, #post_author_input_invis {
+    display: none;
   }
-  .new_post_form_text:focus, .new_post_form_text:active {
-    display: block;
-    border-color: #4d90fe;
-    text-decoration: none; 
+  #post_title_input {
+    font-size: 20px;
+    width: 25em;
+    transition: 0.7s;
   }
   #new_edit_post_title {
     text-align: center;
     margin: 25px;
     margin-bottom: 50px;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.7s;
   }
   #new_edit_post {
     position: relative;
   }
-  .new_post_form_file {
-    padding: 8px 12px;
-  }
-  .image_field {
-    text-align: center;
-  }
-  .create_post_button {
-    background-color: #f6f6f6;
-    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
-    border: 1px solid #dcdcdc;
-    border-color: rgba(0,0,0,.1);
-    color: #444 !important;
-    font-size: 13.5px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    cursor: default !important;
-    display: block;
-    font-weight: bold;
-    height: 35px;
-    line-height: 35px;
-    min-width: 60px;
-    padding: 0 8px;
-    text-align: center;
-    text-decoration: none !important;
-  }
-  .create_post_button:hover {
-    background-color: #f9f9f9;
-    border-color: #c6c6c6;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    color: #222 !important;
-  }
-  .create_post_button:active {
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-  }
-  #create_post_button {
-    width: 79px;
-    margin-left: auto;
-    margin-right: auto;
-  }
   .redactor_field {
-    max-width: 1000px;
+    width: 70%;
     margin: auto;
     transition:0.7s;
   }
@@ -2907,7 +2693,7 @@ paper-tab {
     position: absolute;
     display: block;
     vertical-align: top;
-    top: 0;
+    top: calc(100%/3);
     left: 0;
     transition:0.4s;
   }
@@ -2918,7 +2704,7 @@ paper-tab {
     position: absolute;
     display: block;
     vertical-align: top;
-    top: calc(100% / 3 * 1);
+    top: calc(100% / 3 * 2);
     left: calc(100% / 3);
     transition:0.4s;
   }
@@ -2929,7 +2715,7 @@ paper-tab {
     position: absolute;
     display: block;
     vertical-align: top;
-    top: calc(100% / 3 * 3);
+    top: calc(100% / 3 * 4);
     right: 0;
     transition:0.4s;
   }
@@ -2940,13 +2726,13 @@ paper-tab {
     position: absolute;
     display: block;
     vertical-align: top;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     left: calc(100% / 3);
     transition:0.4s;
   }
   .mini_hero {
     position: absolute;
-    top: 0;
+    top: calc(100%/3);
     left: calc(100% / 6 * 2);
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -2958,7 +2744,7 @@ paper-tab {
   }
   .mini_hero_2 {
     position: absolute;
-    top: 0;
+    top: calc(100%/3);
     left: calc(100% / 6 * 3);
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -2970,7 +2756,7 @@ paper-tab {
   }
   .mini_hero_3 {
     position: absolute;
-    top: calc(100% / 3 * 1);
+    top: calc(100% / 3 * 2);
     right: calc(100% / 6 );
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -2982,7 +2768,7 @@ paper-tab {
   }
   .mini_hero_4 {
     position: absolute;
-    top: calc(100% / 3 * 1);
+    top: calc(100% / 3 * 2);
     right: 0;
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -2994,7 +2780,7 @@ paper-tab {
   }
   .mini_hero_5 {
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     right: calc(100% / 6 );
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -3006,7 +2792,7 @@ paper-tab {
   }
   .mini_hero_8 {
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     left: 0;
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -3019,7 +2805,7 @@ paper-tab {
   .long_hero {
     width: calc(100% / 3);
     height: calc(100% / 3);
-    top: 0;
+    top: calc(100%/3);
     left: calc(100% / 6 * 4);
     float: left;
     background-size: cover;
@@ -3036,13 +2822,13 @@ paper-tab {
     background-repeat: no-repeat;
     position: absolute;
     left: 0;
-    top: calc(100% / 3 * 3);
+    top: calc(100% / 3 * 4);
     display: block;
     transition:0.4s;
   }
   .mini_hero_6 {
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     right: 0;
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -3054,7 +2840,7 @@ paper-tab {
   }
   .mini_hero_7 {
     position: absolute;
-    top: calc(100% / 3 * 2);
+    top: calc(100% / 3 * 3);
     left: calc(100% / 6);
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -3066,7 +2852,7 @@ paper-tab {
   }
   .mini_hero_9 {
     position: absolute;
-    top: calc(100% / 3 * 3);
+    top: calc(100% / 3 * 4);
     left: calc(100% / 6 * 2);
     background-repeat: no-repeat;
     width: calc(100% / 6);
@@ -3079,7 +2865,7 @@ paper-tab {
   }
   .mini_hero_10 {
     position: absolute;
-    top: calc(100% / 3 * 3);
+    top: calc(100% / 3 * 4);
     left: calc(100% / 6 * 3);
     background-repeat: no-repeat;
     width: calc(100% / 6);
@@ -3092,7 +2878,7 @@ paper-tab {
   }
   .mini_hero_11 {
     position: absolute;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     left: 0;
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -3104,7 +2890,7 @@ paper-tab {
   }
   .mini_hero_12 {
     position: absolute;
-    top: calc(100% / 3 * 4);
+    top: calc(100% / 3 * 5);
     left: calc(100% / 6);
     background-repeat: no-repeat;
     width: calc(100% / 6);
@@ -3117,7 +2903,7 @@ paper-tab {
   }
   .mini_hero_13 {
     position: absolute;
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     left: 0;
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -3129,7 +2915,7 @@ paper-tab {
   }
   .mini_hero_14 {
     position: absolute;
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     left: calc(100% / 6);
     background-repeat: no-repeat;
     width: calc(100% / 6);
@@ -3142,7 +2928,7 @@ paper-tab {
   }
   .mini_hero_15 {
     position: absolute;
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     left: calc(100% / 6 * 4);
     width: calc(100% / 6);
     height: calc(100% / 3);
@@ -3154,7 +2940,7 @@ paper-tab {
   }
   .mini_hero_16 {
     position: absolute;
-    top: calc(100% / 3 * 5);
+    top: calc(100% / 3 * 6);
     right:0;
     background-repeat: no-repeat;
     width: calc(100% / 6);

@@ -1,0 +1,3 @@
+$('body').append("<paper-toast id=\"toast1\" class=\"capsule\" text=\"<%= @post.title %> activated\" style=\"padding-right: 60px;\" duration=\"10000\" opened responsiveWidth=\"300px\"></paper-toast>");
+var target_row = '#inactive_row_' + <%= @post.id.to_s %>;
+$(target_row).fadeOut(700);

@@ -1,4 +1,7 @@
 TheByte::Application.routes.draw do
+  resources :password_resets
+  resources :inactive_posts
+
   controller :sessions do
     get 'login'     => :new
     post 'login'    => :create 

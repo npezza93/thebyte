@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720231246) do
+ActiveRecord::Schema.define(version: 20140726170117) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20140720231246) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "image"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

@@ -1,0 +1,32 @@
+<% content_for :head do %>
+  <script src="../../bower_components/platform/platform.js"></script>
+  <link rel="import" href="../../bower_components/core-elements/core-elements.html">
+<% end %>
+
+<h1 layout horizontal flex center-justified id="reset_header">Password Reset</h1>
+
+<%= form_for(@user, :url=>password_reset_path(params[:id])) do |f| %>
+  <div layout horizontal flex center-justified>
+  	<%= f.password_field :password, id: "reset_field", placeholder: "Password" %>
+  </div>
+
+  <div layout horizontal flex center-justified>
+  	<%= f.password_field :password_confirmation, id: "reset_field", placeholder: "Password Confirmation" %>
+  </div>
+  
+  <div layout horizontal flex center-justified>
+    <%= f.submit "RESET PASSWORD", id: "submit_reset" %>
+  </div>
+
+  <div  layout horizontal flex center-justified>
+  <% if @user.errors.any? %>
+    <div id="reset_errors" class="animated fadeInDown">
+     <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+<% end %>

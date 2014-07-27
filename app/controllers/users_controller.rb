@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new(reg_user_params_create)
     
     respond_to do |format|
       if @user.save
@@ -49,14 +49,27 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to posts_path, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-        format.js {}
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if @user.administrator
+      respond_to do |format|
+        if @user.update(user_params)
+          format.html { redirect_to posts_path, notice: 'User was successfully updated.' }
+          format.json { head :no_content }
+          format.js {}
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else 
+      respond_to do |format|
+        if @user.update(reg_user_params)
+          format.html { redirect_to posts_path, notice: 'User was successfully updated.' }
+          format.json { head :no_content }
+          format.js {}
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -80,6 +93,15 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation, :administrator, :email, :image)
+    end
+
+    # since my trust in humanity is exceedingly low
+    def reg_user_params
+      params.require(:user).permit(:password, :password_confirmation, :image)
+    end
+
+    def reg_user_params_create
+      params.require(:user).permit(:username, :password, :password_confirmation, :email, :image)
     end
 
     def admin_check

@@ -11,29 +11,37 @@
     </div>
   <% end %>
 
-    <!-- <input class="new_post_form_text" id="post_title" name="post[title]" placeholder="Title..." type="text"> -->
-    <!-- <paper-input label="title" floatingLabel id="post_title" name="post[title]" type="text"></paper-input> -->
-  <div class="field">
-    <%= f.text_field :title, :class => "new_post_form_text", :placeholder => "Title..." %>
+  <%= f.text_field :title, id: "post_title_input_invis" %>
+  <div layout horizontal flex center-justified><paper-input floatingLabel label="Title" id="post_title_input"></paper-input></div>
+
+  <div layout horizontal flex center-justified>
+    <%= f.file_field :image, id: "post_hero_input" %>
   </div>
-  <div class="field">
-    <%= f.text_field :author, :class => "new_post_form_text", :placeholder => "Author..." %>
-  </div>
-  <div class="field">
-    <div class="image_field">
-    <%= f.file_field :image, :class => "new_post_form_file" %>
-    </div>
-  </div>
-  <div class="field">
-    <%= f.label :status, 'Active: ' %>
-    <%= f.check_box :status, :class => "new_post_form_text" %>
-  </div>
+
   <div class="field">
     <div class="redactor_field">
     <%= f.text_area :content, :class => "redactor", :rows => 40, :cols => 120 %>
     </div>
   </div>
-  <div class="actions">
-    <%= f.submit 'Submit', :class => "create_post_button", :id => "create_post_button" %>
+
+  <div layout horizontal flex center-justified>
+    <%= f.submit 'Submit', id: "create_post_button_invis" %>
+    <paper-button label="submit" id="create_post_button" raisedButton></paper-button>
   </div>
 <% end %>
+
+
+<script>
+$('#post_title_input').on('change', function() {
+  document.getElementById('post_title_input_invis').value = document.getElementById('post_title_input').value;
+});
+
+$('#create_post_button').on('click', function() {
+  document.getElementById('create_post_button_invis').click();
+});
+
+$('#upload_hero_post_button').on('click', function() {
+  document.getElementById('post_hero_input_invis').click();
+});
+
+</script>

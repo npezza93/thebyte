@@ -31,7 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }
 
 :host(.tall) {
-  height: 192px;
+  height: 33%;
 }
 
 .toolbar-tools {

@@ -10,11 +10,13 @@
   <core-scroll-header-panel condenses noReveal>
 
     <core-toolbar>
-      <paper-icon-button icon="arrow-back" center-justified center size="27" onclick="goBack()"></paper-icon-button>
+      <paper-icon-button icon="arrow-back" center-justified center id="show_post_back" size="27"></paper-icon-button>
       <div flex></div>
       <% if User.find_by_id(session[:user_id]) != nil %>
         <% if User.find_by_id(session[:user_id]).administrator %>
-          <paper-icon-button icon="create" center-justified center size="27" onclick="editPost()"></paper-icon-button>
+          <paper-icon-button icon="create" center-justified center size="27" id="show_post_edit"></paper-icon-button>
+          <paper-icon-button icon="clear" center-justified center size="27" id="show_post_delete"></paper-icon-button>
+          <%= link_to 'Destroy', @post, method: :delete, id: "delete_post_invis", data: { confirm: 'Are you sure?' } %>
         <% end %>
       <% end %>
         <div flex class="bottom" start-justified layout vertical id="the_title" self-end>
@@ -53,19 +55,22 @@
 
     });  
 
-    function goBack() {
-        window.open("<%= posts_path %>", "_self");
-    }
-
-    function editPost() {
-      window.open("<%= edit_post_path(@post) %>", "_self");
-    }
 
     function deletePost() {
       if(confirm('Are you sure?')) {
         window.open("<%= posts_path %>", "_self");
       }
     }
+
+$('#show_post_edit').on('click', function() {
+  document.location='<%= edit_post_path(@post) %>';
+});
+$('#show_post_back').on('click', function() {
+  document.location='<%= posts_path %>';
+});
+$('#show_post_delete').on('click', function() {
+  $('#delete_post_invis').click();
+});
 </script>
 <script>
 

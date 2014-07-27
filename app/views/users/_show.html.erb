@@ -21,10 +21,11 @@
 <div id="join_date">Joined on: <%=  User.find_by_id(session[:user_id]).created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e, %Y") %></div>
 
 <% if User.find_by_id(session[:user_id]).administrator %>
-	<div id="manage_users_link" onclick="document.location='<%= users_path%>'" layout flex>Manage Users</div>
-	<paper-button layout flex horizontal center-justified end id="edit_user_button" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'">Edit</paper-button>
+<span class="log_out_in" layout horizontal flex end-justified center>
+	<p class="manage_users_posts_link" id="manage_button_1" onclick="document.location='<%= users_path%>'" layout flex>Manage Users</p>/<p id="manage_button_2" class="manage_users_posts_link" onclick="document.location='<%= inactive_posts_path%>'" layout flex>Manage Posts</p></span>
+	<paper-button layout flex horizontal center-justified id="edit_user_button" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'">Edit</paper-button>
 <% else %>
-	<paper-button layout flex horizontal center-justified end id="edit_user_button" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'" label="change Password"></paper-button>
+	<paper-button layout flex horizontal center-justified id="edit_user_button2" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'" label="change Password"></paper-button>
 <% end %>
 
 	<script>

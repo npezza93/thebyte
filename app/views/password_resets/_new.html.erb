@@ -1,0 +1,8 @@
+<h3 id="forgot_header">Forgot password?</h3>
+<p>We'll email you a reset link.</p>
+
+<%= form_tag(password_resets_path, remote: true) do %>
+	<%= text_field_tag :email, params[:email], id: "email_field" , placeholder: "Email Address" %>
+
+	<%= submit_tag "RESET", id: "submit_reset" %>
+<% end %>

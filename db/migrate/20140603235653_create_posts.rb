@@ -5,7 +5,6 @@ class CreatePosts < ActiveRecord::Migration
       t.string :subtitle
       t.string :author
       t.string :image
-      t.string :altattr
       t.text :content
 
       t.timestamps

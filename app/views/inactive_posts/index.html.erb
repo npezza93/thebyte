@@ -1,0 +1,54 @@
+  <paper-icon-button icon="arrow-back" center-justified center size="27" id="inactive_back"></paper-icon-button>
+
+
+<h1 layout horizontal flex center-justified id="inactive_title">Inactive Posts</h1>
+
+<table layout horizontal flex center-justified>
+<tr id="inactive_headers"><th>Title</th><th>Edit</th><th>Delete</th><th>Activate</th></tr>
+
+    <% @posts.each do |post| %>
+      <tr id="<%= 'inactive_row_' +post.id.to_s %>">
+        <td><%= link_to  post.title, post %></td>
+
+        <td><paper-icon-button icon="create" center-justified center size="27" onclick="document.location='<%= edit_post_path(post) %>'"></paper-icon-button></td>
+        
+        <td>
+          <%= link_to 'Destroy', post, method: :delete, class: "delete_post_inactive", id: "delete_post_"+ post.id.to_s, data: { confirm: 'Are you sure?' } %>
+          <paper-icon-button icon="delete" center-justified center size="27" onclick="clickDelete(<%= post.id %>)"\></paper-icon-button>
+      	</td>
+
+      	<td>
+	      	<%= form_for(post, remote: true) do |f| %>
+	      		<paper-toggle-button id="<%= 'status_toggle_' +post.id.to_s%>" onchange="activate(<%=post.id %>)"></paper-toggle-button>
+				<%= f.check_box :status, class: "status_toggle_invis_class", id: 'status_toggle_invis' + post.id.to_s %>
+
+				<%= f.submit 'Submit', class: "status_submit_tags", id: 'status_submit' + post.id.to_s %>
+			<% end %>
+      	</td>
+      </tr>
+    <% end %>
+</table>
+
+
+<div id="post_pagination">
+  <%= will_paginate @posts, page_links: false  %>
+</div>
+
+
+<script>
+function clickDelete(post_id) {
+  var post_tag_id = "#delete_post_" + post_id;
+  $(post_tag_id).click();
+}
+
+function activate(post_id) {
+	var post_tag_id = "status_toggle_invis" + post_id;
+	var submit_id = "#status_submit" + post_id;
+	document.getElementById(post_tag_id).checked=!(document.getElementById(post_tag_id).checked)
+	$(submit_id).click();
+}
+
+$('#inactive_back').on('click', function() {
+  document.location='<%= posts_path %>';
+});
+</script>
