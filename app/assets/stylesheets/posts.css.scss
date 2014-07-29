@@ -279,7 +279,6 @@ paper-tab {
 @media (max-width: 600px) {
   core-toolbar {
     height: 200px;
-    transition: 0.7s;
   }
   #main_toolbar {
     background-color: #00bcd4;
@@ -788,6 +787,9 @@ paper-tab {
 
 
 @media (max-width: 600px) and (orientation: landscape) {
+  core-toolbar {
+    height: 200px;
+  }
   #main_toolbar {
     background-color: #00bcd4;
     height: 100px;
@@ -1090,8 +1092,7 @@ paper-tab {
 
 @media (min-width: 601px) and (max-width: 900px) {
   core-toolbar {
-    height: 300px;
-    transition: 0.7s;
+    height: 200px;
   }
   #main_toolbar {
     background-color: #00bcd4;
@@ -1618,7 +1619,6 @@ paper-tab {
 @media (min-width: 901px) and (max-width: 1300px) and (min-height: 501px) {
   core-toolbar {
     height: 400px;
-    transition: 0.7s;
   }
   #post_title_input {
     font-size: 20px;
@@ -2084,8 +2084,7 @@ paper-tab {
 
 @media (min-width: 901px) and (max-width: 1300px) and (max-height: 500px) {
   core-toolbar {
-    height: 250px;
-    transition: 0.7s;
+    height: 400px;
   }
   #main_toolbar {
     background-color: #00bcd4;
@@ -2463,8 +2462,7 @@ paper-tab {
 
 @media (min-width: 1301px) {
   core-toolbar {
-    height: 600px;
-    transition: 0.7s;
+    height: 400px;
   }
   #main_toolbar {
     background-color: #00bcd4;

@@ -54,10 +54,15 @@ display: block;
 #submit_comment_invis {
 	display: none;
 }
+.comment {
+    img {
+        max-width:100%;
+    }
+}
 
 @media (min-width: 1301px) {
 	#comments {
-		width: 60%;
+		width: 50%;
 		margin: auto;
 		transition: 0.4s;
 	}
@@ -66,7 +71,7 @@ display: block;
 		transition: 0.4s;		
 	}
 	#redactor_comment_container {
-		width: 80%;
+		width: 70%;
 		transition: 0.6s;
 		margin: auto;
 		margin-top: 14px;
@@ -79,7 +84,7 @@ display: block;
 }
 @media (min-width: 901px) and (max-width: 1300px)  {
 	#comments {
-		width: 80%;
+		width: 70%;
 		margin: auto;
 		transition: 0.4s;
 	}
@@ -88,7 +93,7 @@ display: block;
 		transition: 0.4s;
 	}
 	#redactor_comment_container {
-		width: 80%;
+		width: 70%;
 		transition: 0.6s;
 		margin: auto;
 		margin-top: 14px;
