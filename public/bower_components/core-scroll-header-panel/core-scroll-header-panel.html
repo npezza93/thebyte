@@ -185,7 +185,7 @@ or class `content` to delineate the content section.
     
     setup: function() {
       var s = this.scroller.style;
-      // s.paddingTop = this.fixed ? null : this.headerHeight + 'px';
+      s.paddingTop = this.fixed ? null : this.headerHeight + 'px';
       s.top = this.fixed ? this.headerHeight + 'px' : null;
       if (this.fixed) {
         this.transformHeader(0);

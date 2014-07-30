@@ -9,12 +9,13 @@
 <div id="contentsd">
 <div end-justified layout horizontal><paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button></div>
     <section id="section" layout vertical>
-      <paper-tabs selected="0" id="paper_tabs" onclick="papertabchange(selected)">
+      <paper-tabs id="paper_tabs">
         <paper-tab id="paper_tab">LOGIN</paper-tab>
         <paper-tab id="paper_tab1">SIGN UP</paper-tab>
       </paper-tabs>
       <section id="section1" flex relative>
-        <core-animated-pages selected="1" id="baluga" transitions="slide-from-right">
+        <core-animated-pages id="baluga" transitions="slide-from-right">
+
           <section id="section2">
             <%= render "sessions/login", :@user => User.new %>
             <div id="forgot_password" layout flex horizontal center-justified onclick="document.getElementById('overlay3').toggle()">Forget?</div>
@@ -100,6 +101,7 @@
 </div>
 
   <core-toolbar id="main_toolbar">
+
 <!--       <pre id="main_logo" class="bottom" style="margin-bottom: 100px;background-color: black;line-height:1;
   padding: none;
   font-size: 2vw;color:#31E722">
@@ -131,14 +133,18 @@ eeeee e   e eeee    eeeee  e    e eeeee eeee
   font-size: 13px;
  }
 </style>
+
+<div id="all_posts">
   <%= render @posts %>
-
-  <div id="posts_pagination" >
-    <%= will_paginate @posts, page_links: false  %>
-  </div>
-
+</div>
+  
+<div id="posts_pagination">
+  <%= will_paginate @posts, page_links: false%>
+</div>
 
 <script>
+console.log($( document ).height());
+console.log($( document ).width());
 function openlog(which) {
 	document.getElementById("overlay").toggle();
 	if (which ==1) {
@@ -149,14 +155,7 @@ function openlog(which) {
 	document.getElementById("paper_tabs").selected =1;
 }
 }
-function papertabchange(selected){
-	var sect = document.getElementById("baluga");
-	var selectedTab = document.getElementById("paper_tabs").selected;
-	sect.selected = selectedTab;
-}
-</script>
 
-<script>
 //profile picture upload handlers
 $('#usernames').on('click', function() {
   document.getElementById('overlay2').toggle();
@@ -166,4 +165,19 @@ $('#logout_button').on('click', function() {
   document.getElementById('logout_button_invis').click();
 });
 
+var paperTabs = document.getElementById('paper_tabs');
+paperTabs.addEventListener('click', function() {
+  var sect = document.getElementById("baluga");
+  var selectedTab = document.getElementById("paper_tabs").selected;
+    console.log(selectedTab);
+  sect.selected = selectedTab;
+});
+
+$('#posts_pagination').css("top", $(document).height());
+var initHeight = ($(document).width()) * .35;
+
+$(window).resize(function() {
+  $('#posts_pagination').css("top", 0);
+  $('#posts_pagination').css("top", $(document).height());
+});
 </script>

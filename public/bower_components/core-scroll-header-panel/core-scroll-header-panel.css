@@ -23,7 +23,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   -moz-box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-top: 500px;
 }
 /*@media (min-width: 1301px) {
   #mainContainer {

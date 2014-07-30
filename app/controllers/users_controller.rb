@@ -49,6 +49,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    # if params[:image[:@tempfile]] == nil
+    #   redirect_to posts_path, notice: 'file'
+    # else 
+    #   redirect_to posts_path, notice: 'no file'
+    # end
     if @user.administrator
       respond_to do |format|
         if @user.update(user_params)

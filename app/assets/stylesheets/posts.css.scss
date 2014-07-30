@@ -28,9 +28,13 @@ div {
   }
 }
 
+#posts_pagination {
+  position: absolute;
+  margin-top: 20px;
+}
 .pagination {
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Verdana', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -270,6 +274,7 @@ paper-tab {
 }
 #create_post_button {
   background: #80deea;
+  margin-bottom: 20px;
 }
 #post_hero_input {
   margin: 14px;
@@ -282,7 +287,7 @@ paper-tab {
   }
   #main_toolbar {
     background-color: #00bcd4;
-    height: 100px;
+    height: 33%;
   }
   #post_title_input {
     font-size: 20px;
@@ -783,6 +788,9 @@ paper-tab {
     bottom:0;
     right: 0;
   }
+  #posts_pagination {
+    left: 31.5%;
+  }
 }
 
 
@@ -1080,13 +1088,7 @@ paper-tab {
     position: relative;
   }
   #posts_pagination {
-      top: calc(100% *21);
-      left: calc(38%);
-      position: absolute;
-      display: block;
-      vertical-align: top;
-      transition:0.4s;
-      margin-top: 40px;
+    left: 39%;
   }
 }
 
@@ -1467,11 +1469,11 @@ paper-tab {
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 33px;
+    font-size: 31px;
     width: 85%;
     transition: 0.7s;
     margin: auto;
-    line-height: 1.2em;
+    line-height: 1em;
     margin-top: 10%;
     text-align: center;
     color: rgb(240,241,225);
@@ -1492,13 +1494,7 @@ paper-tab {
     color: rgb(240,241,225);
   }
   #posts_pagination {
-      top: calc(100%*3.75);
-      left: calc(39%);
-      position: absolute;
-      display: block;
-      vertical-align: top;
-      transition:0.4s;
-      margin-top: 40px;
+    left: 39%;
   }
 }
 
@@ -1613,6 +1609,9 @@ paper-tab {
       transition: 0.7s;
     }
   }
+  #posts_pagination {
+    left: 44%;
+  }
 }
 
 
@@ -1629,7 +1628,7 @@ paper-tab {
     display: none;
   }
   #main_toolbar {
-    background-color: black;
+    background-color: #00bcd4;
     height: 100px;
   }
   .redactor_field {
@@ -2071,15 +2070,6 @@ paper-tab {
     color: rgb(240,241,225);
     transition: 0.7s;
   }
-  #posts_pagination {
-      top: calc(100%*3);
-      left: calc(45%);
-      position: absolute;
-      display: block;
-      vertical-align: top;
-      transition:0.4s;
-      margin-top: 40px;
-  }
 }
 
 @media (min-width: 901px) and (max-width: 1300px) and (max-height: 500px) {
@@ -2447,15 +2437,6 @@ paper-tab {
     text-align: center;
     color: rgb(240,241,225);
     transition: 0.7s;
-  }
-  #posts_pagination {
-      top: calc(100%*4.5);
-      left: calc(45%);
-      position: absolute;
-      display: block;
-      vertical-align: top;
-      transition:0.4s;
-      margin-top: 40px;
   }
 }
 
@@ -3033,12 +3014,6 @@ paper-tab {
     transition: 0.7s;
   }
   #posts_pagination {
-      top: calc(100%*2);
-      left: calc(45%);
-      position: absolute;
-      display: block;
-      vertical-align: top;
-      transition:0.4s;
-      margin-top: 40px;
+    left: 46%;
   }
 }

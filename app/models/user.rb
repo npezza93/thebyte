@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :comments
 	validates :email, presence: true
   	has_secure_password
-  	validates :password, length: { minimum: 6 }
+  	validates :password, length: { minimum: 6 }, if: Proc.new { |a| !(a.password.blank?) }
   	mount_uploader :image, AvatarUploader
 
   	def send_password_reset
