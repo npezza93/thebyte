@@ -24,11 +24,12 @@
       <% end %>
         <div flex class="bottom" start-justified layout vertical id="the_title" self-end>
           <div class="sub">By <%= @post.author %> | <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e at %l:%M%P") %></div>
-          <div class="title" layout vertical flex start-justified><%= @post.title %></div>
+          <div class="title" itemprop="name" layout vertical flex start-justified><%= @post.title %></div>
         </div>
     </core-toolbar>
 
     <div id="show_post_cnt" class="content">
+      <%= render 'share' %>
       <div class="redactor_textt">
         <% if notice %>
           <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>

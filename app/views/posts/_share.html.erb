@@ -1,0 +1,42 @@
+<div class="share-buttons" layout horizontal flex center-justified>
+  <div class="tweet-button">
+    <a href="https://twitter.com/intent/tweet?text=<%= @post.title + " " + request.original_url %>;via=theByte0" data-lang="en" data-url="<%= request.original_url %>" data-counturl="<%= request.original_url %>" class="tweet_text" >Tweet</a>
+  </div>
+
+  <div class="fshare-button">
+  <a href="https://www.facebook.com/sharer.php?u=<%= request.original_url %>" class="facebook_text">Share</a>
+
+  </div>
+
+  <div class="gshare-button">
+    <a href="https://plus.google.com/share?url=<%= request.original_url %>" class="gplus_text">Share</a>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+<script>
+  $(".tweet-button").click(function() {
+    window.open($(this).find("a").attr("href"), '_blank', "height=500,width=550");
+    return false;
+  });
+  $(".gshare-button").click(function() {
+    window.open($(this).find("a").attr("href"), '_blank', "height=500,width=550");
+    return false;
+  });
+  $(".fshare-button").click(function() {
+    window.open($(this).find("a").attr("href"), '_blank', "height=500,width=550");
+    return false;
+  });
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=815274461817311&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
