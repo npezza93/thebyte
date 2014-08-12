@@ -1,183 +1,139 @@
-<% content_for :title, "The Byte" %>
+<% content_for :title, "While True" %>
 
 <% if notice %>
-  <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
+  <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px"></paper-toast>
 <% end %>
 
+<core-animated-pages id="baluga2" selected="0" transitions="cross-fade cross-fade-delayed slide-down tile-cascade hero-transition">
 
+  <section id="page1">
+    <%= image_tag "penrose_icon.png", id: "logo_main", "layout" => "", "horizontal" => "", "center-justified" => "", "cross-fade" => "" %>
+    <p id="connecting" layout horizontal center-justified cross-fade>Connecting...</p>
+    <div class="loader" cross-fade>Loading...</div>
+  </section>  
+
+  <section id="page2" style="display:none;">
 <core-overlay id="overlay" backdrop transition="core-transition-center" style="background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-<div id="contentsd">
-<div end-justified layout horizontal><paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button></div>
+  <div id="contentsd">
+    <div end-justified layout horizontal>
+      <paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button>
+    </div>
+    
     <section id="section" layout vertical>
       <paper-tabs id="paper_tabs">
         <paper-tab id="paper_tab">LOGIN</paper-tab>
         <paper-tab id="paper_tab1">SIGN UP</paper-tab>
       </paper-tabs>
+     
       <section id="section1" flex relative>
         <core-animated-pages id="baluga" transitions="slide-from-right">
-
           <section id="section2">
             <%= render "sessions/login", :@user => User.new %>
-            <div id="forgot_password" layout flex horizontal center-justified onclick="document.getElementById('overlay3').toggle()">Forget?</div>
-                    
-                    <core-overlay id="overlay3" class="forgot_overlay1" backdrop transition="core-transition-top">
-                      <style>
-                        .forgot_overlay1 {
-                          box-sizing: border-box;
-                          -moz-box-sizing: border-box;
-                          font-family: Arial, Helvetica, sans-serif;
-                          font-size: 13px;
-                          -webkit-user-select: none;
-                          -moz-user-select: none;
-                          overflow: hidden;
-                          background: #eceff1;
-                          padding:30px 30px;
-                          outline: 1px solid rgba(0,0,0,0.2);
-                          box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-                        }
-                        #overlay3 {
-                          box-sizing: border-box;
-                          text-align: center;
-                          width: 250px;
-                        }
-                        #email_field {
-                          font-family: 'Roboto', sans-serif;
-                          font-size: 17px;
-                          font-weight: 300;
-                          margin: 0;
-                          padding: 0;
-                          background-color: transparent;
-                          border: none;
-                          outline: none;
-                          margin: 10px;
-                          text-align: center;
-                        }
-                        #submit_reset {
-                          display: inline-block;
-                          position: relative;
-                          border: 0;
-                          background: transparent;
-                          text-align: center;
-                          font: inherit;
-                          text-transform: uppercase;
-                          outline: none;
-                          border-radius: 3px;
-                          cursor: pointer;
-                        }
-                      </style>
-                      <%= render "password_resets/new" %>
-                    </core-overlay>
-
+            <div id="forgot_password" layout flex horizontal center-justified>Forget?</div>
+            <%= render "forgot" %>
           </section>
+          
           <section id="section3">
             <%= render "users/form" %>
           </section>
-          <section id="section4">
-      </section>
         </core-animated-pages>
       </section>
     </section>
-</div>
+  </div>
 </core-overlay>
+
 <%= button_to 'Logout', logout_path, { :id => "logout_button_invis", method: :delete, remote: true, style: "display:none;" } %>
 
 <core-overlay id="overlay2" backdrop transition="core-transition-center" style="background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;overflow: hidden;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-<div id="contentsdf">
-<div end-justified layout horizontal><paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button></div>
-	<div id="user_overlay">
-		<% if (@user = User.find_by_id(session[:user_id])) != nil %>
-	   		<%= render "users/show", :@user =>  User.find_by_id(session[:user_id])%>
-	   	<% end %>
-   	</div>
-</div>
+  <div id="contentsdf">
+    <div end-justified layout horizontal>
+      <paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button>
+    </div>
+  	<div id="user_overlay">
+  		<% if (@user = User.find_by_id(session[:user_id])) != nil %>
+  	   	<%= render "users/show", :@user =>  User.find_by_id(session[:user_id])%>
+  	  <% end %>
+    </div>
+  </div>
 </core-overlay>
 
 <div id="new_post_button_container">
   <% if User.find_by_id(session[:user_id]) != nil %>
     <% if User.find_by_id(session[:user_id]).administrator %>
-       <paper-fab icon="add" onclick="document.location='<%= new_post_path %>'" id="new_post_button"></paper-fab>
+      <paper-fab icon="add" id="new_post_button" cross-fade-delayed></paper-fab>
     <% end %>
   <% end %>
 </div>
 
-  <core-toolbar id="main_toolbar">
 
-<!--       <pre id="main_logo" class="bottom" style="margin-bottom: 100px;background-color: black;line-height:1;
-  padding: none;
-  font-size: 2vw;color:#31E722">
-eeeee e   e eeee    eeeee  e    e eeeee eeee 
-  8   8   8 8       8   8  8    8   8   8    
-  8e  8eee8 8eee    8eee8e 8eeee8   8e  8eee 
-  88  88  8 88      88   8   88     88  88   
-  88  88  8 88ee    88eee8   88     88  88ee</pre> -->
-    <span id="whose_logged_in" layout horizontal flex end-justified>
-      <% if (@user = User.find_by_id(session[:user_id])) != nil %>
-          <div id="post_avatar" style="<% if (User.find_by_id(session[:user_id]).image_url) == nil%>
-            background-image: url('../system/default_pic.png');
-          <% else %>
-            background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');
-          <% end %>">
-          </div>
-          <div id="usernames" layout vertical center-justified><%= User.find_by_id(session[:user_id]).username %></div>
-          <paper-button id="logout_button">Logout</paper-button>
-      <%else%>
-          <% if User.find_by_id(session[:user_id]) == nil %>
-              <paper-button id="login_button" onclick="openlog(1)" style="margin-right:5px;">Login</paper-button><span layout vertical center-justified>/</span> 
-              <paper-button id="signup_button" onclick="openlog(2)" style="margin-left:5px;">signup</paper-button>
+    <div id="new_container">
+      <core-toolbar id="main_toolbar" class="tall" slide-down>
+        <span id="whose_logged_in" layout horizontal flex end-justified cross-fade-delayed>
+          <% if (@user = User.find_by_id(session[:user_id])) != nil %>
+            <div id="post_avatar" style="background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');"></div>
+            <div id="usernames" layout vertical center-justified><%= User.find_by_id(session[:user_id]).username %></div>
+            <paper-button id="logout_button">Logout</paper-button>
+          <%else%>
+            <% if User.find_by_id(session[:user_id]) == nil %>
+              <paper-button id="login_button">Login</paper-button>
+                <span layout vertical center-justified>/</span> 
+              <paper-button id="signup_button">signup</paper-button>
+            <% end %>
           <% end %>
-      <% end %>
-    </span>
-  </core-toolbar>
-<style>
- #logout_button {
-  font-size: 13px;
- }
-</style>
+        </span>
+      </core-toolbar>
 
-<div id="all_posts">
-  <%= render @posts %>
-</div>
+
+      <div id="tile_container" tile-cascade>
+        <%= render @posts %>
+      </div>
+    </div>
+
+  <!--     <div id="posts_pagination">
+        <%= will_paginate @posts, page_links: false%>
+      </div> -->
+  </section>
   
-<div id="posts_pagination">
-  <%= will_paginate @posts, page_links: false%>
-</div>
+  <section id="page3">
+    <div id="actual_post_info" >
+    </div>
+  </section>
+</core-animated-pages>
+
 
 <script>
-console.log($( document ).height());
-console.log($( document ).width());
-function openlog(which) {
-	document.getElementById("overlay").toggle();
-	if (which ==1) {
-	document.getElementById("baluga").selected = 0;
-	document.getElementById("paper_tabs").selected =0;
-} else {
-	document.getElementById("baluga").selected = 1;
-	document.getElementById("paper_tabs").selected =1;
-}
-}
-
-//profile picture upload handlers
-$('#usernames').on('click', function() {
-  document.getElementById('overlay2').toggle();
-});
-
-$('#logout_button').on('click', function() {
-  document.getElementById('logout_button_invis').click();
-});
-
-var paperTabs = document.getElementById('paper_tabs');
-paperTabs.addEventListener('click', function() {
-  var sect = document.getElementById("baluga");
-  var selectedTab = document.getElementById("paper_tabs").selected;
-    console.log(selectedTab);
-  sect.selected = selectedTab;
-});
-
-$('#posts_pagination').css("top", $(document).height());
-var initHeight = ($(document).width()) * .35;
-
-$(window).resize(function() {
-  $('#posts_pagination').css("top", 0);
   $('#posts_pagination').css("top", $(document).height());
+  var initHeight = ($(document).width()) * .35;
+
+  $(window).resize(function() {
+    $('#posts_pagination').css("top", 0);
+    $('#posts_pagination').css("top", $(document).height());
+  });
+
+  $('.post').on('click', function() {
+    var el = document.getElementById(this.id);
+    el.getElementsByTagName('a')[0].click();
+    $('#'+this.id).find('.tint_layer').attr("cross-fade", "");
+    $('#'+this.id).find('#home_post_title').attr("cross-fade-delayed", "");
+    $('#'+this.id).find('#home_post_author').attr("cross-fade-delayed", "");
+  });
+
+  $('.ajax_button_check').on('ajax:complete', function() {
+    setTimeout(function() {
+      document.getElementById('baluga2').selected=2;
+    }, 300);
+  });
+
+$(window).load(function() {
+  setTimeout(function() {
+    $("#page2").css("display", "block");
+    var el =document.getElementById('baluga2');
+    el.selected =1;
+    setTimeout(function() {
+      $('#tile_container').removeAttr("tile-cascade", "");
+      $('#whose_logged_in').removeAttr("cross-fade-delayed", "");
+      $('#main_toolbar').removeAttr("slide-down", "");
+    }, 2000);
+   }, 2000);
 });
 </script>

@@ -10,7 +10,7 @@
 </style>
 
 
-  <core-scroll-header-panel condenses noReveal>
+  <core-scroll-header-panel condenses noReveal scrollAwayTopbar>
 
     <core-toolbar>
       <paper-icon-button icon="arrow-back" center-justified center id="show_post_back" size="27"></paper-icon-button>
@@ -29,7 +29,9 @@
     </core-toolbar>
 
     <div id="show_post_cnt" class="content">
+
       <%= render 'share' %>
+
       <div class="redactor_textt">
         <% if notice %>
           <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
@@ -94,12 +96,7 @@ $('#show_post_edit').on('click', function() {
 $('#show_post_back').on('click', function() {
   document.location='<%= posts_path %>';
 });
-$('#show_post_delete').on('click', function() {
-  $('#delete_post_invis').click();
-});
-$('#submit_comment').on('click', function() {
-  $('#submit_comment_invis').click();
-});
+
 </script>
 <script>
 

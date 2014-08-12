@@ -39,8 +39,8 @@
 
   <% if User.find_by_id(session[:user_id]).administrator %>
     <div class="field" layout flex horizontal center-justified>
-      <%= f.check_box :administrator, style: "display:none", id: "invisible_admin_toggle" %>
-      <paper-toggle-button onchange="document.getElementById('invisible_admin_toggle').checked=!(document.getElementById('invisible_admin_toggle').checked)" id="paper_admin_toggle"></paper-toggle-button>
+      <%= f.check_box :administrator, id: "invisible_admin_toggle" %>
+      <paper-toggle-button checked id="paper_admin_toggle" ></paper-toggle-button>
     </div>
   <% end %>
 
@@ -60,9 +60,3 @@
   <div id="ajax_errors"></div>
 <% end %>
 
-<script>
-var isadmin = document.getElementById('invisible_admin_toggle').checked;
-if (isadmin) {
-  document.getElementById('paper_admin_toggle').checked = true;
-}
-</script>

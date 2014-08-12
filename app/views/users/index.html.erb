@@ -1,11 +1,13 @@
 <h1 layout horizontal flex center-justified id="user_title">Accounts</h1>
 
 <table layout horizontal flex center-justified>
-<tr id="user_headers"><th>Username</th><th>Administrator</th><th>Edit</th><th>Delete</th></tr>
+  <tr id="user_headers"><th>Username</th><th>Administrator</th><th>Edit</th><th>Delete</th></tr>
 
     <% @users.each do |user| %>
       <tr>
-        <td id="username_col"><%= link_to  user.username, user, class: "usernames-table" %></td>
+        <td id="username_col">
+          <%= link_to  user.username, user, class: "usernames-table" %>
+        </td>
 
         <td layout horizontal flex center-justified>
             <% if user.administrator %>
@@ -15,11 +17,14 @@
             <% end %>
         </td>
 
-        <td><paper-icon-button icon="create" center-justified center size="27" onclick="document.location='<%= edit_user_path(user) %>'"></paper-icon-button></td>
-        <td>
+        <td id="edit_user_cell">
+          <paper-icon-button icon="create" center-justified center size="27" onclick="document.location='<%= edit_user_path(user) %>'"></paper-icon-button>
+        </td>
+        
+        <td id="delete_user_cell">
           <%= link_to 'Destroy', user, method: :delete, class: "delete_user_buttons", id: "delete_user_"+ user.id.to_s, data: { confirm: 'Are you sure?' } %>
-          <paper-icon-button icon="delete" center-justified center size="27" onclick="clickDelete(<%= user.id %>)"\></paper-icon-button>
-      </td>
+          <paper-icon-button icon="delete" center-justified center size="27" onclick="clickDelete(<%= user.id %>)"></paper-icon-button>
+        </td>
       </tr>
     <% end %>
 </table>
@@ -27,7 +32,7 @@
 <br>
 
 <div id="new_user_button_container">
-  <paper-fab icon="add" onclick="document.location='<%= new_user_path %>'" id="new_user_button"></paper-fab>
+  <paper-fab icon="add" id="new_user_button"></paper-fab>
 </div>
 
 <div id="user_pagination">

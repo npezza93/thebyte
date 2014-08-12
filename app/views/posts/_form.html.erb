@@ -12,7 +12,10 @@
   <% end %>
 
   <%= f.text_field :title, id: "post_title_input_invis" %>
-  <div layout horizontal flex center-justified><paper-input floatingLabel label="Title" id="post_title_input"></paper-input></div>
+  
+  <div layout horizontal flex center-justified>
+    <paper-input floatingLabel label="Title" id="post_title_input"></paper-input>
+  </div>
 
   <div layout horizontal flex center-justified>
     <%= f.file_field :image, id: "post_hero_input" %>
@@ -20,7 +23,7 @@
 
   <div class="field">
     <div class="redactor_field">
-    <%= f.text_area :content, :class => "redactor", :rows => 40, :cols => 120 %>
+      <%= f.text_area :content, :class => "redactor", :rows => 40, :cols => 120 %>
     </div>
   </div>
 
@@ -29,19 +32,3 @@
     <paper-button label="submit" id="create_post_button" raisedButton></paper-button>
   </div>
 <% end %>
-
-
-<script>
-$('#post_title_input').on('change', function() {
-  document.getElementById('post_title_input_invis').value = document.getElementById('post_title_input').value;
-});
-
-$('#create_post_button').on('click', function() {
-  document.getElementById('create_post_button_invis').click();
-});
-
-$('#upload_hero_post_button').on('click', function() {
-  document.getElementById('post_hero_input_invis').click();
-});
-
-</script>

@@ -25,8 +25,6 @@
 .captionjs.animated figcaption,
 .captionjs.hide figcaption {
 	position: absolute;
-	margin-bottom: 59px;
-	bottom: -59px;
 	border-top: 1px solid rgba(255,255,255, 0.3);
 	background-color: rgba(0,0,0,0.75);
 	color: #fff;
@@ -34,7 +32,6 @@
 	box-sizing: border-box;
 	display: block;
 	font-size: 13px;
-	/*line-height: 1.5;*/
 	padding: 10px 15px;
 	margin:0 0 20px;
 	text-align: right;

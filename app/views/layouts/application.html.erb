@@ -2,10 +2,11 @@
 <html>
 <head>
   <title><%= yield(:title) %></title>
+  <link rel="shortcut icon" href="<%= asset_path 'penrose_icon.png' %>">
   <script src="../bower_components/platform/platform.js"></script>
   <%= content_for?(:head) ? yield(:head) : '' %>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application"%>
+  <%= stylesheet_link_tag    "application", media: "all"%>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="mobile-web-app-capable" content="yes">
@@ -30,23 +31,24 @@
   <link rel="import" href="../bower_components/core-overlay/core-overlay.html">
   <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
   <link rel="import" href="../bower_components/core-animated-pages/transitions/slide-from-right.html">
-	<!-- <link rel="import" href="../bower_components/paper-input/paper-input.html"> -->
+  <link rel="import" href="../bower_components/core-animated-pages/transitions/tile-cascade.html">
+  <link rel="import" href="../bower_components/core-animated-pages/transitions/list-cascade.html">
+  <link rel="import" href="../bower_components/core-animated-pages/transitions/cascade-transition.html">
+  <link rel="import" href="../bower_components/core-animated-pages/transitions/cross-fade.html">
+  <link rel="import" href="../bower_components/core-animated-pages/transitions/hero-transition.html">
+  <link rel="import" href="../bower_components/core-animated-pages/transitions/slide-down.html">
+  <link rel="import" href="../bower_components/core-animated-pages/transitions/scale-up.html">
 	<link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
   <link rel="import" href="../bower_components/paper-input/paper-input.html">
   <link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
   <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
   <link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
+  <link rel="import" href="../bower_components/core-selector/core-selector.html">
 
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-  <meta property="twitter:card" content="summary" />
-<meta property="twitter:site" content="@flickr" />
-<meta property="twitter:title" content="Small Island Developing States Photo Submission" />
-<meta property="twitter:description" content="View the album on Flickr." />
-<meta property="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
-<meta property="twitter:url" content="https://www.flickr.com/photos/unicphoto/sets/72157645001703785/" />
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 
 </head>
-<body unresolved>
+<body unresolve>
 
 <%= yield %>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -59,8 +61,30 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=815274461817311&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
-
+<% if request.env['HTTP_USER_AGENT'].downcase.match(/android|iphone|ipad/) %>
+  <script>
+  $(window).load(function() {
+      $('img.caption').captionjs2();
+  });
+  </script>
+<% else %>
+  <script>
+  $(window).load(function() {
+      $('img.caption').captionjs();
+  });
+  </script>
+<% end %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=815274461817311&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 </body>
 </html>

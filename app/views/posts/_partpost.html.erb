@@ -1,0 +1,111 @@
+<style shim-shadowdom>    
+  #post_core_toolbar {
+    background-image: url('<%= @post.image_url %>');
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left:0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  paper-icon-button {
+    color: white;
+  }
+</style>
+
+
+  <!-- <core-scroll-header-panel condenses noReveal> -->
+<div id="part_post_container">
+    <core-toolbar id="post_core_toolbar" hero-id="punch-<%= @post.id %>" hero>
+      <paper-icon-button icon="arrow-back" center-justified center id="home_page_back" size="27" cross-fade-delayed></paper-icon-button>
+      <div flex></div>
+      <% if User.find_by_id(session[:user_id]) != nil %>
+        <% if User.find_by_id(session[:user_id]).administrator %>
+          <paper-icon-button icon="create" center-justified center size="27" id="show_post_edit"></paper-icon-button>
+          <paper-icon-button icon="clear" center-justified center size="27" id="show_post_delete"></paper-icon-button>
+          <%= link_to 'Destroy', @post, method: :delete, id: "delete_post_invis", data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      <% end %>
+        <div flex class="bottom" start-justified layout vertical id="the_title" cross-fade-delayed>
+          <div class="sub">By <%= @post.author %> | <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e at %l:%M%P") %></div>
+          <div class="title" layout vertical flex start-justified><%= @post.title %></div>
+        </div>
+    </core-toolbar>
+
+    <div id="show_post_cnt" class="content">
+
+      <%= render 'share' %>
+
+      <div class="redactor_textt">
+        <% if notice %>
+          <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
+        <% end %>
+        <%= raw @post.content %>
+      </div>
+              <!-- Comment Section -->
+          <h2 id="number_of_comments">There are <%= @post.comments.count %> comments</h2>
+          
+          <div id="comments">
+            <div id="inner_comments">
+              <%= render @post.comments %>
+            </div>
+          
+          <% if User.find_by_id(session[:user_id]) != nil %>
+            <div id="comment_form_container">
+            <%= form_for [@post, Comment.new], remote: true do |f| %>
+              <%= f.label :body, "POST A NEW COMMENT", id: "new_comment_label" %><br/>
+              <div id="redactor_comment_container">
+                <%= f.text_area :body, class: "redactor_comments" %>
+              </div>
+              <p layout horizontal flex center-justified><paper-button raisedButton label="Comment" id="submit_comment"></paper-button><%= f.submit "Post", id: "submit_comment_invis" %></p>
+            <% end %>
+            </div>
+          <% else %>
+            <p id="new_comment_label">Log in or Sign up to add your comment.</p>
+          <% end %>
+          </div>
+    </div>
+
+  <!-- </core-scroll-header-panel> -->
+</div>
+<script>
+function deletePost() {
+  if(confirm('Are you sure?')) {
+    window.open("<%= posts_path %>", "_self");
+  }
+}
+
+$('#show_post_edit').on('click', function() {
+  document.location='<%= edit_post_path(@post) %>';
+});
+$('#show_post_back').on('click', function() {
+  document.location='<%= posts_path %>';
+});
+
+// window.addEventListener('popstate', function(event) {
+//     if (event.state) {
+//       document.getElementById('baluga2').selected=1;
+//       history.pushState(null, null, "/");
+//       document.title = "While True";
+//       setTimeout(function() {
+//         $("#post_<%= @post.id %>").find('.tint_layer').removeAttr("cross-fade", "");
+//         $("#post_<%= @post.id %>").find('#home_post_title').removeAttr("cross-fade-delayed", "");
+//         $("#post_<%= @post.id %>").find('#home_post_author').removeAttr("cross-fade-delayed", "");
+//       }, 1000);
+//     }
+// }, false);
+
+$("#home_page_back").on('click', function() { 
+  document.getElementById('baluga2').selected=1;
+  history.pushState(null, null, "/");
+  document.title = "While True";
+  setTimeout(function() {
+    $("#post_<%= @post.id %>").find('.tint_layer').removeAttr("cross-fade", "");
+    $("#post_<%= @post.id %>").find('#home_post_title').removeAttr("cross-fade-delayed", "");
+    $("#post_<%= @post.id %>").find('#home_post_author').removeAttr("cross-fade-delayed", "");
+  }, 1000);
+  
+});
+</script>

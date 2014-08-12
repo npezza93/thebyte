@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require posts
 //= require redactor-rails
 //= require redactor-rails/plugins

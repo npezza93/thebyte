@@ -1,15 +1,12 @@
 <% if notice %>
-	<paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px" style="color: #eeff41;"></paper-toast>
+	<paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px"></paper-toast>
 <% end %>
 	
-<div id="container" flex layout horizontal center-justified>
-	<div id="profile_image" style="<% if (User.find_by_id(session[:user_id]).image_url) == nil%>
-  		background-image: url('../system/default_pic.png');
-  	<% else %>
-  		background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');
-  	<% end %>">
-		<div id="text" layout horizontal flex center-justified center>
-		<%= render "users/avatar"%>
+<div id="users_profile_image_container" flex layout horizontal>
+	<div id="tempcheck">
+		<%= image_tag User.find_by_id(session[:user_id]).image_url(:avatar), id: "profile_image" %>
+		<div id="text">
+			<%= render "users/avatar"%>
 		</div>
 	</div>
 </div>
@@ -21,27 +18,18 @@
 <div id="join_date">Joined on: <%=  User.find_by_id(session[:user_id]).created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e, %Y") %></div>
 
 <% if User.find_by_id(session[:user_id]).administrator %>
-<span class="log_out_in" layout horizontal flex end-justified center>
-	<p class="manage_users_posts_link" id="manage_button_1" onclick="document.location='<%= users_path%>'" layout flex>Manage Users</p>/<p id="manage_button_2" class="manage_users_posts_link" onclick="document.location='<%= inactive_posts_path%>'" layout flex>Manage Posts</p></span>
+	<span class="log_out_in" layout horizontal flex end-justified center>
+		<p class="manage_users_posts_link" id="manage_button_1" layout flex>Manage Users</p>/
+		<p class="manage_users_posts_link" id="manage_button_2" layout flex>Manage Posts</p>
+	</span>
 	<paper-button layout flex horizontal center-justified id="edit_user_button" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'">Edit</paper-button>
 <% else %>
 	<paper-button layout flex horizontal center-justified id="edit_user_button2" onclick="document.location='<%= edit_user_path(User.find_by_id(session[:user_id])) %>'" label="change Password"></paper-button>
 <% end %>
-
-	<script>
-	$("#profile_image").hover(function() {
-	  var elem = document.getElementById("text");
-	  if (elem.style.visibility == "visible") {
-	  	elem.style.visibility = "hidden";
-	  } else {
-	  	elem.style.visibility = "visible";
-	  }
+<script>
+	$("#tempcheck").hover(function() { 
+		$('#text').stop(true, true).fadeIn(); 
+		}, function() { 
+		$('#text').stop(true, true).fadeOut(); 
 	});
-	</script>
-
-	<style>
-	#text {
-background: rgba(49,231,34, .75);	
-visibility: hidden;}
-
-	</style>
+</script>

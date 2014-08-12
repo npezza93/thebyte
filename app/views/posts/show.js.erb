@@ -1,0 +1,20 @@
+$('#actual_post_info').html('<%= escape_javascript(render partial: 'partpost' ) %>');
+history.pushState(null, null, "posts/<%= @post.id%>");
+document.title = "<%= raw @post.title%>";
+
+$('.redactor_comments').redactor(
+	{ 
+	  convertImageLinks: true,
+	  convertVideoLinks: true,
+	  imageFloatMargin: '15px',
+	  linksize: 25,
+	  minHeight: 150,
+	  plugins: ['fontcolor', 'fontsize', 'fontfamilynew'],
+	  paragraphy: false,
+	  pastePlainText: true,
+	  buttons: ['formatting', '|', 'bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', '|', 'outdent', 'indent', , 'alignment', '|', 'image', 'video', 'fontsize', 'fontfamilynew']
+	});
+
+$('#submit_comment').on('click', function() {
+	$('#submit_comment_invis').click();
+});

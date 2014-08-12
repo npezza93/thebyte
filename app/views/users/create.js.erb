@@ -1,11 +1,7 @@
 <% if @flag %>
-	$('#whose_logged_in').html("<paper-toast id=\"toast1\" class=\"capsule\" text=\"<%= @status %>\" style=\"padding-right: 60px;\" duration=\"10000\" opened responsiveWidth=\"300px\" style=\"color: #eeff41;\"></paper-toast>");
+	$('#whose_logged_in').html("<paper-toast id=\"toast1\" class=\"capsule\" text=\"<%= @status %>\" style=\"padding-right: 60px;\" duration=\"10000\" opened responsiveWidth=\"300px\"></paper-toast>");
 	document.getElementById("overlay").toggle();
-	<% if (User.find_by_id(session[:user_id]).image_url) == nil%>
-		$('#whose_logged_in').append("<div id=\"post_avatar\" style=\"background-image: url('../system/default_pic.png');\"></div>");
-    <% else %>
-    	$('#whose_logged_in').append("<div id=\"post_avatar\" style=\"background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');\"></div>");
-    <% end %>
+   	$('#whose_logged_in').append("<div id=\"post_avatar\" style=\"background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');\"></div>");
     $('#whose_logged_in').append("<div id=\"usernames\" layout vertical center-justified><%= User.find_by_id(session[:user_id]).username %></div><paper-button id=\"logout_button\">Logout</paper-button>");
 	$('#user_overlay').html('<%= escape_javascript(render partial: '/users/show' ) %>');
 	<% if User.find_by_id(session[:user_id]).administrator %>
@@ -14,11 +10,3 @@
 <% else %>
 	$('#ajax_errors').html("<div id=\"signup_errors\" class=\"animated fadeInDown\" layout horizontal center-justified><ul id=\"ajax_errors_text\"><% @user.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div>");
 <% end %>
-
-$('#usernames').on('click', function() {
-  document.getElementById('overlay2').toggle();
-});
-
-$('#logout_button').on('click', function() {
-  document.getElementById('logout_button_invis').click();
-});

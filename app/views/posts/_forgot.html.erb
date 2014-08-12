@@ -1,0 +1,47 @@
+<core-overlay id="overlay3" class="forgot_overlay1" backdrop transition="core-transition-top">
+  <style>
+    .forgot_overlay1 {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      overflow: hidden;
+      background: #eceff1;
+      padding:30px 30px;
+      outline: 1px solid rgba(0,0,0,0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    #overlay3 {
+      box-sizing: border-box;
+      text-align: center;
+      width: 250px;
+    }
+    #email_field {
+      font-family: 'Roboto', sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      margin: 10px;
+      text-align: center;
+    }
+    #submit_reset {
+      display: inline-block;
+      position: relative;
+      border: 0;
+      background: transparent;
+      text-align: center;
+      font: inherit;
+      text-transform: uppercase;
+      outline: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+  <%= render "password_resets/new" %>
+</core-overlay>
