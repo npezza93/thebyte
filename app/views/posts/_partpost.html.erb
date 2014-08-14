@@ -10,13 +10,9 @@
     background-size: cover;
     background-position: center center;
   }
-  paper-icon-button {
-    color: white;
-  }
 </style>
 
 
-  <!-- <core-scroll-header-panel condenses noReveal> -->
 <div id="part_post_container">
     <core-toolbar id="post_core_toolbar" hero-id="punch-<%= @post.id %>" hero>
       <paper-icon-button icon="arrow-back" center-justified center id="home_page_back" size="27" cross-fade-delayed></paper-icon-button>
@@ -67,45 +63,4 @@
           <% end %>
           </div>
     </div>
-
-  <!-- </core-scroll-header-panel> -->
 </div>
-<script>
-function deletePost() {
-  if(confirm('Are you sure?')) {
-    window.open("<%= posts_path %>", "_self");
-  }
-}
-
-$('#show_post_edit').on('click', function() {
-  document.location='<%= edit_post_path(@post) %>';
-});
-$('#show_post_back').on('click', function() {
-  document.location='<%= posts_path %>';
-});
-
-// window.addEventListener('popstate', function(event) {
-//     if (event.state) {
-//       document.getElementById('baluga2').selected=1;
-//       history.pushState(null, null, "/");
-//       document.title = "While True";
-//       setTimeout(function() {
-//         $("#post_<%= @post.id %>").find('.tint_layer').removeAttr("cross-fade", "");
-//         $("#post_<%= @post.id %>").find('#home_post_title').removeAttr("cross-fade-delayed", "");
-//         $("#post_<%= @post.id %>").find('#home_post_author').removeAttr("cross-fade-delayed", "");
-//       }, 1000);
-//     }
-// }, false);
-
-$("#home_page_back").on('click', function() { 
-  document.getElementById('baluga2').selected=1;
-  history.pushState(null, null, "/");
-  document.title = "While True";
-  setTimeout(function() {
-    $("#post_<%= @post.id %>").find('.tint_layer').removeAttr("cross-fade", "");
-    $("#post_<%= @post.id %>").find('#home_post_title').removeAttr("cross-fade-delayed", "");
-    $("#post_<%= @post.id %>").find('#home_post_author').removeAttr("cross-fade-delayed", "");
-  }, 1000);
-  
-});
-</script>

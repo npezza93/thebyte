@@ -37,7 +37,7 @@ div {
 }
 #posts_pagination {
   position: absolute;
-  margin-top: 20px;
+  left: calc(50% - 77px); 
 }
 .pagination {
   text-align: center;
@@ -413,7 +413,9 @@ paper-tab {
   margin-left:auto;
   margin-right:auto;
 }
-
+.sub, .title, #home_page_back, #show_post_edit, #show_post_delete {
+  color: rgb(240,241,225);
+}
 
 @media (max-width: 600px) {
   #comment_body iframe {
@@ -492,7 +494,6 @@ paper-tab {
     text-rendering: optimizeLegibility;
     padding-bottom: 26px;
     line-height: 1;
-    color: rgb(240,241,225);
     text-shadow: rgba(0, 0, 0, 1) 5px 5px 8px;
   }
   .sub {
@@ -502,7 +503,6 @@ paper-tab {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     padding-bottom: 10px;
-    color: rgb(240,241,225);
   }
   #show_post_cnt {
     width: 100%;
@@ -862,9 +862,6 @@ paper-tab {
     bottom:0;
     right: 0;
   }
-  #posts_pagination {
-    left: 31.5%;
-  }
 }
 
 
@@ -1178,9 +1175,6 @@ paper-tab {
     background-repeat: no-repeat;
     position: relative;
   }
-  #posts_pagination {
-    left: 39%;
-  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
@@ -1258,7 +1252,6 @@ paper-tab {
     text-rendering: optimizeLegibility;
     padding-bottom: 26px;
     line-height: 1;
-    color: rgb(240,241,225);
     text-shadow: rgba(0, 0, 0, 1) 5px 5px 8px;
   }
   .sub {
@@ -1268,7 +1261,6 @@ paper-tab {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     padding-bottom: 22px;
-    color: rgb(240,241,225);
   }
   #show_post_cnt {
     width: 100%;
@@ -1614,9 +1606,6 @@ paper-tab {
     text-align: center;
     color: rgb(240,241,225);
   }
-  #posts_pagination {
-    left: 39%;
-  }
 }
 
 @media (min-width: 901px) and (max-width: 1300px) {
@@ -1671,7 +1660,6 @@ paper-tab {
     text-rendering: optimizeLegibility;
     padding-bottom: 20px;
     line-height: 1;
-    color: rgb(240,241,225);
     text-shadow: rgba(0, 0, 0, 1) 5px 5px 8px;
   }
   .sub {
@@ -1681,7 +1669,6 @@ paper-tab {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     padding-bottom: 20px;
-    color: rgb(240,241,225);
   }
   #show_post_cnt {
     max-width: 80%;
@@ -1751,9 +1738,6 @@ paper-tab {
       width: 100%;
       transition: 0.7s;
     }
-  }
-  #posts_pagination {
-    left: 44%;
   }
 }
 
@@ -2572,7 +2556,7 @@ paper-tab {
   }
   #the_title {
     margin-left:60px;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
   }
   .title {
     font-size: 50px;
@@ -2582,7 +2566,6 @@ paper-tab {
     text-rendering: optimizeLegibility;
     padding-bottom: 20px;
     line-height: 1;
-    color: rgb(240,241,225);
     text-shadow: rgba(0, 0, 0, 1) 5px 5px 8px;
   }
   .sub {
@@ -2592,7 +2575,6 @@ paper-tab {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     padding-bottom: 20px;
-    color: rgb(240,241,225);
   }
   #show_post_cnt {
     max-width: 75%;
@@ -3012,9 +2994,6 @@ paper-tab {
     text-align: center;
     color: rgb(240,241,225);
     transition: 0.7s;
-  }
-  #posts_pagination {
-    left: 46%;
   }
 }
 

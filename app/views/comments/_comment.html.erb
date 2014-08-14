@@ -6,6 +6,6 @@
 		<%= comment.user.username %>
 	</p>
 </div>
-		<p id="comment_body"><%= raw comment.body %></p>
+		<div id="comment_body"><%= raw comment.body %></div>
 		<p id="comment_posted_at">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
 <% end %>

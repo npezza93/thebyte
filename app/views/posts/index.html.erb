@@ -1,3 +1,36 @@
+<style>
+  <% case Random.rand(4) %>
+    <% when 0 %>
+      paper-tabs#paper_tabs::shadow #selectionBar {
+        background-color: #18ffff;
+      }
+      #paper_tabs paper-tab::shadow #ink {
+        color: #18ffff;
+      }
+    <% when 1 %>
+      paper-tabs#paper_tabs::shadow #selectionBar {
+        background-color: #ff4081;
+      }
+      #paper_tabs paper-tab::shadow #ink {
+        color: #ff4081;
+      }
+    <% when 2 %>
+      paper-tabs#paper_tabs::shadow #selectionBar {
+        background-color: #eeff41;
+      }
+      #paper_tabs paper-tab::shadow #ink {
+        color: #eeff41;
+      }
+    <% when 3 %>
+      paper-tabs#paper_tabs::shadow #selectionBar {
+        background-color: #536dfe;
+      }
+      #paper_tabs paper-tab::shadow #ink {
+        color: #536dfe;
+      }
+  <% end %>
+</style>
+
 <% content_for :title, "While True" %>
 
 <% if notice %>
@@ -86,12 +119,14 @@
 
       <div id="tile_container" tile-cascade>
         <%= render @posts %>
+        <%= @number_of_posts %>
       </div>
-    </div>
+    
 
-  <!--     <div id="posts_pagination">
-        <%= will_paginate @posts, page_links: false%>
-      </div> -->
+    <div id="posts_pagination" style="display:none;">
+      <%= will_paginate @posts, page_links: false%>
+    </div>
+    </div>
   </section>
   
   <section id="page3">
@@ -102,12 +137,17 @@
 
 
 <script>
-  $('#posts_pagination').css("top", $(document).height());
-  var initHeight = ($(document).width()) * .35;
+
+  // var initHeight = ($(document).width()) * .35;
 
   $(window).resize(function() {
-    $('#posts_pagination').css("top", 0);
-    $('#posts_pagination').css("top", $(document).height());
+      $("#posts_pagination").css("display", "none");
+      setTimeout(function() {
+        $("#posts_pagination").css("display", "none");
+        var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
+        $('#posts_pagination').css("top", docHeight);
+        $("#posts_pagination").css("display", "block");
+      }, 500);
   });
 
   $('.post').on('click', function() {
@@ -116,6 +156,7 @@
     $('#'+this.id).find('.tint_layer').attr("cross-fade", "");
     $('#'+this.id).find('#home_post_title').attr("cross-fade-delayed", "");
     $('#'+this.id).find('#home_post_author').attr("cross-fade-delayed", "");
+    // document.pushState();
   });
 
   $('.ajax_button_check').on('ajax:complete', function() {
@@ -133,6 +174,9 @@ $(window).load(function() {
       $('#tile_container').removeAttr("tile-cascade", "");
       $('#whose_logged_in').removeAttr("cross-fade-delayed", "");
       $('#main_toolbar').removeAttr("slide-down", "");
+      $("#posts_pagination").css("display", "block");
+      var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
+      $('#posts_pagination').css("top", docHeight);
     }, 2000);
    }, 2000);
 });
