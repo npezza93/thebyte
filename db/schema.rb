@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140727184755) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: true do |t|
     t.integer  "post_id"
     t.text     "body"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20140727184755) do
     t.integer  "user_id"
   end
 
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -31,8 +34,7 @@ ActiveRecord::Schema.define(version: 20140727184755) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "altattr"
-    t.boolean  "status"
+    t.boolean  "status",     default: false
   end
 
   create_table "redactor_assets", force: true do |t|
@@ -48,17 +50,17 @@ ActiveRecord::Schema.define(version: 20140727184755) do
     t.datetime "updated_at"
   end
 
-  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable"
-  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type"
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password_digest"
-    t.boolean  "administrator"
+    t.boolean  "administrator",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.string   "image"
+    t.string   "image",                  default: "../../../../default_pic.png"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
   end

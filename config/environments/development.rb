@@ -1,4 +1,4 @@
-TheByte::Application.configure do
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -14,13 +14,12 @@ TheByte::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
-  # Raise an error on page load if there are pending migrations
+  # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
   # Debug mode disables concatenation and preprocessing of assets.
@@ -28,15 +27,11 @@ TheByte::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = {host: '192.168.1.147:3000'}
+  # Adds additional error checking when serving assets at runtime.
+  # Checks for improperly declared sprockets dependencies.
+  # Raises helpful error messages.
+  config.assets.raise_runtime_errors = true
 
-  config.action_mailer.smtp_settings = {   
-    :enable_starttls_auto => true,  #this is the important stuff!
-    :address        => 'smtp.gmail.com',
-    :port           => 587,
-    :domain         => 'localhost:3000',
-    :authentication => :plain,
-    :user_name      => 'thebyte01@gmail.com',
-    :password       => 'jimm011293'
-  }
+  # Raises error for missing translations
+  # config.action_view.raise_on_missing_translations = true
 end
