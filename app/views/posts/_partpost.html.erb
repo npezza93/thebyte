@@ -10,8 +10,21 @@
     background-size: cover;
     background-position: center center;
   }
+  <% case Random.rand(4) %>
+    <% when 0 %>
+      q.right, q.left, q.center {
+        color: #536dfe;
+      }
+    <% when 1 %>
+      q.right, q.left, q.center {
+        color: #ff4081;
+      }
+    <% when 2 %>
+      q.right, q.left, q.center {
+        color: #eeff41;
+      }
+  <% end %>
 </style>
-
 
 <div id="part_post_container">
     <core-toolbar id="post_core_toolbar" hero-id="punch-<%= @post.id %>" hero>

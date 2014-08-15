@@ -52,10 +52,22 @@ $("#home_page_back").on('click', function() {
     $("#post_<%= @post.id %>").find('.tint_layer').removeAttr("cross-fade", "");
     $("#post_<%= @post.id %>").find('#home_post_title').removeAttr("cross-fade-delayed", "");
     $("#post_<%= @post.id %>").find('#home_post_author').removeAttr("cross-fade-delayed", "");
-    $("#posts_pagination").css("display", "none");
-    var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
-    $('#posts_pagination').css("top", docHeight);
-    $("#posts_pagination").fadeIn();
   }, 1000);
   
 });
+
+
+  // var image = new Image();
+  // image.src = "<%= @post.image_url %>";
+  // var colorThief = new ColorThief();
+  // var color =colorThief.getColor(image);
+  // var red = color[0];
+  // var green = color[1];
+  // var blue = color[2];
+  // var domrgb = "rgb(" +red + "," + green + "," + blue + ")";
+  // console.log(domrgb);
+  // var x = Number(((0.299*red + 0.587*green + 0.114*blue)/255)*100);
+  // console.log(x);
+  // if (x > Number(70)) {
+  //   $('.sub, .title, #home_page_back, #show_post_edit, #show_post_delete').css("color", "#536dfe");
+  // }

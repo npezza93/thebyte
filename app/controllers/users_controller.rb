@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         @flag = true
         format.html { redirect_to posts_path, notice: 'Your account has been created.' }
         format.json { render action: 'show', status: :created, location: @user }
-        format.js { @status = "Welcome to The Byte, " + @user.username + "!"}
+        format.js { @status = "Welcome to While True, " + @user.username + "!"}
       else
         @flag =false
         format.js {}

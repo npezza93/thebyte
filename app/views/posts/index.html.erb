@@ -117,15 +117,20 @@
       </core-toolbar>
 
 
+
       <div id="tile_container" tile-cascade>
         <%= render @posts %>
         <%= @number_of_posts %>
       </div>
     
 
-    <div id="posts_pagination" style="display:none;">
-      <%= will_paginate @posts, page_links: false%>
-    </div>
+      <div id="posts_pagination" style="display:none;">
+        <%= will_paginate @posts, page_links: false%>
+      </div>
+
+      <div id="about" style="display:none;">
+        <%= render 'about' %>
+      </div>
     </div>
   </section>
   
@@ -137,16 +142,18 @@
 
 
 <script>
-
-  // var initHeight = ($(document).width()) * .35;
-
   $(window).resize(function() {
       $("#posts_pagination").css("display", "none");
+      $("#about").css("display", "none");
       setTimeout(function() {
         $("#posts_pagination").css("display", "none");
+        $("#about").css("display", "none");
         var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
         $('#posts_pagination').css("top", docHeight);
         $("#posts_pagination").css("display", "block");
+        var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
+        $('#about').css("top", docHeight);
+        $("#about").css("display", "block");
       }, 500);
   });
 
@@ -174,9 +181,12 @@ $(window).load(function() {
       $('#tile_container').removeAttr("tile-cascade", "");
       $('#whose_logged_in').removeAttr("cross-fade-delayed", "");
       $('#main_toolbar').removeAttr("slide-down", "");
-      $("#posts_pagination").css("display", "block");
       var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
       $('#posts_pagination').css("top", docHeight);
+      $("#posts_pagination").css("display", "block");
+      var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
+      $('#about').css("top", docHeight);
+      $("#about").css("display", "block");
     }, 2000);
    }, 2000);
 });

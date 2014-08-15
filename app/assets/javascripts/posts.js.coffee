@@ -37,3 +37,8 @@ jQuery ->
 
   	$("#new_post_button").click ->
   		document.location='/posts/new'
+  	
+  	$("#about_facebook").click ->
+  		document.location='https://www.facebook.com/pages/While-True/546036762189676'
+		return false;
+

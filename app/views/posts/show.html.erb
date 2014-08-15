@@ -1,19 +1,35 @@
 <% content_for :title, @post.title %>
 
 <style shim-shadowdom>    
-  core-scroll-header-panel::shadow #headerBg {
+  #post_core_toolbar {
     background-image: url('<%= @post.image_url %>');
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left:0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
   }
-  paper-icon-button {
-    color: white;
-  }
+  <% case Random.rand(3) %>
+    <% when 0 %>
+      q.right, q.left, q.center {
+        color: #536dfe;
+      }
+    <% when 1 %>
+      q.right, q.left, q.center {
+        color: #ff4081;
+      }
+    <% when 2 %>
+      q.right, q.left, q.center {
+        color: #eeff41;
+      }
+  <% end %>
 </style>
-
-
-  <core-scroll-header-panel condenses noReveal scrollAwayTopbar>
-
-    <core-toolbar>
-      <paper-icon-button icon="arrow-back" center-justified center id="show_post_back" size="27"></paper-icon-button>
+<div id="part_post_container">
+    <core-toolbar id="post_core_toolbar">
+      <paper-icon-button icon="arrow-back" center-justified center id="home_page_back" size="27"></paper-icon-button>
       <div flex></div>
       <% if User.find_by_id(session[:user_id]) != nil %>
         <% if User.find_by_id(session[:user_id]).administrator %>
@@ -22,9 +38,9 @@
           <%= link_to 'Destroy', @post, method: :delete, id: "delete_post_invis", data: { confirm: 'Are you sure?' } %>
         <% end %>
       <% end %>
-        <div flex class="bottom" start-justified layout vertical id="the_title" self-end>
+        <div flex class="bottom" start-justified layout vertical id="the_title">
           <div class="sub">By <%= @post.author %> | <%= @post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e at %l:%M%P") %></div>
-          <div class="title" itemprop="name" layout vertical flex start-justified><%= @post.title %></div>
+          <div class="title" layout vertical flex start-justified><%= @post.title %></div>
         </div>
     </core-toolbar>
 
@@ -61,29 +77,9 @@
           <% end %>
           </div>
     </div>
-
-  </core-scroll-header-panel>
+</div>
 
     <script>
-  
-    // custom transformation: scale header's title
-    var titleStyle = document.querySelector('#the_title').style;
-
-    addEventListener('core-header-transform', function(e) {
-      var d = e.detail;
-      var m = d.height - d.condensedHeight;
-
-      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
-      titleStyle.webkitTransform = titleStyle.transformOrigin = 
-          'scale(' + scale + ')';
-      var shadow = (1 - d.y/d.height).toFixed(2);
-      $('#the_title').css('opacity', shadow);
-      var shadowstring = "rgba(0,0,0,"+shadow+") 5px 5px 10px";
-      $('.title').css('text-shadow', shadowstring);
-
-    });  
-
-
     function deletePost() {
       if(confirm('Are you sure?')) {
         window.open("<%= posts_path %>", "_self");
@@ -93,37 +89,26 @@
 $('#show_post_edit').on('click', function() {
   document.location='<%= edit_post_path(@post) %>';
 });
-$('#show_post_back').on('click', function() {
+$('#home_page_back').on('click', function() {
   document.location='<%= posts_path %>';
 });
 
 </script>
 <script>
-
-  // var image = new Image();
-  // image.src = "<%= @post.image_url %>";
-  // var colorThief = new ColorThief();
-  // var color =colorThief.getColor(image);
-  // var red = color[0];
-  // var green = color[1];
-  // var blue = color[2];
-  // var domrgb = "rgb(" +red + "," + green + "," + blue + ")";
-
-  // var css= 'core-scroll-header-panel::shadow #condensedHeaderBg { background-color: '+ domrgb +'; }', head= document.head || document.getElementByTagName('head')[0], style = document.createElement('style');
-  // style.type = 'text/css';
-  // if (style.styleSheet){
-  //   style.styleSheet.cssText = css;
-  // } else {
-  //   style.appendChild(document.createTextNode(css));
-  // }
-  // head.appendChild(style);
-
-  // var pal =  colorThief.getPalette(image, 7);
-  // // console.log(pal);
-  // var sixthpal = pal[5];
-  // console.log(sixthpal)
-  // var sixthpalcolor = "rgb(" + (255-sixthpal[0]) + ","+(255-sixthpal[1]) +"," +(255-sixthpal[2]) +")";
-  // var title = document.getElementById("the_title");
-  // title.style.color = sixthpalcolor;
-
+// $(function() {
+//   var image = new Image();
+//   image.src = "<%= @post.image_url %>";
+//   var colorThief = new ColorThief();
+//   var color =colorThief.getColor(image);
+//   var red = color[0];
+//   var green = color[1];
+//   var blue = color[2];
+//   var domrgb = "rgb(" +red + "," + green + "," + blue + ")";
+//   console.log(domrgb);
+//   var x = Number(((0.299*red + 0.587*green + 0.114*blue)/255)*100);
+//   console.log(x);
+//   if (x > Number(70)) {
+//     $('.sub, .title, #home_page_back, #show_post_edit, #show_post_delete').css("color", "#536dfe");
+//   }
+// });
 </script>
