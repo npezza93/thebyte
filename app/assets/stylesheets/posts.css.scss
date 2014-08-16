@@ -850,6 +850,12 @@ paper-tab {
   core-toolbar {
     height: 200px;
   }
+  #about {
+    width: 100%;
+    position: absolute;
+    background-color: #bdbdbd;
+    height: 80%;
+  }
   #main_toolbar {
     position: absolute;
     top: 0;
