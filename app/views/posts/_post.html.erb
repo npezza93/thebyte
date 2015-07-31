@@ -1,16 +1,56 @@
-    <div class="<%= nm =cycle('hero','mini_hero','mini_hero_2','long_hero','hero_2','mini_hero_3','mini_hero_4','mini_hero_5','mini_hero_6','mini_hero_7','mini_hero_8','long_hero_2','mini_hero_9','mini_hero_10','hero_3','mini_hero_11','mini_hero_12','mini_hero_13','mini_hero_14','hero_4','mini_hero_15','mini_hero_16', name: 'box') %> post" id="post_<%= post.id %>" vertical layout>
-      <% if ((nm == 'long_hero') || (nm == 'long_hero_2')) %>
-        <div class="innerds" style="background-image: url('<%= post.image_url(:long_headline) %>');" vertical layout flex hero-id="punch-<%= post.id %>" hero><paper-shadow z="2">
-      <% else %>
-        <div class="innerds" style="background-image: url('<%= post.image_url(:headline) %>');" vertical layout flex hero-id="punch-<%= post.id %>" hero><paper-shadow z="2">
-      <% end %>
+	<div class="horizontal layout" style="width:100%;margin-top:8px;margin-left:-8px;" id="show-post-toolbar">
+		<paper-icon-button icon="arrow-back"  id="home-page-back" style="margin-left:16px;" on-click="_onFullsizeClick"></paper-icon-button>
+		<div class="flex"></div>
+		<% if User.find_by_id(session[:user_id]) != nil and User.find_by_id(session[:user_id]).administrator%>
+			<paper-icon-button icon="create" id="home_post_edit" postid="<%= post.id %>"></paper-icon-button>
+			<paper-icon-button icon="clear" id="home_post_delete" postid="<%= post.id %>"></paper-icon-button>
+			<%= link_to 'Destroy', post, method: :delete, hidden: "", data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</div>
 
-        <div class="tint_layer">
-          <%= link_to "herro", post, id: "post_link", class: "ajax_button_check", style: "display:none;", remote: true%>
-          <h2 class="<%= cycle('hero_title','mini_title','mini_title','long_title','hero_title','mini_title','mini_title','mini_title','mini_title','mini_title','mini_title','long_title','mini_title','mini_title','hero_title','mini_title','mini_title','mini_title','mini_title','hero_title','mini_title','mini_title', name: 'title') %>" id="home_post_title"><%= post.title %></h2>
-          <div class="<%= cycle('hero_author','mini_author','mini_author','long_author','hero_author','mini_author','mini_author','mini_author','mini_author','mini_author','mini_author','long_author','mini_author','mini_author','hero_author','mini_author','mini_author','mini_author','mini_author','hero_author','mini_author','mini_author', name: 'author') %>" id="home_post_author">By <%= post.author %></div>
-          <paper-ripple fit></paper-ripple>
-        </div>
-      </paper-shadow></div>
-    </div>
+	<div class="layout horizontal center-center" style="width:75%;padding-right:8px;margin-top:27vh;background-color: rgba(255,255,255,.4);">
+		<div style="color:#fff;width:100%;" class="layout vertical end">
+			<div class="title layout horizontal end-justified">
+				<%= post.title %>
+			</div>
+			<div style="width:100%;" class="layout horizontal end-justified sub">
+				By <%= post.author %> | <%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e at %l:%M%P") %>
+			</div>				
+		</div>
+	</div>
 
+	<div>
+		<div style="height:43vh;"></div>
+		<paper-material id="new-post-container" class="content cover">
+			<%= render 'share', post: post %>
+			<div class="froala-view froala-element">
+				<%= raw post.content %>
+			</div>
+
+			<!-- Comment Section -->
+			<h2 id="number_of_comments_<%= post.id %>">There are <%= post.comments.count %> comments</h2>
+					
+			<div id="comments">
+				<div id="inner_comments_<%= post.id %>">
+					<%= render post.comments %>
+				</div>
+			
+				<% if User.find_by_id(session[:user_id]) != nil %>
+					<div id="comment_form_container">
+						<%= form_for [post, Comment.new], remote: true do |f| %>
+							<%= f.label :body, "POST A NEW COMMENT", id: "new_comment_label" %>
+							<div id="froala-comment-container">
+								<%= f.text_area :body,  class: "new-comment" %>
+							</div>
+
+							<div class="layout horizontal center-center">
+								<paper-button raised id="submit_comment"><%= f.submit "Comment", id: "submit-new-comment" %></paper-button>
+							</div>
+						<% end %>
+					</div>
+				<% else %>
+					<div id="new_comment_label">Log in or Sign up to join the conversation!</div>
+				<% end %>
+			</div>
+		</paper-material>
+	</div>

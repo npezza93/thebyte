@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727184755) do
+ActiveRecord::Schema.define(version: 20150731211115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,11 @@ ActiveRecord::Schema.define(version: 20140727184755) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "status",     default: false
+    t.boolean  "status",     default: true
+    t.string   "slug"
   end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
 
   create_table "redactor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140727184755) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.string   "image",                  default: "../../../../default_pic.png"
+    t.string   "image"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
   end

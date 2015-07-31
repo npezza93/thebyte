@@ -1,193 +1,98 @@
-<style>
-  <% case Random.rand(4) %>
-    <% when 0 %>
-      paper-tabs#paper_tabs::shadow #selectionBar {
-        background-color: #18ffff;
-      }
-      #paper_tabs paper-tab::shadow #ink {
-        color: #18ffff;
-      }
-    <% when 1 %>
-      paper-tabs#paper_tabs::shadow #selectionBar {
-        background-color: #ff4081;
-      }
-      #paper_tabs paper-tab::shadow #ink {
-        color: #ff4081;
-      }
-    <% when 2 %>
-      paper-tabs#paper_tabs::shadow #selectionBar {
-        background-color: #eeff41;
-      }
-      #paper_tabs paper-tab::shadow #ink {
-        color: #eeff41;
-      }
-    <% when 3 %>
-      paper-tabs#paper_tabs::shadow #selectionBar {
-        background-color: #536dfe;
-      }
-      #paper_tabs paper-tab::shadow #ink {
-        color: #536dfe;
-      }
-  <% end %>
-</style>
-
 <% content_for :title, "While True" %>
 
-<% if notice %>
-  <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened responsiveWidth="300px"></paper-toast>
+<% content_for	:head do %>
+	<meta name="description" content="While True is a technology news site that covers the latest in technology trends to keep you informed in your connected world.">
 <% end %>
 
-<core-animated-pages id="baluga2" selected="0" transitions="cross-fade cross-fade-delayed slide-down tile-cascade hero-transition">
-
-  <section id="page1">
-    <%= image_tag "penrose_icon.png", id: "logo_main", "layout" => "", "horizontal" => "", "center-justified" => "", "cross-fade" => "" %>
-    <p id="connecting" layout horizontal center-justified cross-fade>Connecting...</p>
-    <div class="loader" cross-fade>Loading...</div>
-  </section>  
-
-  <section id="page2" style="display:none;">
-<core-overlay id="overlay" backdrop transition="core-transition-center" style="background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-  <div id="contentsd">
-    <div end-justified layout horizontal>
-      <paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button>
-    </div>
-    
-    <section id="section" layout vertical>
-      <paper-tabs id="paper_tabs">
-        <paper-tab id="paper_tab">LOGIN</paper-tab>
-        <paper-tab id="paper_tab1">SIGN UP</paper-tab>
-      </paper-tabs>
-     
-      <section id="section1" flex relative>
-        <core-animated-pages id="baluga" transitions="slide-from-right">
-          <section id="section2">
-            <%= render "sessions/login", :@user => User.new %>
-            <div id="forgot_password" layout flex horizontal center-justified>Forget?</div>
-            <%= render "forgot" %>
-          </section>
-          
-          <section id="section3">
-            <%= render "users/form" %>
-          </section>
-        </core-animated-pages>
-      </section>
-    </section>
-  </div>
-</core-overlay>
-
-<%= button_to 'Logout', logout_path, { :id => "logout_button_invis", method: :delete, remote: true, style: "display:none;" } %>
-
-<core-overlay id="overlay2" backdrop transition="core-transition-center" style="background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;overflow: hidden;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-  <div id="contentsdf">
-    <div end-justified layout horizontal>
-      <paper-icon-button icon="clear" size="27" core-overlay-toggle></paper-icon-button>
-    </div>
-  	<div id="user_overlay">
-  		<% if (@user = User.find_by_id(session[:user_id])) != nil %>
-  	   	<%= render "users/show", :@user =>  User.find_by_id(session[:user_id])%>
-  	  <% end %>
-    </div>
-  </div>
-</core-overlay>
-
-<div id="new_post_button_container">
-  <% if User.find_by_id(session[:user_id]) != nil %>
-    <% if User.find_by_id(session[:user_id]).administrator %>
-      <paper-fab icon="add" id="new_post_button" cross-fade-delayed></paper-fab>
-    <% end %>
-  <% end %>
+<div id="notice">
+    <paper-toast id="notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
 </div>
 
+<% if notice %>
+	<paper-toast id="page-notice-toast" duration="6000" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+<% end %>
+<paper-dialog id="new_session_overlay" with-backdrop entry-animation="scale-up-animation" exit-animation="scale-down-animation">
 
-    <div id="new_container">
-      <core-toolbar id="main_toolbar" class="tall" slide-down>
-        <span id="whose_logged_in" layout horizontal flex end-justified cross-fade-delayed>
-          <% if (@user = User.find_by_id(session[:user_id])) != nil %>
-            <div id="post_avatar" style="background-image: url('<%= User.find_by_id(session[:user_id]).image_url(:avatar) %>');"></div>
-            <div id="usernames" layout vertical center-justified><%= User.find_by_id(session[:user_id]).username %></div>
-            <paper-button id="logout_button">Logout</paper-button>
-          <%else%>
-            <% if User.find_by_id(session[:user_id]) == nil %>
-              <paper-button id="login_button">Login</paper-button>
-                <span layout vertical center-justified>/</span> 
-              <paper-button id="signup_button">signup</paper-button>
-            <% end %>
-          <% end %>
-        </span>
-      </core-toolbar>
+	<paper-tabs selected="0" id="paperTabs">
+		<paper-tab id="one">LOGIN</paper-tab>
+		<paper-tab id="two">SIGN UP</paper-tab>
+	</paper-tabs>
 
+	<neon-animated-pages id="baluga" selected="0" class="flex" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation" style="height:300px;">
+		<neon-animatable>
+			<%= render "sessions/login"  %>
+			<div id="forgot_password" class="layout flex horizontal center-justified">Forget?</div>
+		</neon-animatable>
 
+		<neon-animatable>
+			<%= render "users/form" %>
+		</neon-animatable>
+	</neon-animated-pages>
+</paper-dialog>
 
-      <div id="tile_container" tile-cascade>
-        <%= render @posts %>
-        <%= @number_of_posts %>
-      </div>
-    
+<%= render "sessions/forgot" %>
 
-      <div id="posts_pagination" style="display:none;">
-        <%= will_paginate @posts, page_links: false%>
-      </div>
-
-      <div id="about" style="display:none;">
-        <%= render 'about' %>
-      </div>
-    </div>
-  </section>
-  
-  <section id="page3">
-    <div id="actual_post_info" >
-    </div>
-  </section>
-</core-animated-pages>
+<paper-dialog id="overlay2" with-backdrop entry-animation="scale-up-animation" exit-animation="scale-down-animation" style="width:275px;">
+	<div id="user_overlay">
+		<% if @user != nil %>
+			<%= render "users/show" %>
+		<% end %>
+	</div>
+</paper-dialog>
 
 
-<script>
-  $(window).resize(function() {
-      $("#posts_pagination").css("display", "none");
-      $("#about").css("display", "none");
-      setTimeout(function() {
-        $("#posts_pagination").css("display", "none");
-        $("#about").css("display", "none");
-        var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
-        $('#posts_pagination').css("top", docHeight);
-        $("#posts_pagination").css("display", "block");
-        var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
-        $('#about').css("top", docHeight);
-        $("#about").css("display", "block");
-      }, 500);
-  });
+<% if @user != nil and @user.administrator %>
+	<paper-fab icon="add" id="new-post-fab" style="z-index:10;"></paper-fab>
+<% end %>
 
-  $('.post').on('click', function() {
-    var el = document.getElementById(this.id);
-    el.getElementsByTagName('a')[0].click();
-    $('#'+this.id).find('.tint_layer').attr("cross-fade", "");
-    $('#'+this.id).find('#home_post_title').attr("cross-fade-delayed", "");
-    $('#'+this.id).find('#home_post_author').attr("cross-fade-delayed", "");
-    // document.pushState();
-  });
+<home-toolbar image="<%= image_url 'penrose.png' %>" >
+	<session-info>
+		<% if @user != nil %>
+			<% if @user.image_url == nil %>
+				<iron-image class="homepage-avatar" src="<%= image_url 'default_pic.png'  %>" preload fade sizing="contain"></iron-image>
+			<% else %>
+				<iron-image class="homepage-avatar" src="<%= @user.image_url(:avatar) %>" preload fade sizing="contain"></iron-image>
+			<% end %>
+			<paper-button id="usernames" class="layout vertical center-justified"><%= @user.username %></paper-button>
+			<paper-button><%= button_to 'Logout', logout_path, { id: "logout_button", method: :delete } %></paper-button>
+		<% else %>
+			<paper-button id="login_button">Login</paper-button>
+				<span class="home-pipe">|</span>
+			<paper-button id="signup_button">signup</paper-button>
+		<% end %>
+	</session-info>
+</home-toolbar>
 
-  $('.ajax_button_check').on('ajax:complete', function() {
-    setTimeout(function() {
-      document.getElementById('baluga2').selected=2;
-    }, 300);
-  });
+<template is="dom-bind">
+	<neon-animated-pages selected="0" on-tile-click="_onTileClick" id="pages">
+		<animated-grid style="position:relative;">
+			<% @posts.each do |post| %>
+				<% random = Random.rand(2) %>
+				<% if random == 0 %>
+					<hero-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:headline) %>"  postid="<%= post.id %>"></hero-post-card>
+				<% else %>
+					<long-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:long_headline) %>"  postid="<%= post.id %>"></long-post-card>	
+				<% end %>
+			<% end %>	
+		</animated-grid>
 
-$(window).load(function() {
-  setTimeout(function() {
-    $("#page2").css("display", "block");
-    var el =document.getElementById('baluga2');
-    el.selected =1;
-    setTimeout(function() {
-      $('#tile_container').removeAttr("tile-cascade", "");
-      $('#whose_logged_in').removeAttr("cross-fade-delayed", "");
-      $('#main_toolbar').removeAttr("slide-down", "");
-      var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
-      $('#posts_pagination').css("top", docHeight);
-      $("#posts_pagination").css("display", "block");
-      var docHeight = ((document.getElementById("new_container").scrollHeight) +10) + "px"; 
-      $('#about').css("top", docHeight);
-      $("#about").css("display", "block");
-    }, 2000);
-   }, 2000);
-});
-</script>
+		<% @posts.each do |post| %>
+			<show-post postid="<%= post.id %>" class="fixed-top" id="<%= post.id %>" image="<%= post.image_url %>"><%= render post %></show-post>
+		<% end %>
+	</neon-animated-pages>
+</template>
+
+
+<div id="posts_pagination">
+	<%= paginate @posts %>
+</div>
+
+<about-section>
+	<div id="follow_block">
+		<h1 id="follow_title">Follow Us</h1>
+		<paper-icon-button src="<%= image_url 'facebook2.png' %>" id="about_facebook"></paper-icon-button>
+		<paper-icon-button src="<%= image_url 'twitter-icon.svg' %>" id="about_twitter"></paper-icon-button>
+		<paper-icon-button src="<%= image_url 'gp.png' %>" id="about_gp"></paper-icon-button>
+	</div>
+	<iron-image id="footer_icon" src="<%= image_url 'penrose_icon.png'  %>" preload fade sizing="contain"></iron-image>
+</about-section>

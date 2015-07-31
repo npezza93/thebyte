@@ -1,0 +1,78 @@
+<dom-module id="home-toolbar">
+	<style>
+	:host {
+		visibility: hidden;
+	}
+	</style>
+	<style is="custom-style">
+		.homepage-toolbar {
+			height: 40% !important;
+			background: transparent;
+		}
+		@media (max-width: 639px) {
+			.homepage-toolbar {
+				height: 25% !important;
+			}
+		}
+		@media (max-width: 600px) and (orientation: landscape) {
+			.homepage-toolbar {
+				height: 50% !important;
+			}
+		}		
+	</style>
+	<template>
+		<paper-toolbar class="homepage-toolbar" id="toolbar">
+			<span class="flex"></span>
+			<content></content>
+			<iron-image src="{{ image }}" preload fade sizing="contain" style="width:100%;height:100%;" sizing="contain" class="middle"></iron-image>
+		</paper-toolbar>
+	</template>
+
+	<script>
+		Polymer({
+			is: "home-toolbar",
+		  behaviors: [
+			Polymer.NeonAnimatableBehavior,
+			Polymer.NeonAnimationRunnerBehavior
+		  ],
+		  properties: {
+			image: String,
+			opened: {
+				type: Boolean
+			},
+			animationConfig: {
+			  type: Object,
+			  value: function() {
+				return {
+				  'entry': [{
+					name: 'slide-down-animation',
+					node: this.$.toolbar
+				  }],
+				  'exit': [{
+					name: 'slide-up-animation',
+					node: this.$.toolbar
+				  }]
+				};
+			  }
+			}
+		  },
+		  listeners: {
+		    'neon-animation-finish': '_onNeonAnimationFinish'
+		  },
+		    show: function() {
+		  	this.opened = true;
+			this.style.visibility = 'visible';
+			this.playAnimation('entry');
+		  },
+		  dontshow: function () {
+		  	this.opened = false;
+		  	this.playAnimation('exit');
+		  },
+		  _onNeonAnimationFinish: function() {
+		    if (!this.opened) {
+		        	this.style.visibility ="hidden";
+		    }
+		  }  
+		});
+	</script>
+</dom-module>

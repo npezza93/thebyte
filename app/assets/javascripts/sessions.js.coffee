@@ -3,8 +3,19 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-	$('#usernames').click ->
-  		document.getElementById('overlay2').toggle();
+	$("#forgot_password").click ->
+		$("#forgot-dialog")[0].toggle()
+		return
 
-	$('#logout_button').click ->
-		$('#logout_button_invis').click()
+	$("#one").click (e) ->
+		if $("#paperTabs")[0].selected != "0"
+			$("#baluga")[0].selected = 0
+			$("#baluga").attr 'entry-animation', 'slide-from-right-animation'
+			$("#baluga").attr 'exit-animation', 'slide-left-animation'
+		return
+
+	$("#two").click (e) ->
+		$("#baluga")[0].selected = 1
+		$("#baluga").attr 'entry-animation', 'slide-from-left-animation'
+		$("#baluga").attr 'exit-animation', 'slide-right-animation'
+		return

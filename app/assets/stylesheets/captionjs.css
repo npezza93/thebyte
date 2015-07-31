@@ -31,15 +31,17 @@
 	border: none;
 	box-sizing: border-box;
 	display: block;
-	font-size: 13px;
+	font-size: 14px;
+	font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 	padding: 10px 15px;
 	margin:0 0 20px;
 	text-align: right;
+	z-index: 5;
 }
 
 /* Stacked mode */
 .captionjs.stacked figcaption {
-	bottom: 0;
+	bottom: 10px !important;
 }
 
 /* Animated mode */
@@ -63,5 +65,5 @@
 	transition:         0.25s margin-bottom;
 }
 .captionjs.hide:hover figcaption {
-	margin-bottom: -20px !important;
+	margin-bottom: 0 !important;
 }

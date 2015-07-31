@@ -1,0 +1,168 @@
+Polymer({
+	is: "show-post",
+
+	behaviors: [
+		Polymer.NeonSharedElementAnimatableBehavior,
+		Polymer.NeonAnimatableBehavior
+	],
+
+	properties: {
+		postid: String,
+		image: String,
+		queryMatches: {
+			observer: '_mediaChanged'
+		},
+
+	      	animationConfig: {
+			type: Object,
+			value: function() {
+				return {
+					'entry': [{
+						name: 'ripple-animation',
+						id: 'ripple',
+						toPage: this
+					}, {
+						name: 'hero-animation',
+						id: 'hero',
+						toPage: this
+					}, {
+						name: 'slide-down-animation',
+						node: this
+					}, {
+						name: 'slide-from-left-animation',
+						node: this
+					}, {
+						name: 'transform-animation',
+						transformFrom: 'translateY(15vh)',
+						transformTo: 'translateY(0)',
+						node: this
+					}],
+					'exit': [{
+						name: 'slide-up-animation',
+						node: this
+					}, {
+						name: 'slide-left-animation',
+						node: this
+					}, {
+						name: 'transform-animation',
+						transformFrom: 'translateY(0)',
+						transformTo: 'translateY(20vh)',
+						node: this
+					}, {
+						name: 'fade-out-animation',
+						node: this.$.rippler,
+						timing: {
+							duration: 200
+						}
+					}, {
+						name: 'hero-animation',
+						id: 'hero',
+						fromPage: this
+					}]
+				}
+			}
+		}	
+	},
+
+	attached: function() {
+		this.async(function() {
+			var content = Polymer.dom(this.root).querySelector('content');
+			var tempNodes = Polymer.dom(content).getDistributedNodes();
+			var main =this.$;
+			this.animationConfig['entry'][2].node = tempNodes[1];
+			this.animationConfig['exit'][0].node = tempNodes[1];
+			this.animationConfig['entry'][3].node = tempNodes[3];
+			this.animationConfig['exit'][1].node = tempNodes[3];
+			this.animationConfig['entry'][4].node = tempNodes[5];
+			this.animationConfig['exit'][2].node = tempNodes[5];
+			RGBaster.colors(this.$.hero, {
+				exclude:  [ 'rgb(0,0,0)' ],
+				success: function(colors) {
+					var color = colors.dominant;
+					if (color == "rgb()") {
+						color = "rgb(0,0,0)";
+					}
+					main.rippler.style.backgroundColor = color;
+					try {
+						tempNodes[5].childNodes[3].childNodes[10].childNodes[3].childNodes[1].childNodes[6].childNodes[1].style.background = color;
+					}
+					catch(e) {}
+					color = color.replace(/[^\d,]/g, '').split(',');
+					color = (((parseInt(color[0])*299)+(parseInt(color[1])*587)+(parseInt(color[2])*144))/1000) >= 131.5 ? "black" : "white";
+					if (color == "white") {
+						tempNodes[3].style.backgroundColor = "rgba(0,0,0,.5)";
+						tempNodes[3].childNodes[1].style.color = "#fff";
+						tempNodes[1].style.color = "#fff";
+						try {
+							tempNodes[5].childNodes[3].childNodes[10].childNodes[3].childNodes[1].childNodes[6].childNodes[1].childNodes[3].childNodes[2].style.color = '#fff';
+						}
+						catch(e) {}
+					} else {
+						tempNodes[3].style.backgroundColor = "rgba(255,255,255,.5)";
+						tempNodes[3].childNodes[1].style.color = "black";
+						tempNodes[1].style.color = "black";
+						try {
+							tempNodes[5].childNodes[3].childNodes[10].childNodes[3].childNodes[1].childNodes[6].childNodes[1].childNodes[3].childNodes[2].style.color = 'black';
+						}
+						catch(e) {}
+					}
+				}
+			});
+
+		});
+	},
+
+	changeAnimationConfig: function() {
+		this.animationConfig.entry = [{
+						name: 'ripple-animation',
+						id: 'ripple',
+						toPage: this
+					}, {
+						name: 'hero-animation',
+						id: 'hero',
+						toPage: this
+					}, {
+						name: 'slide-down-animation',
+						node: this
+					}, {
+						name: 'slide-from-left-animation',
+						node: this
+					}, {
+						name: 'transform-animation',
+						transformFrom: 'translateY(15vh)',
+						transformTo: 'translateY(0)',
+						node: this
+					}];
+	},
+
+	_mediaChanged: function () {
+		if (this.queryMatches) {
+			this.$.imgcontainer.style.backgroundImage = "url('" + this.image +"')";
+			this.$.imgcontainer.style.backgroundPosition = 'center center';
+			this.$.imgcontainer.style.backgroundSize = 'cover';
+			this.$.imgcontainer.style.height = '100vh';
+			this.$.imgcontainer.style.width = '100vw';
+			this.$.imgcontainer.style.backgroundRepeat = 'no-repeat';
+			this.$.imgcontainer.childNodes[1].style.display = 'none'
+			this.sharedElements = {
+				'hero': this.$.imgcontainer,
+				'ripple': this.$.rippler,
+				// 'reverse-ripple': this.$.rippler
+			};
+		} else {
+			this.$.largecontainer.childNodes[1].style.backgroundImage = "";
+			this.$.largecontainer.childNodes[1].style.backgroundPosition ="";
+			this.$.largecontainer.childNodes[1].style.backgroundSize = "";
+			this.$.largecontainer.childNodes[1].style.height = '95vh';
+			this.$.largecontainer.childNodes[1].style.width = '95vw';
+			this.$.largecontainer.childNodes[1].style.backgroundRepeat = '';
+			this.$.largecontainer.childNodes[1].childNodes[1].style.display = '';
+			this.sharedElements = {
+				'hero': this.$.hero,
+				'ripple': this.$.rippler,
+				// 'reverse-ripple': this.$.rippler
+			};
+		}
+
+	}
+});

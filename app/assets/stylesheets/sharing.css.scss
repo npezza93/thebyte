@@ -1,0 +1,105 @@
+.tweet-button {
+	height:35px;
+	background-color: rgb(85,172,238);
+	width: 125px;
+	z-index: 5;
+	margin-top: 5px;
+	margin-right: 5px;
+	background-image: url('twitter.png');
+	background-repeat: no-repeat;
+	background-size: 35px 35px;
+	background-position: left;
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+.tweet-button:hover {
+	background-color: #4C9BD6;
+	background-image: url('twitter_hover.png');
+	background-repeat: no-repeat;
+	background-size: 35px 35px;
+	background-position: left;
+	position: relative;
+	cursor: pointer;
+}
+.tweet_text {
+	position: relative;
+	top: 9px;
+	left: 50px;
+	text-decoration: none;
+	color: white;
+}
+.fshare-button {
+	height:35px;
+	background-color: rgb(72,98,163);
+	width: 125px;
+	z-index: 5;
+	margin-top: 5px;
+	margin-right: 5px;
+	background-image: url('facebook.png');
+	background-repeat: no-repeat;
+	background-size: 35px 35px;
+	background-position: left;
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+.fshare-button:hover {
+	background-color: #415893;
+	background-image: url('facebook_hover.png');
+	background-repeat: no-repeat;
+	background-size: 35px 35px;
+	background-position: left;
+	position: relative;
+	cursor: pointer;
+}
+.facebook_text {
+	position: relative;
+	top: 9px;
+	left: 50px;
+	text-decoration: none;
+	color: white;
+}
+.gshare-button {
+	height:35px;
+	background-color: #DA4735;
+	width: 125px;
+	z-index: 5;
+	margin-top: 5px;
+	background-image: url('gplus.png');
+	background-repeat: no-repeat;
+	background-size: 35px 35px;
+	background-position: left;
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+.gshare-button:hover {
+	background-color: #C44030;
+	background-image: url('gplus_hover.png');
+	background-repeat: no-repeat;
+	background-size: 35px 35px;
+	background-position: left;
+	position: relative;
+	cursor: pointer;
+}
+.gplus_text {
+	position: relative;
+	top: 9px;
+	left: 50px;
+	text-decoration: none;
+	color: white;
+}
+.share-buttons {
+	width: 100%;
+	position: relative;
+	display: block;
+	margin: auto;
+}
+#twitter_share_home {
+	width: 32px;
+	height: 32px;
+}

@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
- *= require redactor-rails
- *= require redactor-rails/plugins
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require font-awesome
  */

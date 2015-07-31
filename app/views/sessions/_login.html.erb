@@ -1,9 +1,17 @@
-<div id="login" slide-from-right center-justified layout horizontal>
+<div class="layout horizontal center-center">
 	<%= form_tag(login_path, remote: true) do %>
-		<%= text_field_tag :username, params[:username], placeholder: "Username", id: "username" %><br />
-		<%= password_field_tag :password, params[:password], placeholder: "Password", id: "password" %><br />
-		<div center-justified layout horizontal style="margin-top: 14px;">
-		<%= submit_tag "LOGON", id: "submit_logon" %>
-	    </div>
+		<paper-input-container id="new_session_username">
+        			<%= label_tag :username %>
+			<%= text_field_tag :username, params[:username], is: "iron-input", autofocus: '', id: "new_session_username" %>
+		</paper-input-container>
+
+		<paper-input-container id="new_session_password">
+        			<%= label_tag :password %>
+			<%= password_field_tag :password, params[:password], is: "iron-input", id: "new_session_password" %>
+		</paper-input-container>
+
+		  <div class="center-justified layout horizontal" style="margin-top:15px;">
+		    <paper-button><%= submit_tag "LOGON", id: "submit_logon" %></paper-button>
+		  </div>		
 	<% end %>
 </div>

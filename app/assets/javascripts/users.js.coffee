@@ -1,15 +1,23 @@
 jQuery ->
+	$("#cancel-form").click ->
+		window.history.back()
+		return 
+
+	$(".back-button").click ->
+		document.location.href = '/'
+		return 
+		
 	$('#avatar_upload_link').click ->
-		$('#avatar_upload_field').click()
+		$("#avatar_upload_field").click()
+		return
 
 	$('#avatar_upload_field').change ->
-		$('#profile_pic_submit').click()
+		$('.edit_user').submit()
+		return
 
 	$('#usernames').click ->
 		$('#overlay2').toggle()
-
-	$('#logout_button').click ->
-		$('#logout_button_invis').click()
+		return
 
 	$('#paper_admin_toggle').change ->
 		if $('#invisible_admin_toggle').is ':checked'
@@ -17,14 +25,36 @@ jQuery ->
 		else
 			$('#invisible_admin_toggle').prop('checked', true)
 
-	$("#new_user_button").click ->
-		document.location='/users/new'
-
 	$("#user_back_button").click ->
 		document.location ='/users'
 
-	$("#manage_button_1").click ->
-		document.location ='/users'
+	$("body").on "click", "#manage_button_1", ->
+		document.location = '/users'
+		return
 
-	$("#manage_button_2").click ->
-		document.location ='/inactive_posts'
+	$("body").on "click", "#edit_user_button", ->
+		document.location = 'users/' + $("#edit_user_button")[0].classList[0] + '/edit'
+		return
+
+	$('body').on {
+		mouseenter: ->
+			$("#avatar-overaly-text").fadeIn()
+			return
+		mouseleave: ->
+			$("#avatar-overaly-text").fadeOut()
+			return
+
+	}, '#profile-avatar'
+
+	$(".edit_user_link").on "click", ->
+		document.location = 'users/' + $(this)[0].classList[0] + '/edit'
+		return
+
+	$(".users-admin-toggle").on "change", ->
+		$(this).parent().find('.toggle_user_admin').prop 'checked', !$(this).parent().find('.toggle_user_admin').prop 'checked'
+		$(this).parent().submit()
+		return
+
+	$(".delete-user-button"). on "click", ->
+		$(this).parent().find("a").click()
+		return

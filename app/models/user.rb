@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	validates :username, presence: true, uniqueness: true
-  has_many :comments
+      has_many :comments
 	validates :email, presence: true
   	has_secure_password
   	validates :password, length: { minimum: 6 }, if: Proc.new { |a| !(a.password.blank?) }

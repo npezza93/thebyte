@@ -1,8 +1,0 @@
-<%= form_for(User.find_by_id(session[:user_id])) do |f| %>
-
-    <%= f.file_field :image, id: "avatar_upload_field" %>
-
-    <p id="avatar_upload_link">Upload your profile image</p>
-
-    <%= f.submit "SUBMIT", id: "profile_pic_submit" %>
-<% end %>

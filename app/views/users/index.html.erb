@@ -1,48 +1,35 @@
-<h1 layout horizontal flex center-justified id="user_title">Accounts</h1>
+<% content_for :title, "Users" %>
 
-<table layout horizontal flex center-justified>
-  <tr id="user_headers"><th>Username</th><th>Administrator</th><th>Edit</th><th>Delete</th></tr>
+<div class="layout horizontal center-center" style="height:100%;overflow-y:hidden;">
+	<paper-icon-button icon="arrow-back" class="back-button"></paper-icon-button>
 
-    <% @users.each do |user| %>
-      <tr>
-        <td id="username_col">
-          <%= link_to  user.username, user, class: "usernames-table" %>
-        </td>
+	<paper-material class="user-container">
+		<h1 class='layout horizontal flex center-justified' >Accounts</h1>
 
-        <td layout horizontal flex center-justified>
-            <% if user.administrator %>
-              <core-icon icon="done" style="margin:8px"></core-icon>
-            <% else %>
-              <core-icon icon="clear" style="margin:8px"></core-icon>
-            <% end %>
-        </td>
+		<table class="layout horizontal center-center">
+			<tr id="user_headers"><th>Username</th><th>Admin</th><th>Delete</th></tr>
 
-        <td id="edit_user_cell">
-          <paper-icon-button icon="create" center-justified center size="27" onclick="document.location='<%= edit_user_path(user) %>'"></paper-icon-button>
-        </td>
-        
-        <td id="delete_user_cell">
-          <%= link_to 'Destroy', user, method: :delete, class: "delete_user_buttons", id: "delete_user_"+ user.id.to_s, data: { confirm: 'Are you sure?' } %>
-          <paper-icon-button icon="delete" center-justified center size="27" onclick="clickDelete(<%= user.id %>)"></paper-icon-button>
-        </td>
-      </tr>
-    <% end %>
-</table>
+			<% @users.each do |user| %>
+				<tr>
+					<td id="username_col"><%= user.username %></td>
 
-<br>
-
-<div id="new_user_button_container">
-  <paper-fab icon="add" id="new_user_button"></paper-fab>
+					<td class="layout horizontal flex center-justified">
+						<%= form_for(user, remote: true) do |f| %>
+							<%= f.check_box :administrator, class: "toggle_user_admin", hidden: "" %>
+							<paper-checkbox <%= "checked" if user.administrator %> class="users-admin-toggle layout vertical center-center" ></paper-checkbox>
+						<% end %>
+					</td>
+					
+					<td>
+						<%= link_to 'Destroy', user, method: :delete, hidden: "", data: { confirm: 'Are you sure?' } %>
+						<paper-icon-button icon="delete" class="layout horizontal center-center delete-user-button"></paper-icon-button>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	</paper-material>
 </div>
 
-<div id="user_pagination">
-  <%= will_paginate @users, page_links: false  %>
+<div id="notice">
+    <paper-toast id="notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
 </div>
-
-
-<script>
-function clickDelete(user_id) {
-  var user_tag_id = "#delete_user_" + user_id
-  $(user_tag_id).click();
-}
-</script>

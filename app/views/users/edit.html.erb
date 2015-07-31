@@ -1,62 +1,36 @@
-<% content_for :head do %>
-  <script src="../../bower_components/platform/platform.js"></script>
-	<link rel="import" href="../../bower_components/core-elements/core-elements.html">
-	<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
-	<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
-	<link rel="import" href="../../bower_components/core-icon/core-icon.html">
-	<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
-  <link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
-<% end %>
+<% content_for :title, "Change Your Password" %>
 
-  <paper-icon-button icon="arrow-back" center-justified center size="27" onclick="document.location='<%= posts_path %>'"></paper-icon-button>
+<div class="layout horizontal center-center" style="height:100%;">
+	<paper-material class="user-container">
+		<h1 class='layout horizontal flex center-justified' style="font-size: 29px;">Change Password</h1>
 
-  <% if User.find_by_id(session[:user_id]).administrator %>
-    <h1 layout horizontal flex center-justified id="edit_user_title">Editing <%= @user.username %></h1>
-  <% else %>
-    <h1 layout horizontal flex center-justified id="edit_user_title">Change Password</h1>
-  <% end %>
+		<%= form_for(@user, remote: true) do |f| %>
+			<paper-input-container id="edit-user-password">
+				<%= f.label :password %>
+				<%= f.password_field :password, is: 'iron-input' %>
+				<paper-input-error></paper-input-error>
+			</paper-input-container>
 
-<%= form_for(@user) do |f| %>
-  <% if User.find_by_id(session[:user_id]).administrator %>
-    <div class="field" layout flex horizontal center-justified>
-      <%= f.text_field :username, :id => "username_field", :placeholder => "Username" %>
-    </div>
-  <% end %>
+			<paper-input-container id="edit-user-password-confirm">
+				<%= f.label :password_confirmation %>
+				<%= f.password_field :password_confirmation, is: 'iron-input' %>
+				<paper-input-error></paper-input-error>
+			</paper-input-container>
 
-  <% if User.find_by_id(session[:user_id]).administrator %>
-    <div class="field" layout flex horizontal center-justified>
-      <%= f.text_field :email, :id => "email_field", :placeholder => "Email" %>
-    </div>
-  <% end %>
-  
-  <div class="field" layout flex horizontal center-justified>
-    <%= f.password_field :password, :id => "password_field", :placeholder => "Password" %>
-  </div>
+			<% if @session_user.administrator %>
+				<div class="layout horizontal admin-edit">
+					<div class="flex">Administrator: </div>
+					<paper-checkbox checked id="paper_admin_toggle" ></paper-checkbox>
+				</div>
+				<%= f.check_box :administrator, id: "invisible_admin_toggle", hidden: "" %>
+			<% end %>
 
-  <div class="field" layout flex horizontal center-justified>
-    <%= f.password_field :password_confirmation, :id => "confirm_field", :placeholder => "Confirm Password" %>
-  </div>
-
-  <% if User.find_by_id(session[:user_id]).administrator %>
-    <div class="field" layout flex horizontal center-justified>
-      <%= f.check_box :administrator, id: "invisible_admin_toggle" %>
-      <paper-toggle-button checked id="paper_admin_toggle" ></paper-toggle-button>
-    </div>
-  <% end %>
-
-  <div center-justified layout horizontal style="margin-top: 14px;">
-    <input id="submit_signup" name="commit" type="submit" value="SUBMIT">
-  </div>
-
-  <% if @user.errors.any? %>
-    <div id="signup_errors" class="animated fadeInDown" layout horizontal center-justified>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div id="ajax_errors"></div>
-<% end %>
-
+			<br><br>
+			<div class="end-justified layout horizontal">
+				<paper-button id="cancel-form">Cancel</paper-button>
+				<paper-button><%= f.submit 'Submit', id: 'submit_signup' %></paper-button>
+			</div>
+			
+		<% end %>
+	</paper-material>
+</div>

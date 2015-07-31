@@ -1,6 +1,14 @@
+GIT
+  remote: git://github.com/npezza93/polymer-elements-rails.git
+  revision: 396293b294448976ef03b0ef0c8699551d8e42ae
+  specs:
+    polymer-elements-rails (1.0.0.pre.rc.1)
+      polymer-rails (~> 1.0, >= 1.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.3.1)
     actionmailer (4.1.0)
       actionpack (= 4.1.0)
       actionview (= 4.1.0)
@@ -27,9 +35,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    addressable (2.3.6)
     arel (5.0.1.20140414130214)
-    bcrypt (3.1.7)
+    aws-sdk-v1 (1.64.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt-ruby (3.1.2)
     builder (3.2.2)
     carrierwave (0.10.0)
@@ -40,86 +49,153 @@ GEM
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
-    coffee-script (2.3.0)
+    coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.7.1)
-    devise (3.2.4)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
+    coffee-script-source (1.9.1.1)
     erubis (2.7.0)
-    excon (0.38.0)
-    execjs (2.2.1)
-    fog (1.23.0)
-      fog-brightbox
-      fog-core (~> 1.23)
+    excon (0.45.4)
+    execjs (2.5.2)
+    fission (0.5.0)
+      CFPropertyList (~> 2.2)
+    fog (1.32.0)
+      fog-atmos
+      fog-aws (>= 0.6.0)
+      fog-brightbox (~> 0.4)
+      fog-core (~> 1.32)
+      fog-ecloud (= 0.1.1)
+      fog-google (>= 0.0.2)
       fog-json
+      fog-local
+      fog-powerdns (>= 0.1.1)
+      fog-profitbricks
+      fog-radosgw (>= 0.0.2)
+      fog-riakcs
+      fog-sakuracloud (>= 0.0.4)
+      fog-serverlove
       fog-softlayer
+      fog-storm_on_demand
+      fog-terremark
+      fog-vmfusion
+      fog-voxel
+      fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.4.1)
+    fog-atmos (0.1.0)
+      fog-core
+      fog-xml
+    fog-aws (0.7.4)
+      fog-core (~> 1.27)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-brightbox (0.8.0)
       fog-core (~> 1.22)
       fog-json
-      inflecto
-    fog-core (1.24.0)
+      inflecto (~> 0.0.2)
+    fog-core (1.32.0)
       builder
-      excon (~> 0.38)
+      excon (~> 0.45)
       formatador (~> 0.2)
       mime-types
       net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
-    fog-json (1.0.0)
-      multi_json (~> 1.0)
-    fog-softlayer (0.3.16)
+    fog-ecloud (0.1.1)
+      fog-core
+      fog-xml
+    fog-google (0.0.7)
       fog-core
       fog-json
+      fog-xml
+    fog-json (1.0.2)
+      fog-core (~> 1.0)
+      multi_json (~> 1.10)
+    fog-local (0.2.1)
+      fog-core (~> 1.27)
+    fog-powerdns (0.1.1)
+      fog-core (~> 1.27)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+    fog-profitbricks (0.0.5)
+      fog-core
+      fog-xml
+      nokogiri
+    fog-radosgw (0.0.4)
+      fog-core (>= 1.21.0)
+      fog-json
+      fog-xml (>= 0.0.1)
+    fog-riakcs (0.1.0)
+      fog-core
+      fog-json
+      fog-xml
+    fog-sakuracloud (1.0.1)
+      fog-core
+      fog-json
+    fog-serverlove (0.1.2)
+      fog-core
+      fog-json
+    fog-softlayer (0.4.7)
+      fog-core
+      fog-json
+    fog-storm_on_demand (0.1.1)
+      fog-core
+      fog-json
+    fog-terremark (0.1.0)
+      fog-core
+      fog-xml
+    fog-vmfusion (0.1.0)
+      fission
+      fog-core
+    fog-voxel (0.1.0)
+      fog-core
+      fog-xml
+    fog-xml (0.1.2)
+      fog-core
+      nokogiri (~> 1.5, >= 1.5.11)
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.5)
-    heroku (3.9.1)
-      heroku-api (~> 0.3.17)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.7)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.3.18)
-      excon (~> 0.27)
-      multi_json (~> 1.8)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     hike (1.2.3)
-    i18n (0.6.11)
+    i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jquery-rails (3.1.1)
+    jquery-rails (3.1.3)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.8.1)
-    kgio (2.9.2)
-    launchy (2.4.2)
-      addressable (~> 2.3)
+    json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kgio (2.9.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    mini_magick (3.7.0)
-      subexec (~> 0.2.1)
-    mini_portile (0.6.0)
-    minitest (5.4.0)
-    multi_json (1.10.1)
+    mini_magick (4.2.7)
+    mini_portile (0.6.2)
+    minitest (5.7.0)
+    multi_json (1.11.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.9.1)
-    netrc (0.7.7)
-    nokogiri (1.6.3.1)
-      mini_portile (= 0.6.0)
-    orm_adapter (0.5.0)
-    pg (0.17.1)
+    net-ssh (2.9.2)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    nokogumbo (1.4.2)
+      nokogiri
+    pg (0.18.2)
     polyglot (0.3.5)
-    rack (1.5.2)
-    rack-test (0.6.2)
+    polymer-rails (1.0.8)
+      nokogiri (~> 1.6)
+      nokogumbo (~> 1.1)
+      rails (>= 3.1.0)
+      sprockets (< 3.0.0)
+    rack (1.5.5)
+    rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.0)
       actionmailer (= 4.1.0)
@@ -131,92 +207,85 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.0)
       sprockets-rails (~> 2.0)
-    rails_12factor (0.0.2)
+    rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_serve_static_assets (0.0.2)
+    rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
     railties (4.1.0)
       actionpack (= 4.1.0)
       activesupport (= 4.1.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.13.0)
-    rake (10.3.2)
-    rdoc (4.1.1)
-      json (~> 1.4)
-    redactor-rails (0.4.5)
-      devise
-      mime-types
-      orm_adapter
-    rest-client (1.6.8)
-      mime-types (~> 1.16)
-      rdoc (>= 2.4.2)
-    rmagick (2.13.2)
-    rubyzip (1.1.6)
-    sass (3.2.19)
-    sass-rails (4.0.3)
+    raindrops (0.15.0)
+    rake (10.4.2)
+    rmagick (2.15.3)
+    sass (3.4.16)
+    sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
-      sprockets-rails (~> 2.0)
-    sdoc (0.4.0)
-      json (~> 1.8)
-      rdoc (~> 4.0, < 5.0)
-    sprockets (2.11.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (~> 1.1)
+    sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.1.3)
+    sprockets-rails (2.3.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
-      sprockets (~> 2.8)
-    subexec (0.2.3)
+      sprockets (>= 2.8, < 4.0)
     thor (0.19.1)
-    thread_safe (0.3.4)
+    thread_safe (0.3.5)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
+    turbolinks (2.5.3)
       coffee-rails
-    tzinfo (1.2.1)
+    tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.5.1)
+    uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.8.3)
+    unicorn (4.9.0)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    unicorn-rails (2.1.1)
+    unicorn-rails (2.2.0)
       rack
       unicorn
-    warden (1.2.3)
-      rack (>= 1.0)
-    will_paginate (3.0.7)
+    wysiwyg-rails (1.2.8)
+      font-awesome-rails (>= 4.3.0.0)
+      railties (>= 3.2, < 5.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-v1
   bcrypt-ruby (= 3.1.2)
   carrierwave
   coffee-rails (~> 4.0.0)
   fog
-  heroku
+  font-awesome-rails
+  friendly_id
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
   mini_magick
   pg
+  polymer-elements-rails!
+  polymer-rails
   rails (= 4.1.0)
   rails_12factor
-  redactor-rails
   rmagick
-  sass-rails (~> 4.0.0)
-  sdoc
+  sass-rails
   turbolinks
   uglifier (>= 1.3.0)
   unicorn-rails
-  will_paginate (~> 3.0)
+  wysiwyg-rails
+
+BUNDLED WITH
+   1.10.5

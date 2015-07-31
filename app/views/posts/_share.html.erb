@@ -1,33 +1,25 @@
-<div class="share-buttons" layout horizontal flex center-justified>
-  <div class="tweet-button">
-    <a href="https://twitter.com/intent/tweet?text=<%= @post.title + " " + request.original_url %>;via=theByte0" data-lang="en" data-url="<%= request.original_url %>" data-counturl="<%= request.original_url %>" class="tweet_text" >Tweet</a>
-  </div>
+<div class="share-buttons layout horizontal flex center-justified">
+	<div class="tweet-button">
+		<% if @post %>
+			<a href="https://twitter.com/intent/tweet?text=<%= @post.title + " " + root_url + "posts/" + @post.id.to_s %>;via=while_true0" data-lang="en" data-url="<%= request.original_url %>" class="tweet_text" >Tweet</a>				
+		<% else %>
+			<a href="https://twitter.com/intent/tweet?text=<%= post.title + " " + root_url + "posts/" + post.id.to_s %>;via=while_true0" data-lang="en" data-url="<%= root_url + "posts/" + post.id.to_s %>" class="tweet_text" >Tweet</a>		
+		<% end %>
+	</div>
 
-  <div class="fshare-button">
-  <a href="https://www.facebook.com/sharer.php?u=<%= request.original_url %>" class="facebook_text">Share</a>
+	<div class="fshare-button">
+		<% if @post %>
+			<div href="https://www.facebook.com/sharer.php?u=<%= request.original_url %>" class="facebook_text">Share</div>
+		<% else %>
+			<div href="https://www.facebook.com/sharer.php?u=<%= root_url + 'posts/' + post.id.to_s %>" class="facebook_text">Share</div>		
+		<% end %>
+	</div>
 
-  </div>
-
-  <div class="gshare-button">
-    <a href="https://plus.google.com/share?url=<%= request.original_url %>" class="gplus_text">Share</a>
-  </div>
+	<div class="gshare-button">
+		<% if @post %>	
+			<div href="https://plus.google.com/share?url=<%= request.original_url %>" class="gplus_text">Share</div>
+		<% else %>
+			<div href="https://plus.google.com/share?url=<%= root_url + "posts/" + post.id.to_s %>" class="gplus_text">Share</div>
+		<% end %>
+	</div>
 </div>
-
-
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-
-<script>
-  $(".tweet-button").click(function() {
-    window.open($(this).find("a").attr("href"), '_blank', "height=500,width=550");
-    return false;
-  });
-  $(".gshare-button").click(function() {
-    window.open($(this).find("a").attr("href"), '_blank', "height=500,width=550");
-    return false;
-  });
-  $(".fshare-button").click(function() {
-    window.open($(this).find("a").attr("href"), '_blank', "height=500,width=550");
-    return false;
-  });
-</script>
-

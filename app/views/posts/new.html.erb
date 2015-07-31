@@ -1,9 +1,11 @@
-<h1 id="new_edit_post_title">New Article</h1>
+<% content_for :title, "New Post" %>
+<% Post.all.each do |post| %>
+	<%= link_to post.title, post  %>
+<% end %>
 
-<div layout horizontal flex center-justified>
-	<ul>
-		<li>Be sure to delete the p tag that surrounds an uploaded image</li>
-		<li>To caption a picture: add class="caption" and put the caption in an alt tag</li>
-	</ul>
-</div>
-<%= render 'form' %>
+<paper-material id="new-post-container">
+	<h1 class="layout horizontal center-center">New Article</h1>
+
+	<%= render 'form' %>
+</paper-material>
+
