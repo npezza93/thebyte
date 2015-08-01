@@ -1,7 +1,7 @@
 <% content_for :title, @post.title %>
 
 <% content_for	:head do %>
-	<meta property="og:url" content="<%= root_url + '/posts/' + @post.slug %>"/>
+	<meta property="og:url" content="<%= root_url + 'posts/' + @post.slug %>"/>
 	<meta property="og:title" content="<%= @post.title %>"/>
 	<meta property="og:description" content="<%= truncate(strip_tags(@post.content).strip, length:200) %>"/>
 	<meta property="og:site_name" content="While True"/>
