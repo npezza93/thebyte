@@ -67,8 +67,7 @@
 	<neon-animated-pages selected="0" on-tile-click="_onTileClick" id="pages">
 		<animated-grid style="position:relative;">
 			<% @posts.each do |post| %>
-				<% random = Random.rand(2) %>
-				<% if random == 0 %>
+				<% if Random.rand(2) == 0 %>
 					<hero-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:headline) %>"  postid="<%= post.id %>"></hero-post-card>
 				<% else %>
 					<long-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:long_headline) %>"  postid="<%= post.id %>"></long-post-card>	
