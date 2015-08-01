@@ -1,0 +1,20 @@
+<dom-module id="session-info">
+  <style>:host {
+	display: block;
+}
+#whose_logged_in {
+	margin: 10px;
+	font-size: 14px;
+}
+</style>
+  <template>
+  	<span id="whose_logged_in" class="layout horizontal">
+    		<content></content>
+    	</span>
+  </template>
+
+  <script>Polymer({
+  is: "session-info"
+});
+</script>
+</dom-module>

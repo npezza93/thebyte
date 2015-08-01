@@ -14,3 +14,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+
+production:
+  <<: *default
+  database: wt_production
+test:
+  <<: *default
+  database: wt_test
+development:
+  <<: *default
+  database: wt_development
