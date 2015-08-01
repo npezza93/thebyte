@@ -7,12 +7,12 @@
 	<meta property="og:site_name" content="While True"/>
 	<meta property="og:type" content="article" />
 	<meta property="og:image" content="<%= @post.image_url %>" />
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@while_true0">
-	<meta name="twitter:creator" content="@pezza_n">
-	<meta name="twitter:title" content="<%= @post.title %>">
-	<meta name="twitter:description" content="<%= truncate(strip_tags(@post.content).strip, length:200) %>">
-	<meta name="twitter:image" content="<%= @post.image_url %>">
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@while_true0" />
+	<meta name="twitter:creator" content="@pezza_n" />
+	<meta name="twitter:title" content="<%= @post.title %>" />
+	<meta name="twitter:description" content="<%= truncate(strip_tags(@post.content).strip, length:200) %>" />
+	<meta name="twitter:image" content="<%= @post.image_url %>" />
 <% end %>
 
 <show-post postid="<%= @post.id %>" class="fixed-top" id="<%= @post.id %>" image="<%= @post.image_url %>">
