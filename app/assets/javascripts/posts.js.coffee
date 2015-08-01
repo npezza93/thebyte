@@ -148,7 +148,7 @@ jQuery ->
 		return
 
 	$('body').on 'click', "#home_post_edit", ->
-		document.location = '/posts/' + $(this)[0].getAttribute("postid") + '/edit'
+		document.location = '/posts/' + $(this)[0].getAttribute("slug") + '/edit'
 		return
 
 	$('body').on 'click', "#home_post_delete", ->

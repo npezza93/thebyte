@@ -2,7 +2,7 @@
 		<paper-icon-button icon="arrow-back"  id="home-page-back" style="margin-left:16px;" on-click="_onFullsizeClick"></paper-icon-button>
 		<div class="flex"></div>
 		<% if User.find_by_id(session[:user_id]) != nil and User.find_by_id(session[:user_id]).administrator%>
-			<paper-icon-button icon="create" id="home_post_edit" postid="<%= post.id %>"></paper-icon-button>
+			<paper-icon-button icon="create" id="home_post_edit" postid="<%= post.id %>" slug="<%= post.slug %>"></paper-icon-button>
 			<paper-icon-button icon="clear" id="home_post_delete" postid="<%= post.id %>"></paper-icon-button>
 			<%= link_to 'Destroy', post, method: :delete, hidden: "", data: { confirm: 'Are you sure?' } %>
 		<% end %>
