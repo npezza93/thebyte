@@ -68,15 +68,15 @@
 		<animated-grid style="position:relative;">
 			<% @posts.each do |post| %>
 				<% if Random.rand(2) == 0 %>
-					<hero-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:headline) %>"  postid="<%= post.id %>"></hero-post-card>
+					<hero-post-card class="grid-item <%= post.id %> <%= post.slug %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:headline) %>"  postid="<%= post.id %>" postslug="<%= post.slug %>"></hero-post-card>
 				<% else %>
-					<long-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:long_headline) %>"  postid="<%= post.id %>"></long-post-card>	
+					<long-post-card class="grid-item <%= post.id %> <%= post.slug %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:long_headline) %>"  postid="<%= post.id %>" postslug="<%= post.slug %>"></long-post-card>	
 				<% end %>
 			<% end %>	
 		</animated-grid>
 
 		<% @posts.each do |post| %>
-			<show-post postid="<%= post.id %>" class="fixed-top" id="<%= post.id %>" image="<%= post.image_url %>"><%= render post %></show-post>
+			<show-post postid="<%= post.id %>" postslug="<%= post.slug %>" class="fixed-top" id="<%= post.slug %>" image="<%= post.image_url %>"><%= render post %></show-post>
 		<% end %>
 	</neon-animated-pages>
 </template>

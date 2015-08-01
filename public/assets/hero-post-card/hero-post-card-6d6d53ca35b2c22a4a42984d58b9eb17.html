@@ -1,12 +1,17 @@
-<dom-module id="long-post-card">
+<dom-module id="hero-post-card">
 	<style>
 		:host {
-		  display: block;
+			display: block;
+		}
+		:host-context(:hover) {
+			.title-author-inner-layer {
+				opacity: .5;
+			}
 		}
 		#hero-material {
 			height:100%;
 		}
-		#hero {
+		#hero {	
 			position: absolute;
 			width:100%;
 			height:100%;
@@ -21,7 +26,7 @@
 		@media (max-width: 600px) {
 			:host {
 				width: 99%;
-				height: 30vh;
+				height: 50vh;
 			}
 			.home-title {
 				font-size: 1.75em;
@@ -35,7 +40,7 @@
 		@media (max-width: 600px) and (orientation: landscape) {
 			:host {
 				width: 99%;
-				height: 50vh;
+				height: 99vh;
 			}
 			.home-title {
 				font-size: 1.75em;
@@ -49,28 +54,28 @@
 		@media (min-width: 601px) and (max-width: 900px) {
 			:host {
 				width: 49%;
-				height: 25vh;
+				height:40vh;
 			}
 		}
 
 		@media (min-width: 901px) and (max-width: 1300px) and (min-height: 501px) {
 			:host {
 				width: 49%;
-				height: 25vh;
+				height: 50vh;
 			}
 		}
 
 		@media (min-width: 901px) and (max-width: 1300px) and (max-height: 500px) {
 			:host {
 				width: 32%;
-				height: 40vh;
+				height: 60vh;
 			}
 		}
 
 		@media (min-width: 1301px) {
 			:host {
 				width: 32%;
-				height: 20vh;
+				height: 40vh;
 			}
 		}
 	</style>
@@ -79,25 +84,28 @@
 		<paper-material elevation="2" id="hero-material">
 			<div class="fit">
 				<iron-image src="{{ image}}" sizing="cover" id="hero"></iron-image>
-				<div class="ripple-background" id="rippler" ></div>
+				<div class="ripple-background" id="rippler"></div>
 				<div class="post-overlay" id="gradlayer"></div>
 			</div>
 			<div class=" layout vertical title-author-inner-layer">
-				<div class="home-title" >{{ title }}</div>
-				<div  class="home-author">By <span>{{ author }}</span></div>
+				<div class="home-title">{{ title }}</div>
+				<div class="home-author">By <span>{{ author }}</span>
+</div>
 			</div>
 		</paper-material>
 	</template>
 
 	<script>
 		Polymer({
-			is: "long-post-card",
+			is: "hero-post-card",
+
 
 			properties: {
 				title: String,
 				postid: String,
+				image: String,
 				author: String,
-				image: String
+
 			},
 
 			ready: function () {

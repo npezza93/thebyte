@@ -80,15 +80,13 @@ $(window).load ->
 			$('home-toolbar')[0].show()
 			$("animated-grid")[0].show()
 			$('about-section')[0].show()
-			flag = 1
 		return
-	), 1000
-
+	), 400
+	flag = 1
 	return
 
 index = ->
 	$('#new-post-fab').fadeIn()
-	$("#about").fadeIn()
 	if flag == 1
 		$('home-toolbar')[0].show()
 		$('about-section')[0].show()
@@ -108,10 +106,10 @@ index = ->
 post = (id) ->
 	$("body")[0].style.overflowY = "hidden"
 	scrollpos = document.body.scrollTop
-	$('home-toolbar')[0].dontshow()
-	$('about-section')[0].dontshow()
-	$("#new-post-fab").fadeOut()
-	$("#about").fadeOut()
+	if flag == 1
+		$('home-toolbar')[0].dontshow()
+		$('about-section')[0].dontshow()
+		$("#new-post-fab").fadeOut()
 
 	fullPage = $("neon-animated-pages").find("#" + id.params.id)[0]
 	selected = $("show-post").index(fullPage)
@@ -203,7 +201,7 @@ jQuery ->
 
 	if document.location.pathname == "/" or document.location.pathname == "/posts"
 		$('template[is="dom-bind"]')[0]._onTileClick = (event) ->
-			selectedPost = event.detail.tile.parentNode.parentNode.postid
+			selectedPost = event.detail.tile.parentNode.parentNode.getAttribute("postslug")
 			page('/'+ selectedPost)
 			return
 
