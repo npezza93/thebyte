@@ -16,6 +16,3 @@
 /tmp
 /public/system
 /public/uploads
-
-/config/initializers/carrierwave.rb
-/config/initializers/aws.rb
