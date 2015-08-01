@@ -84,11 +84,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => "whiletrue.co" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              'smtp.sendgrid.net',
     port:                    587,
-    domain:               'whiletrue.co',
-    user_name:         'whiletrue01@gmail.com',
-    password:            'Jimm011293',
+    domain:               'heroku.com',
+    user_name:         'app28493540@heroku.com',
+    password:            'wt3t1ynw9895',
     authentication:    'plain',
     enable_starttls_auto: true  
   }
