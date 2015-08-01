@@ -42,7 +42,7 @@ Rails.application.configure do
     port:                    587,
     domain:               'whiletrue.co',
     user_name:         'whiletrue01@gmail.com',
-    password:            'Jimm011293',
+    password:            '',
     authentication:    'plain',
     enable_starttls_auto: true  
   }
