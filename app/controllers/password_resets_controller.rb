@@ -18,11 +18,11 @@ class PasswordResetsController < ApplicationController
 	def update
 		@user = User.find_by_password_reset_token!(params[:id])
 		if @user.password_reset_sent_at < 2.hours.ago
-			redirect_to new_password_reset_path, alert: "Password reset has expired."
+			redirect_to root_url, notice: "Password reset has expired."
 		else
 			respond_to do |format|
 				if @user.update(user_params)
-					format.html { redirect_to posts_path, notice: 'Password successfully reset. Please log in.' }
+					format.html { redirect_to root_url, notice: 'Password successfully reset. Please log in.' }
 					format.json { head :no_content }
 					format.js {}
 				else

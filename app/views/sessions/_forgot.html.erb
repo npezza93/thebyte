@@ -2,7 +2,7 @@
   <h3 id="forgot_header" class="horizontal center-center layout">Forgot password?</h3>
   <p class="horizontal center-center layout" id="forgot_subheader">We'll email you a reset link.</p>
     
-  <%= form_tag(password_resets_path, remote: true) do %>
+  <%= form_tag(password_resets_path) do %>
     <paper-input-container id="forgot_email">
       <%= label_tag :email %>
       <%= text_field_tag :email, nil , id: "forgot-email-field", is: 'iron-input' %>

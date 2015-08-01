@@ -1,15 +1,22 @@
-<h1 layout horizontal flex center-justified id="reset_header">Password Reset</h1>
+<div class="layout horizontal center-center" style="height:100%;overflow-y:hidden;">
+	<paper-material class="user-container">
+		<h1 class='layout horizontal flex center-justified' >Reset Password</h1>
 
-<%= form_for(@user, :url=>password_reset_path(params[:id])) do |f| %>
-  <div layout horizontal flex center-justified>
-  	<%= f.password_field :password, id: "reset_field", placeholder: "Password" %>
-  </div>
+		<%= form_for(@user, :url=>password_reset_path(params[:id])) do |f| %>
+			<paper-input-container id="forgot_email">
+				<%= f.label :password %>
+				<%= f.password_field :password, id: "forgot-email-field", is: 'iron-input' %>
+			</paper-input-container>
 
-  <div layout horizontal flex center-justified>
-  	<%= f.password_field :password_confirmation, id: "reset_field", placeholder: "Password Confirmation" %>
-  </div>
-  
-  <div layout horizontal flex center-justified>
-    <%= f.submit "RESET PASSWORD", id: "submit_reset" %>
-  </div>
-<% end %>
+			<paper-input-container id="forgot_email">
+				<%= f.label :password_confirmation %>
+				<%= f.password_field :password_confirmation, id: "forgot-email-field", is: 'iron-input' %>
+			</paper-input-container>
+
+			<br>
+			<div class="horizontal center-justified layout">
+				<paper-button dialog-confirm><%= f.submit "RESET PASSWORD", id: "submit_reset" %></paper-button>
+			</div>
+		<% end %>
+	</paper-material>
+</div>
