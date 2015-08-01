@@ -68,9 +68,9 @@
 		<animated-grid style="position:relative;">
 			<% @posts.each do |post| %>
 				<% if Random.rand(2) == 0 %>
-					<hero-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url %>"  postid="<%= post.id %>"></hero-post-card>
+					<hero-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:headline) %>"  postid="<%= post.id %>"></hero-post-card>
 				<% else %>
-					<long-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url %>"  postid="<%= post.id %>"></long-post-card>	
+					<long-post-card class="grid-item <%= post.id %>" title="<%= post.title %>" author="<%= post.author %>" image="<%= post.image_url(:long_headline) %>"  postid="<%= post.id %>"></long-post-card>	
 				<% end %>
 			<% end %>	
 		</animated-grid>
