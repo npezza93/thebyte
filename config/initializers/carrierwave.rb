@@ -10,8 +10,8 @@ CarrierWave.configure do |config|
  
     # Configuration for Amazon S3
     :provider              => 'AWS',
-    :aws_access_key_id     => 'AKIAIDJLHOPQWJ62VRQQ',
-    :aws_secret_access_key => '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',
+    :aws_access_key_id     => ENV["AWS_ACCESS_KEY"],
+    :aws_secret_access_key => ENV["AWS_SECRET_ACCESS"],
   } 
   config.fog_directory    = 'while_true'
 end
