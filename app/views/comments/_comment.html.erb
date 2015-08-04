@@ -2,6 +2,12 @@
 	<hr class="show_hr">
 
 	<div class="layout horizontal" style="padding:8px;">
+		<% if comment.user.image.blank? %>
+			<%= image_tag 'default_pic.png', id: "comment_author_avatar" %>
+		<% else %>
+			<%= image_tag comment.user.image_url(:avatar), id: "comment_author_avatar" %>
+		<% end %>
+
 		<%= image_tag comment.user.image_url(:avatar), id: "comment_author_avatar" %>
 		<div id="comment_author">
 			<%= comment.user.username %>
