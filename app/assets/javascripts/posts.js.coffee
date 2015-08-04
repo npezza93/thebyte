@@ -19,7 +19,9 @@ $(window).load ->
 		spellcheck: true
 		countCharacters: false
 		mediaManager: false
-		buttons: ['bold', 'italic', 'underline', 'strikeThrough', 'sep', 'color', 'formatBlock', 'insertOrderedList','insertUnorderedList', 'createLink', 'sep','undo','redo']
+		imageUpload: false
+		imageLink: true
+		buttons: ['bold', 'italic', 'underline', 'strikeThrough', 'sep', 'color', 'formatBlock', 'insertOrderedList','insertUnorderedList', 'createLink', 'insertImage', 'sep','undo','redo']
 		blockTags: 
 			n: "Normal"
 			pre: "Code"
