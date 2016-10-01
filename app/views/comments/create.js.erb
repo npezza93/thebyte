@@ -1,2 +1,0 @@
-$('#inner_comments_' + "<%= @post.id %>").append("<%= escape_javascript render(@comment) %>");
-$('#number_of_comments_' + "<%= @post.id %>").html("There are <%= @post.comments.count %> comments");

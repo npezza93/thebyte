@@ -1,40 +1,18 @@
-source 'https://rubygems.org'
+# If you do not have OpenSSL installed, change
+# the following line to use "http://"
+source "https://rubygems.org"
 
-ruby '2.3.0'
+# For faster file watcher updates on Windows:
+gem "wdm", "~> 0.1.0", platforms: [:mswin, :mingw]
 
-gem 'rails', '4.1.0'
-gem 'pg'
+# Windows does not come with time zone data
+gem "tzinfo-data", platforms: [:mswin, :mingw, :jruby]
 
-gem 'sass-rails'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
-gem 'turbolinks'
+# Middleman Gems
+gem "middleman", "~> 4.1"
+gem "middleman-blog"
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem "redcarpet", "~> 3.3", ">= 3.3.3"
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '3.1.2'
-
-# Use unicorn as the app server
-gem 'puma'
-gem 'font-awesome-rails'
-
-
-gem 'carrierwave'
-gem 'wysiwyg-rails'
-gem 'mini_magick'
-
-gem 'friendly_id'
-group :production do
-  gem 'rails_12factor'
-end
-
-gem 'kaminari'
-
-gem 'polymer-rails'
-gem 'polymer-elements-rails', git: 'git://github.com/npezza93/polymer-elements-rails.git'
-
-gem 'fog'
-gem 'aws-sdk-v1'
+# For feed.xml.builder
+gem "builder", "~> 3.0"
