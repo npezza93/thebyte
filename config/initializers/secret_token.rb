@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-TheByte::Application.config.secret_key_base = '20bf3051fe13aa191d037bddf6dfc2b7d6b31411e8d81d453bac6be24702503c68f07aedee33afb2966aada1d7e93fc70051e43247afd1f360b0ad9e51609c38'
+WhileTrue::Application.config.secret_key_base = '20bf3051fe13aa191d037bddf6dfc2b7d6b31411e8d81d453bac6be24702503c68f07aedee33afb2966aada1d7e93fc70051e43247afd1f360b0ad9e51609c38'

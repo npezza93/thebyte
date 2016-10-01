@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-TheByte::Application.load_tasks
+WhileTrue::Application.load_tasks
